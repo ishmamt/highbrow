@@ -777,8 +777,8 @@ main {
 .user-fw-status li {
 	float: left;
 	width: 100%;
-	border-bottom: 1px solid #e5e5e5;
-	border-top: 1px solid #e5e5e5;
+	/*border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;*/
 	padding: 15px 0;
 }
 .user-fw-status li:last-child {
@@ -1689,11 +1689,11 @@ main {
 	border-right: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
 	margin-bottom: 20px;
-	-webkit-box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
+	/*-webkit-box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
 	-moz-box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
 	-ms-box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
 	-o-box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
-	box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
+	box-shadow: 1px 0px 2px rgba(0,0,0,0.24);*/
 }
 .widget-about {
 	text-align: center;
@@ -2599,7 +2599,7 @@ footer {
 	margin-right: 0;
 }
 .flw-hr li a {
-	display: inline-block;
+	/*display: inline-block;*/
 	color: #ffffff;
 	font-size: 16px;
 	font-weight: 600;
