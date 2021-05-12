@@ -1,0 +1,14 @@
+-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+
+background-color: #bb86fc;
+
+
+
+
+707070 - unimportant
+c2c2c2 - paragraph
+d7d7d7 - heading
