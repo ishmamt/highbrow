@@ -12,3 +12,55 @@ background-color: #bb86fc;
 707070 - unimportant
 c2c2c2 - paragraph
 d7d7d7 - heading
+
+
+.like-com {
+    float: left;
+}
+.like-com li {
+    display: inline-block;
+    margin-right: 15px;
+}
+.like-com li a {
+    color: #d7d7d7;
+    font-size: 14px;
+    float: left;
+    margin-top: 6px;
+    margin-right: 5px;
+}
+.like-com li a:hover {
+    color: #bb86fc;
+}
+.like-com li a.active {
+    color: #bb86fc;
+}
+.like-com li a i {
+    margin-right: 2px;
+    font-size: 17px;
+    position: relative;
+    top: 2px;
+}
+.like-com li span {
+    color: #121212;
+    font-size: 13px;
+    width: 30px;
+    height: 30px;
+    background-color: #bb86fc;
+    line-height: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+    float: left;
+    text-align: center;
+    font-weight: 600;
+    margin-left: 1px;
+}
+.like-com li .com {
+    position: relative;
+    top: -5px;
+}
+.like-com li .com img {
+    margin-right: 10px;
+}
