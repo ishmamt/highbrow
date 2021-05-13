@@ -106,7 +106,7 @@ a:focus {
 	outline: none;
 }
 a:hover {
-	color: #fff;
+	color: #d7d7d7;
 }
 button {
 	outline: none;
@@ -275,6 +275,12 @@ header {
 	float: left;
 	width: 100%;
 }
+.header-data nav li a {
+	color: #d7d7d7;
+}
+.header-data nav li a:hover {
+	color: #bb86fc;
+}
 .logo {
 	float: left;
 	width: 40px;
@@ -298,7 +304,7 @@ header {
 	margin-top: 0px;
 }
 .ask-question {
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 10px 25px;
 	color: #bb86fc !important;
 	font-size: 14px;
@@ -317,12 +323,12 @@ header {
 }
 .forum-bar ul li a {
 	display: inline-block;
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 14px;
 	font-weight: 500;
 }
 .forum-bar h2 {
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 28px;
 	font-weight: 500;
 }
@@ -343,9 +349,9 @@ header {
 }
 .login_register ul li a {
 	display: inline-block;
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 14px;
-	border: 1px solid #fff;
+	border: 1px solid #d7d7d7;
 	height: 40px;
 	line-height: 40px;
 	padding: 0 20px;
@@ -426,7 +432,7 @@ nav ul ul li {
 	padding: 0 20px;
 }
 nav ul ul li a:hover {
-	color: #fff;
+	color: #d7d7d7;
 }
 nav ul ul li a {
 	font-size: 16px;
@@ -549,11 +555,11 @@ nav ul li span img {
 	float: none;
 }
 nav ul li a {
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 14px;
 }
 nav > ul > li > a:hover {
-	color: #fff;
+	color: #d7d7d7;
 }
 
 .user-account {
@@ -725,7 +731,7 @@ nav > ul > li > a:hover {
 	position: relative;
 	top: 51%;
 	right: 20px;
-	color: #fff;
+	color: #d7d7d7;
 	font-size: 12px;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
@@ -928,7 +934,7 @@ main {
 }
 .suggestion-usd > span i:hover {
 	background-color: #bb86fc;
-	color: #fff;
+	color: #d7d7d7;
 }
 .view-more {
 	float: left;
@@ -950,7 +956,7 @@ main {
 /* ============== tags-sec ============= */
 
 .tags-sec {
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 25px 5px;
 }
 .tags-sec ul {
@@ -1122,7 +1128,7 @@ main {
 	top: 100%;
 	right: 0;
 	width: 130px;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.28);
 	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.28);
 	-ms-box-shadow: 0 0 10px rgba(0,0,0,0.28);
@@ -1215,7 +1221,7 @@ main {
 	margin-right: 0;
 }
 .bk-links li i {
-	color: #fff;
+	color: #d7d7d7;
 	font-size: 24px;
 	width: 30px;
 	height: 30px;
@@ -1227,7 +1233,7 @@ main {
 	background-color: #bb86fc;
 }
 .bid_now {
-	color: #fff;
+	color: #d7d7d7;
 	background-color: #51a5fb;
 	text-transform: capitalize;
 	display: inline-block;
@@ -1238,7 +1244,7 @@ main {
 	top: -3px;
 }
 .bid_now:hover {
-	color: #fff;
+	color: #d7d7d7;
 }
 
 
@@ -1278,7 +1284,7 @@ main {
 	margin-right: 15px;
 }
 .job-dt li a {
-	color: #fff;
+	color: #d7d7d7;
 	background-color: #53d690;
 	text-transform: capitalize;
 	padding: 5px 13px;
@@ -1451,7 +1457,7 @@ main {
 .user-profy {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	text-align: center;
 	border-left: 1px solid #ececec;
 	border-bottom: 1px solid #ececec;
@@ -1490,7 +1496,7 @@ main {
 	display: inline-block;
 }
 .user-profy ul li a {
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 13px;
 	padding: 0 8px;
 	height: 25px;
@@ -1522,7 +1528,7 @@ main {
 }
 .user-profy > a:hover {
 	background-color: #bb86fc;
-	color: #fff;
+	color: #d7d7d7;
 }
 .slick-slide img {
 	display: inline-block;
@@ -1577,7 +1583,7 @@ main {
 	font-family: fontawesome;
 	width: 30px;
 	height: 30px;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	-ms-border-radius: 100px;
@@ -1590,7 +1596,7 @@ main {
 .slick-previous:hover:before,
 .slick-nexti:hover:before {
 	background-color: #bb86fc;
-	color: #fff;
+	color: #d7d7d7;
 	border-color: transparent;
 }
 
@@ -1600,7 +1606,7 @@ main {
 .comment-section {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 20px;
 }
 .plus-ic {
@@ -1668,9 +1674,8 @@ main {
 	margin-bottom: 10px;
 }
 .comment img {
-	position: relative;
-	top: 1px;
-	margin-right: 5px;
+	margin-top: 1px;
+	margin-right: 6px;
 }
 .comment span {
 	color: #707070;
@@ -1698,6 +1703,9 @@ main {
 .comment > a i {
 	font-weight: 600;
 	margin-right: 6px;
+}
+.comment span small {
+	color: #707070;
 }
 
 /* =============== post-comment ============= */
@@ -1728,7 +1736,7 @@ main {
 }
 .comment_box form button {
 	float: right;
-	color: #fff;
+	color: #d7d7d7;
 	background-color: #bb86fc;
 	height: 40px;
 	padding: 0 10px;
@@ -1895,12 +1903,12 @@ main {
 	position: absolute;
 	top: -20px;
 	right: -20px;
-	color: #fff;
+	color: #d7d7d7;
 	font-size: 22px;
 	cursor: pointer;
 }
 .post-project > a:hover {
-	color: #fff;
+	color: #d7d7d7;
 }
 .post-project {
 	float: left;
@@ -1982,7 +1990,7 @@ main {
 .post-project-fields form ul li button:hover,
 .post-project-fields form ul li a:hover {
 	background-color: #bb86fc;
-	color: #fff;
+	color: #d7d7d7;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #b2b2b2;
@@ -2387,7 +2395,7 @@ select {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 	font-size: 8px;
-	color: #ffffff;
+	color: #d7d7d7fff;
 	opacity: 0;
 	visibility: hidden;
 	background-color: #bb86fc;
@@ -2456,7 +2464,7 @@ select {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 	font-size: 8px;
-	color: #ffffff;
+	color: #d7d7d7fff;
 	opacity: 0;
 	visibility: hidden;
 	background-color: #bb86fc;
@@ -2523,7 +2531,7 @@ select {
 }
 .signup-tab ul li.current a {
 	background-color: #bb86fc;
-	color: #fff;
+	color: #d7d7d7;
 }
 .signup-tab ul li:last-child a {
 	-webkit-border-radius: 0px 3px 3px 0px;
@@ -2557,7 +2565,7 @@ select {
 	margin-bottom: 20px;
 }
 .login-resources ul li a {
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 16px;
 	font-weight: 600;
 	float: left;
@@ -2574,7 +2582,7 @@ select {
 	background-color: #4099ff;
 }
 .tw .fa-twitter {
-	color: #fff;
+	color: #d7d7d7;
 }
 
 
@@ -2618,7 +2626,7 @@ select {
 footer {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 }
 .footy-sec.mn ul {
 	padding: 30px 0;
@@ -2648,7 +2656,7 @@ footer {
 	display: inline-block;
 	color: #bb86fc;
 	font-size: 16px;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	border: 1px solid #bb86fc;
 	position: absolute;
 	top: 30px;
@@ -2667,7 +2675,7 @@ footer {
 .user_profile {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	margin-bottom: 20px;
 	text-align: center;
 	margin-top: -40px;
@@ -2688,7 +2696,7 @@ footer {
 	-ms-border-radius: 100px;
 	-o-border-radius: 100px;
 	border-radius: 100px;
-	color: #fff;
+	color: #d7d7d7;
 	line-height: 40px;
 	background-color: #bb86fc;
 	position: absolute;
@@ -2703,7 +2711,7 @@ footer {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 	float: none;
-	border: 5px solid #fff;
+	border: 5px solid #d7d7d7;
 }
 .user_pro_status {
 	float: left;
@@ -2917,13 +2925,13 @@ footer {
 }
 .message-btn a {
 	display: inline-block;
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 16px;
 	background-color: #bb86fc;
 	padding: 12px;
 }
 .message-btn a:hover {
-	color: #fff;
+	color: #d7d7d7;
 }
 .message-btn a i {
 	padding-right: 5px;
@@ -2987,7 +2995,7 @@ footer {
 .user-profile-ov {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 30px 20px;
 	border-left: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
@@ -3063,7 +3071,7 @@ footer {
 .portfolio-gallery-sec {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 30px 20px;
 	border-left: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
@@ -3161,13 +3169,13 @@ footer {
 	position: absolute;
 	top: -20px;
 	right: -20px;
-	color: #fff;
+	color: #d7d7d7;
 	font-size: 14px;
 	text-align: center;
 	width: 22px;
 	height: 22px;
 	line-height: 22px;
-	border: 1px solid #fff;
+	border: 1px solid #d7d7d7;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	-ms-border-radius: 100px;
@@ -3176,7 +3184,7 @@ footer {
 	font-weight: 600;
 }
 .close-box:hover {
-	color: #fff;
+	color: #d7d7d7;
 }
 .overview-box.open {
 	opacity: 1;
@@ -3186,7 +3194,7 @@ footer {
 .overview-edit {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 30px 20px;
 }
 .overview-edit h3 {
@@ -3233,11 +3241,11 @@ footer {
 }
 .save {
 	background-color: #bb86fc;
-	color: #fff;
+	color: #d7d7d7;
 	border-color: transparent;
 }
 .save-add {
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 13px 13px !important;
 }
 .overview-edit button {
@@ -3251,7 +3259,7 @@ footer {
 	cursor: pointer;
 }
 .cancel {
-	background-color: #fff;
+	background-color: #d7d7d7;
 	color: #000;
 }
 .datepicky {
@@ -3360,7 +3368,7 @@ a:hover {
 .billing-method {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	border-left: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
@@ -3413,7 +3421,7 @@ a:hover {
 }
 .lt-sec > a {
 	display: inline-block;
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 16px;
 	background-color: #bb86fc;
 	padding: 10px 25px;
@@ -3425,7 +3433,7 @@ a:hover {
 .add-billing-method {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	border-left: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
@@ -3525,7 +3533,7 @@ a:hover {
 	border-bottom: 1px solid #e5e5e5;
 }
 .payment_methods form button {
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 16px;
 	background-color: #bb86fc;
 	padding: 10px 15px;
@@ -3599,7 +3607,7 @@ a:hover {
 	color: #000000;
 	font-size: 20px;
 	font-weight: 600;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 10px 15px;
 }
 
@@ -3611,7 +3619,7 @@ a:hover {
 .company_profile_info {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	text-align: center;
 	border-left: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
@@ -3658,7 +3666,7 @@ a:hover {
 .company-up-info ul li a {
 	display: inline-block;
 	padding: 0 12px;
-	color: #fff;
+	color: #d7d7d7;
 	height: 35px;
 	line-height: 35px;
 }
@@ -3705,7 +3713,7 @@ a:hover {
 .search-box form input {
 	width: 100%;
 	height: 40px;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 0 15px;
 	color: #b2b2b2;
 	font-size: 14px;
@@ -3721,7 +3729,7 @@ a:hover {
 	top: 0;
 	right: 0;
 	background-color: #bb86fc;
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 16px;
 	font-weight: 500;
 	height: 100%;
@@ -3997,7 +4005,7 @@ a:hover {
 	background-color: #bb86fc;
 	text-align: center;
 	font-size: 12px;
-	color: #fff;
+	color: #d7d7d7;
 	line-height: 20px;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
@@ -4017,7 +4025,7 @@ a:hover {
 	bottom: 132%;
 	right: 100%;
 	width: 350px;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.17);
 	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.17);
 	-ms-box-shadow: 0 0 10px rgba(0,0,0,0.17);
@@ -4037,7 +4045,7 @@ a:hover {
     position: absolute;
     bottom: -7px;
     right: 26px;
-    border-top: 15px solid #fff;
+    border-top: 15px solid #d7d7d7;
     border-right: 15px solid transparent;
     -webkit-transform: rotate(225deg);
     -moz-transform: rotate(225deg);
@@ -4058,13 +4066,13 @@ a:hover {
 }
 .con-title h3 {
 	float: left;
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 16px;
 	font-weight: 600;
 }
 .con-title >a {
 	float: right;
-	color: #fff;
+	color: #d7d7d7;
 	font-size:20px;
 }
 .chat-list {
@@ -4092,7 +4100,7 @@ a:hover {
 	background-color: #e77667;
 	text-align: center;
 	line-height: 25px;
-	color: #fff;
+	color: #d7d7d7;
 	font-size: 13px;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
@@ -4156,14 +4164,14 @@ a:hover {
 	margin-top: 7px;
 }
 .st-icons a {
-	color: #fff;
+	color: #d7d7d7;
 	font-size: 20px;
 	margin-right: 5px;
 }
 .chat-hist {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	height: 280px;
 }
 .chat-msg {
@@ -4173,7 +4181,7 @@ a:hover {
 	margin-bottom: 15px;
 }
 .chat-msg p {
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 14px;
 	background-color: #bb86fc;
 	line-height: 18px;
@@ -4200,7 +4208,7 @@ a:hover {
 .status-info {
 	width: 8px;
 	height: 8px;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	-ms-border-radius: 100px;
@@ -4269,7 +4277,7 @@ a:hover {
 .typing-msg form textarea {
 	width: 100%;
 	height: 30px;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 0 20px;
 	color: #b2b2b2;
 	font-size: 16px;
@@ -4323,7 +4331,7 @@ a:hover {
 }
 .menu-btn a {
 	font-size: 24px;
-	color: #fff;
+	color: #d7d7d7;
 	display: inline-block;
 	padding-top: 16px;
 	padding-left: 20px;
@@ -4344,7 +4352,7 @@ a:hover {
 .acc-leftbar {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	border-left: 1px solid #e5e5e5;
 	border-bottom: 1px solid #e5e5e5;
 	border-right: 1px solid #e5e5e5;
@@ -4393,7 +4401,7 @@ a:hover {
 .acc-setting {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	border-left: 1px solid #e5e5e5;
 	border-bottom: 1px solid #e5e5e5;
 	border-right: 1px solid #e5e5e5;
@@ -4470,7 +4478,7 @@ a:hover {
 }
 .save-stngs ul li button:hover {
 	background-color: #bb86fc;
-	color: #fff;
+	color: #d7d7d7;
 	border-color: transparent;
 }
 
@@ -4630,7 +4638,7 @@ a:hover {
 	cursor: pointer;
 }
 .accept-req {
-	color: #ffffff;
+	color: #d7d7d7fff;
 	font-size: 16px;
 	background-color: #51a5fb;
 	height: 30px;
@@ -4744,7 +4752,7 @@ a:hover {
 .msgs-list {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	border-left: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
@@ -4837,7 +4845,7 @@ a:hover {
 	text-align: center;
 	line-height: 25px;
 	font-size: 13px;
-	color: #fff;
+	color: #d7d7d7;
 }
 .usr-ms-img img {
 	width: 100%;
@@ -4880,7 +4888,7 @@ a:hover {
 .main-conversation-box {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	position: relative;
 	border-right: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
@@ -4979,7 +4987,7 @@ a:hover {
 	font-size: 14px;
 	line-height: 22px;
 	padding: 10px 35px 10px 35px;
-	color: #fff;
+	color: #d7d7d7;
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
 	-ms-border-radius: 15px;
@@ -5028,7 +5036,7 @@ a:hover {
 .mf-field input {
 	float: left;
 	width: 80%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	color: #b2b2b2;
 	font-size: 16px;
 	padding: 0 15px;
@@ -5041,7 +5049,7 @@ a:hover {
 	background-color: #bb86fc;
 	height: 45px;
 	text-align: center;
-	color: #fff;
+	color: #d7d7d7;
 	font-weight: 600;
 	border: 0;
 	margin-left: 15px;
@@ -5065,7 +5073,7 @@ a:hover {
 /* ============== forum-links ============= */
 
 .forum-sec {
-	background-color: #fff;
+	background-color: #d7d7d7;
 }
 .forum-links {
 	float: left;
@@ -5157,7 +5165,7 @@ a:hover {
 	font-size: 14px;
 }
 .usr_quest p {
-	color: #ffffff;
+	color: #d7d7d7;
 }
 .usr_quest img {
 	margin-top: 1px;
@@ -5228,7 +5236,7 @@ a:hover {
 }
 .quest-tags li a {
 	display: inline-block;
-	color: #ffffff;
+	color: #d7d7d7fff;
 	background-color: #53d690;
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
@@ -5255,7 +5263,7 @@ a:hover {
 .pagination {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	padding: 13px 25px;
 }
 .full-pagi {
@@ -5275,7 +5283,7 @@ a:hover {
 }
 .pagination li .page-link.active {
 	background-color: #bb86fc;
-	color: #fff;
+	color: #d7d7d7;
 	border-color: transparent;
 }
 .pvr {
@@ -5493,7 +5501,7 @@ a:hover {
 .next-prev {
 	float: left;
 	width: 100%;
-	background-color: #fff;
+	background-color: #d7d7d7;
 	margin-top: 20px;
 	padding: 12px 25px;
 }
@@ -5507,7 +5515,7 @@ a:hover {
 	background-color: #e5e5e5;
 }
 .next-prev > a:hover {
-	color: #fff;
+	color: #d7d7d7;
 	background-color: #bb86fc;
 }
 .fl-left {
@@ -5565,7 +5573,7 @@ a:hover {
     text-align: center;
     height: 80px;
     border-radius: 100px;
-    background-color: #fff;
+    background-color: #d7d7d7;
     line-height: 80px;
     border:1px solid #e1e1e1;
     cursor: pointer;
