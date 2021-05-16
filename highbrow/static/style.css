@@ -528,7 +528,7 @@ nav ul ul li a {
 .view-all-nots > a {
 	float: left;
 	width: 100%;
-	color: #121212;
+	color: #121212 !important;
 	font-size: 16px;
 	text-transform: capitalize;
 	font-weight: 600;
@@ -539,7 +539,7 @@ nav ul ul li a {
 .view-all-nots > a:hover {
 	float: left;
 	width: 100%;
-	color: #d7d7d7;
+	color: #d7d7d7 !important;
 	font-size: 16px;
 	text-transform: capitalize;
 	font-weight: 600;
@@ -1759,6 +1759,19 @@ main {
 .process-comm img {
 	float: none;
 }
+.process-com button {
+	float: right;
+	color: #d7d7d7;
+	background-color: #bb86fc;
+	height: 40px;
+	padding: 0 10px;
+	text-align: center;
+	font-size: 14px;
+	border: 0;
+	margin-left: 10px;
+	cursor: pointer;
+	font-weight: 600;
+}
 
 
 /* =============== right-sidebar ============= */
@@ -1854,6 +1867,16 @@ main {
 }
 .job-details p {
 	color: #c2c2c2;
+	font-size: 14px;
+	line-height: 20px;
+}
+.job-details p a {
+	color: #d7d7d7;
+	font-size: 14px;
+	line-height: 20px;
+}
+.job-details p a:hover {
+	color: #bb86fc;
 	font-size: 14px;
 	line-height: 20px;
 }
@@ -2611,6 +2634,12 @@ select {
 	font-size: 14px;
 	font-weight: 500;
 }
+.footy-sec ul li a:hover {
+	display: inline-block;
+	color: #bb86fc;
+	font-size: 14px;
+	font-weight: 500;
+}
 .footy-sec p img {
 	padding-right: 5px;
 	float: auto;
@@ -2835,11 +2864,12 @@ footer {
 	padding-top: 4px;
 }
 .user-tab-sec h3 {
-	color: #000000;
+	color: #bb86fc;
 	font-size: 40px;
 	font-weight: 400;
 	text-transform: capitalize;
 	margin-bottom: 7px;
+	border-bottom: 1px solid #d7d7d7;
 }
 .star-descp {
 	float: left;
@@ -3601,13 +3631,18 @@ a:hover {
 	float: left;
 	width: 100%;
 	margin-bottom: 20px;
-	padding: 0 15px;
+	padding: 0 0px;
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
 .company-title h3 {
-	color: #000000;
+	color: #d7d7d7;
 	font-size: 20px;
 	font-weight: 600;
-	background-color: #d7d7d7;
+	background-color: #1d1d1d;
 	padding: 10px 15px;
 }
 
@@ -3619,18 +3654,23 @@ a:hover {
 .company_profile_info {
 	float: left;
 	width: 100%;
-	background-color: #d7d7d7;
+	background-color: #1d1d1d;
 	text-align: center;
-	border-left: 1px solid #e4e4e4;
+	/*border-left: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
-	border-bottom: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;*/
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 	margin-bottom: 30px;
 }
 .company-up-info {
 	float: left;
 	width: 100%;
 	padding: 30px 0;
-	border-bottom: 1px solid #e5e5e5;
+	/*border-bottom: 1px solid #e5e5e5;*/
 }
 .company-up-info img {
 	float: none;
@@ -3644,7 +3684,7 @@ a:hover {
 	object-fit: cover;
 }
 .company-up-info h3 {
-	color: #000000;
+	color: #d7d7d7;
 	font-size: 20px;
 	font-weight: 600;
 	margin-bottom: 10px;
@@ -3666,7 +3706,7 @@ a:hover {
 .company-up-info ul li a {
 	display: inline-block;
 	padding: 0 12px;
-	color: #d7d7d7;
+	color: #121212;
 	height: 35px;
 	line-height: 35px;
 }
@@ -3699,6 +3739,7 @@ a:hover {
 	float: left;
 	width: 100%;
 	margin: 30px 0 0 0;
+
 }
 .search-box {
 	float: left;
@@ -3709,20 +3750,20 @@ a:hover {
 	float: left;
 	width: 100%;
 	position: relative;
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
 .search-box form input {
 	width: 100%;
 	height: 40px;
 	background-color: #d7d7d7;
 	padding: 0 15px;
-	color: #b2b2b2;
+	color: #121212;
 	font-size: 14px;
 	border: 1px solid #e5e5e5;
-	-webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.20);
-	-moz-box-shadow: 0 4px 8px rgba(0,0,0,0.20);
-	-ms-box-shadow: 0 4px 8px rgba(0,0,0,0.20);
-	-o-box-shadow: 0 4px 8px rgba(0,0,0,0.20);
-	box-shadow: 0 4px 8px rgba(0,0,0,0.20);
 }
 .search-box form button {
 	position: absolute;
@@ -4466,20 +4507,39 @@ a:hover {
 }
 .save-stngs ul li button {
 	display: inline-block;
-	color: #000000;
+	color: #121212;
 	font-size: 16px;
-	border: 1px solid #e5e5e5;
+	border: 1px solid #bb86fc;
 	height: 40px;
 	line-height: 40px;
 	padding: 0 22px;
 	font-weight: 600;
 	background: none;
+	background-color: #bb86fc;
 	cursor: pointer;
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    position: absolute;
+	left: 47%;
+	/*-ms-transform: translateY(-50%);
+	transform: translateY(-50%);*/
 }
 .save-stngs ul li button:hover {
 	background-color: #bb86fc;
 	color: #d7d7d7;
 	border-color: transparent;
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    position: absolute;
+	left: 47%;
+	/*-ms-transform: translateY(-50%);
+	transform: translateY(-50%);*/
 }
 
 /* =============== Password Update ============ */
@@ -5123,7 +5183,12 @@ a:hover {
 .forum-questions-sec {
 	float: left;
 	width: 100%;
-	/*background-color: #1d1d1d;*/
+	background-color: #1d1d1d;
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
 .forum-questions {
 	float: left;
@@ -5263,8 +5328,13 @@ a:hover {
 .pagination {
 	float: left;
 	width: 100%;
-	background-color: #d7d7d7;
+	background-color: #1d1d1d;
 	padding: 13px 25px;
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
 .full-pagi {
 	float: left;
@@ -5278,12 +5348,12 @@ a:hover {
 	margin-right: 10px;
 }
 .pagination li .page-link {
-	background-color: #e5e5e5;
-	color: #b2b2b2;
+	background-color: #d7d7d7;
+	color: #121212;
 }
 .pagination li .page-link.active {
 	background-color: #bb86fc;
-	color: #d7d7d7;
+	color: #121212;
 	border-color: transparent;
 }
 .pvr {
