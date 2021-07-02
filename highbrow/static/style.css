@@ -1256,6 +1256,10 @@ main {
 	padding: 0 20px 20px 20px;
 	border-bottom: 1px solid #e5e5e5;
 }
+
+.job_descp p {
+	white-space: pre-line;
+}
 .job_descp h3 {
 	color: #d7d7d7;
 	font-size: 18px;
@@ -1966,6 +1970,10 @@ main {
 	padding: 15px;
 	height: 130px;
 }
+.post-project-fields form label {
+	padding: 10px;
+	color: #d7d7d7;
+}
 .post-project-fields form input,
 .post-project-fields form textarea,
 .post-project-fields form select {
@@ -2015,6 +2023,8 @@ main {
 	background-color: #bb86fc;
 	color: #d7d7d7;
 }
+
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #b2b2b2;
 }
