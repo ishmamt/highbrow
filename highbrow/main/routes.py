@@ -1,5 +1,5 @@
 from flask import render_template, request, Blueprint
-from highbrow.main.forms import PostForm
+from highbrow.main.forms import NewPostForm
 
 main = Blueprint('main', __name__)  # similar to app = Flask(__name__)
 
@@ -40,7 +40,7 @@ interests = ["HTML", "PHP", "CSS", "JAVASCRIPT", "PYTHON"]
 @main.route("/home", methods=["GET", "POST"])
 @main.route("/index", methods=["GET", "POST"])
 def home():
-    form = PostForm()
+    form = NewPostForm()
     if form.validate_on_submit() and request.method == "POST":
         post_entry = {
             "username": "Tauseef Tajwar",

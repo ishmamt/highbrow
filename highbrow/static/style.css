@@ -1689,7 +1689,7 @@ main {
 }
 .comment p {
 	color: #c2c2c2;
-	/*background-color: #bb86fc;*/
+	white-space: pre-line;
 	font-size: 14px;
 	margin-bottom: 10px;
 	line-height: 20px;
@@ -5234,6 +5234,19 @@ a:hover {
 	font-size: 17px;
 	font-weight: 600;
 	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+.usr_quest > h3 a{
+	color: #d7d7d7;
+	font-size: 17px;
+	font-weight: 600;
+	/*margin-bottom: 20px;*/
+}
+.usr_quest > h3 a:hover{
+	color: #bb86fc;
+	font-size: 17px;
+	font-weight: 600;
+	/*margin-bottom: 20px;*/
 }
 .usr_quest span {
 	color: #707070;
@@ -5241,6 +5254,7 @@ a:hover {
 }
 .usr_quest p {
 	color: #d7d7d7;
+	white-space: pre-line;
 }
 .usr_quest img {
 	margin-top: 1px;
