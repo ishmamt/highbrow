@@ -136,11 +136,9 @@
                                     <div class="paddy">
                                         <div class="filter-dd">
                                             <ul class="skill-tags">
-                                                <li><a href="#" title="">HTML</a></li>
-                                                <li><a href="#" title="">PHP</a></li>
-                                                <li><a href="#" title="">CSS</a></li>
-                                                <li><a href="#" title="">Javascript</a></li>
-                                                <li><a href="#" title="">Wordpress</a></li>
+                                                {% for interest in interests %}
+                                                    <li><a href="#" title="">{{ interest }}</a></li>
+                                                {% endfor %}
                                             </ul>
                                         </div>
                                     </div>

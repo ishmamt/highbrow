@@ -6,7 +6,7 @@ main = Blueprint('main', __name__)  # similar to app = Flask(__name__)
 
 posts = [
     {
-        "username": "Tawseef Tajwar",
+        "username": "Tauseef Tajwar",
         "time": 3,
         "title": "Hello World",
         "content": "Testing 123",
@@ -33,6 +33,7 @@ posts = [
         "comments": 14
     }
 ]
+interests = ["HTML", "PHP", "CSS", "JAVASCRIPT", "PYTHON"]
 
 
 @main.route("/", methods=["GET", "POST"])
@@ -51,4 +52,4 @@ def home():
             "comments": 0
         }
         posts.append(post_entry)
-    return render_template("home.html", posts=posts, form=form)
+    return render_template("home.html", posts=posts, form=form, interests=interests)

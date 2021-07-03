@@ -163,36 +163,14 @@
                                             <h3>Bio</h3>
                                         </div>
                                         <div class="jobs-list">
-                                            <div class="job-info">
-                                                <div class="job-details">
-                                                    <h3>Senior Product Designer</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                                </div>
-                                            </div><!--job-info end-->
-                                            <div class="job-info">
-                                                <div class="job-details">
-                                                    <h3>Senior UI / UX Designer</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                                </div>
-                                            </div><!--job-info end-->
-                                            <div class="job-info">
-                                                <div class="job-details">
-                                                    <h3>Junior Seo Designer</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                                </div>
-                                            </div><!--job-info end-->
-                                            <div class="job-info">
-                                                <div class="job-details">
-                                                    <h3>Senior PHP Designer</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                                </div>
-                                            </div><!--job-info end-->
-                                            <div class="job-info">
-                                                <div class="job-details">
-                                                    <h3>Senior Developer Designer</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                                </div>
-                                            </div><!--job-info end-->
+                                            {% for job in jobs %}
+                                                <div class="job-info">
+                                                    <div class="job-details">
+                                                        <h3>{{job["name"] }}</h3>
+                                                        <p>{{ job["details"] }}</p>
+                                                    </div>
+                                                </div><!--job-info end-->
+                                            {% endfor %}
                                         </div><!--jobs-list end-->
                                     </div><!--widget-jobs end-->
                                     <div class="widget widget-jobs">
@@ -200,24 +178,14 @@
                                             <h3>Contact</h3>
                                         </div>
                                         <div class="jobs-list">
-                                            <div class="job-info">
-                                                <div class="job-details">
-                                                    <h3>Twitter</h3>
-                                                    <p><a href="https://twitter.com/">https://twitter.com/</a></p>
-                                                </div>
-                                            </div><!--job-info end-->
-                                            <div class="job-info">
-                                                <div class="job-details">
-                                                    <h3>Facebook</h3>
-                                                    <p><a href="https://facebook.com/">https://facebook.com/</a></p>
-                                                </div>
-                                            </div><!--job-info end-->
-                                            <div class="job-info">
-                                                <div class="job-details">
-                                                    <h3>Email</h3>
-                                                    <p><a href="https://gmail.com/">https://gmail.com/</a></p>
-                                                </div>
-                                            </div><!--job-info end-->
+                                            {% for contact in contacts %}
+                                                <div class="job-info">
+                                                    <div class="job-details">
+                                                        <h3>{{ contact["website_name"] }}</h3>
+                                                         <p><a href={{ contact["link"] }}>{{ contact["link"] }}</a></p>
+                                                    </div>
+                                                </div><!--job-info end-->
+                                            {% endfor %}
                                         </div><!--jobs-list end-->
                                     </div><!--widget-jobs end-->
                                     <div class="filter-secs">
@@ -227,11 +195,9 @@
                                         <div class="paddy">
                                             <div class="filter-dd">
                                                 <ul class="skill-tags">
-                                                    <li><a href="#" title="">HTML</a></li>
-                                                    <li><a href="#" title="">PHP</a></li>
-                                                    <li><a href="#" title="">CSS</a></li>
-                                                    <li><a href="#" title="">Javascript</a></li>
-                                                    <li><a href="#" title="">Wordpress</a></li>
+                                                    {% for interest in interests %}
+                                                        <li><a href="#" title="">{{ interest }}</a></li>
+                                                    {% endfor %}
                                                 </ul>
                                             </div>
                                         </div>
@@ -240,158 +206,15 @@
                             </div>
                             <div class="col-lg-9">
                                 <div class="main-ws-sec">
-                                    <div class="post-topbar">
-                                        <div class="user-picy">
-                                            <img src="http://via.placeholder.com/100x100" alt="">
-                                        </div>
-                                        <div class="post-st">
-                                            <ul>
-                                                <li><a class="post-jb active" href="#" title="">Create Post</a></li>
-                                            </ul>
-                                        </div><!--post-st end-->
-                                    </div><!--post-topbar end-->
                                     <div class="posts-section">
-                                        <div class="post-bar">
-                                            <div class="post_topbar">
-                                                <div class="usy-dt">
-                                                    <img src="http://via.placeholder.com/50x50" alt="">
-                                                    <div class="usy-name">
-                                                        <h3>Tauseef Tajwar</h3>
-                                                        <span><img src="static/images/clock.png" alt="">3 min ago</span>
-                                                    </div>
-                                                </div>
-                                                <div class="ed-opts">
-                                                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                    <ul class="ed-options">
-                                                        <li><a href="#" title="">Report</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="epi-sec">
-                                                <ul class="bk-links">
-                                                    <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job_descp">
-                                                <h3><a href="#">Senior Wordpress Developer</a></h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-                                                <ul class="skill-tags">
-                                                    <li><a href="#" title="">HTML</a></li>
-                                                    <li><a href="#" title="">PHP</a></li>
-                                                    <li><a href="#" title="">CSS</a></li>
-                                                    <li><a href="#" title="">Javascript</a></li>
-                                                    <li><a href="#" title="">Wordpress</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job-status-bar">
-                                                <ul class="like-com">
-                                                    <li>
-                                                        <a href="#"><i class="la la-heart"></i>Like</a>
-                                                        <span>25</span>
-                                                    </li>
-                                                    <li><a href="#" title="" class="com"><img src="static/images/com.png" alt=""> Comment 15</a></li>
-                                                </ul>
-                                            </div>
-                                        </div><!--post-bar end-->
-
-
-                                        <div class="post-bar">
-                                            <div class="post_topbar">
-                                                <div class="usy-dt">
-                                                    <img src="http://via.placeholder.com/50x50" alt="">
-                                                    <div class="usy-name">
-                                                        <h3>Tauseef Tajwar</h3>
-                                                        <span><img src="static/images/clock.png" alt="">3 min ago</span>
-                                                    </div>
-                                                </div>
-                                                <div class="ed-opts">
-                                                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                    <ul class="ed-options">
-                                                        <li><a href="#" title="">Report</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="epi-sec">
-                                                <ul class="bk-links">
-                                                    <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job_descp">
-                                                <h3><a href="#">Senior Wordpress Developer</a></h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-                                                <ul class="skill-tags">
-                                                    <li><a href="#" title="">HTML</a></li>
-                                                    <li><a href="#" title="">PHP</a></li>
-                                                    <li><a href="#" title="">CSS</a></li>
-                                                    <li><a href="#" title="">Javascript</a></li>
-                                                    <li><a href="#" title="">Wordpress</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job-status-bar">
-                                                <ul class="like-com">
-                                                    <li>
-                                                        <a href="#"><i class="la la-heart"></i>Like</a>
-                                                        <span>25</span>
-                                                    </li>
-                                                    <li><a href="#" title="" class="com"><img src="static/images/com.png" alt=""> Comment 15</a></li>
-                                                </ul>
-                                            </div>
-                                        </div><!--post-bar end-->
-
-
-                                        <div class="post-bar">
-                                            <div class="post_topbar">
-                                                <div class="usy-dt">
-                                                    <img src="http://via.placeholder.com/50x50" alt="">
-                                                    <div class="usy-name">
-                                                        <h3>Tauseef Tajwar</h3>
-                                                        <span><img src="static/images/clock.png" alt="">3 min ago</span>
-                                                    </div>
-                                                </div>
-                                                <div class="ed-opts">
-                                                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                    <ul class="ed-options">
-                                                        <li><a href="#" title="">Report</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="epi-sec">
-                                                <ul class="bk-links">
-                                                    <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job_descp">
-                                                <h3><a href="#">Senior Wordpress Developer</a></h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-                                                <ul class="skill-tags">
-                                                    <li><a href="#" title="">HTML</a></li>
-                                                    <li><a href="#" title="">PHP</a></li>
-                                                    <li><a href="#" title="">CSS</a></li>
-                                                    <li><a href="#" title="">Javascript</a></li>
-                                                    <li><a href="#" title="">Wordpress</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job-status-bar">
-                                                <ul class="like-com">
-                                                    <li>
-                                                        <a href="#"><i class="la la-heart"></i>Like</a>
-                                                        <span>25</span>
-                                                    </li>
-                                                    <li><a href="#" title="" class="com"><img src="static/images/com.png" alt=""> Comment 15</a></li>
-                                                </ul>
-                                            </div>
-                                        </div><!--post-bar end-->
-
-
-
-                                        <div class="posty">
-                                            <div class="post-bar no-margin">
+                                        {% for post in posts %}
+                                            <div class="post-bar">
                                                 <div class="post_topbar">
                                                     <div class="usy-dt">
                                                         <img src="http://via.placeholder.com/50x50" alt="">
                                                         <div class="usy-name">
-                                                            <h3>Tauseef Tajwar</h3>
-                                                            <span><img src="static/images/clock.png" alt="">3 min ago</span>
+                                                            <h3>{{ post["username"] }}</h3>
+                                                            <span><img src="static/images/clock.png" alt="">{{ post["time"] }} min ago</span>
                                                         </div>
                                                     </div>
                                                     <div class="ed-opts">
@@ -407,27 +230,26 @@
                                                     </ul>
                                                 </div>
                                                 <div class="job_descp">
-                                                    <h3><a href="#">Senior Wordpress Developer</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
+                                                    <h3><a href="#">{{ post["title"] }}</a></h3>
+                                                    <p>{{ post["content"] }} <a href="#" title="">view more</a></p>
                                                     <ul class="skill-tags">
-                                                        <li><a href="#" title="">HTML</a></li>
-                                                        <li><a href="#" title="">PHP</a></li>
-                                                        <li><a href="#" title="">CSS</a></li>
-                                                        <li><a href="#" title="">Javascript</a></li>
-                                                        <li><a href="#" title="">Wordpress</a></li>
+                                                        {% for tag in post["tags"] %}
+                                                            <li><a href="#" title="">{{ tag }}</a></li>
+                                                        {% endfor %}
+
                                                     </ul>
                                                 </div>
                                                 <div class="job-status-bar">
                                                     <ul class="like-com">
                                                         <li>
                                                             <a href="#"><i class="la la-heart"></i>Like</a>
-                                                            <span>25</span>
+                                                            <span>{{ post["likes"] }}</span>
                                                         </li>
-                                                        <li><a href="#" title="" class="com"><img src="static/images/com.png" alt=""> Comment 15</a></li>
+                                                        <li><a href="#" title="" class="com"><img src="static/images/com.png" alt=""> Comment {{ post["comments"] }}</a></li>
                                                     </ul>
                                                 </div>
                                             </div><!--post-bar end-->
-                                        </div><!--posty end-->
+                                        {% endfor %}
                                         <div class="process-comm">
                                             <div class="spinner">
                                                 <div class="bounce1"></div>
@@ -443,88 +265,6 @@
                 </div>
             </div>
         </main>
-
-
-
-
-        <div class="post-popup pst-pj">
-            <div class="post-project">
-                <h3>Post a project</h3>
-                <div class="post-project-fields">
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <input type="text" name="title" placeholder="Title">
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="inp-field">
-                                    <select>
-                                        <option>Category</option>
-                                        <option>Category 1</option>
-                                        <option>Category 2</option>
-                                        <option>Category 3</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <input type="text" name="skills" placeholder="Skills">
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="price-sec">
-                                    <div class="price-br">
-                                        <input type="text" name="price1" placeholder="Price">
-                                        <i class="la la-dollar"></i>
-                                    </div>
-                                    <span>To</span>
-                                    <div class="price-br">
-                                        <input type="text" name="price1" placeholder="Price">
-                                        <i class="la la-dollar"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <textarea name="description" placeholder="Description"></textarea>
-                            </div>
-                            <div class="col-lg-12">
-                                <ul>
-                                    <li><button class="active" type="submit" value="post">Post</button></li>
-                                    <li><a href="#" title="">Cancel</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </form>
-                </div><!--post-project-fields end-->
-                <a href="#" title=""><i class="la la-times-circle-o"></i></a>
-            </div><!--post-project end-->
-        </div><!--post-project-popup end-->
-
-        <div class="post-popup job_post">
-            <div class="post-project">
-                <h3>New Post</h3>
-                <div class="post-project-fields">
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <input type="text" name="title" placeholder="Title">
-                            </div>
-                            <div class="col-lg-12">
-                                <input type="text" name="topic" placeholder="Topic">
-                            </div>
-                            <div class="col-lg-12">
-                                <textarea name="share" placeholder="Share your experience"></textarea>
-                            </div>
-                            <div class="col-lg-12">
-                                <ul>
-                                    <li><button class="active" type="submit" value="post">Post</button></li>
-                                    <li><a href="#" title="">Cancel</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </form>
-                </div><!--post-project-fields end-->
-                <a href="#" title=""><i class="la la-times-circle-o"></i></a>
-            </div><!--post-project end-->
-        </div><!--post-project-popup end-->
 
     </div><!--theme-layout end-->
 
