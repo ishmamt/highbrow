@@ -14,4 +14,6 @@ def create_app():
     app.register_blueprint(main)
     app.register_blueprint(topics)
 
+    app.config['SECRET_KEY'] = "c37b6431d31de6dcc7e1a1fa5243c976"
+
     return app

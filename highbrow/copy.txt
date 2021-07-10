@@ -64,3 +64,36 @@ d7d7d7 - heading
 .like-com li .com img {
     margin-right: 10px;
 }
+
+
+
+<div class="post-project-fields">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- <input type="text" name="title" placeholder="Title"> -->
+                {{ form.title.label }}
+                {{ form.title }}
+            </div>
+            <div class="col-lg-12">
+                <!-- <input type="text" name="topic" placeholder="Topic"> -->
+                {{ form.topic.label }}
+                {{ form.topic }}
+            </div>
+            <div class="col-lg-12">
+                <!-- <textarea name="share" placeholder="Share your experience"></textarea> -->
+                {{ form.content.label }}
+                {{ form.content }}
+            </div>
+            <div class="col-lg-12">
+                <ul>
+                    <li><button class="active" type="submit" value="post">Post</button></li>
+                    <li><a href="/" title="">Cancel</a></li>
+                    {{ form.submit(class_="active") }}
+                    <!--<li><button class="active" type="submit" value="post">{{ form.submit }}</button></li> -->
+                </ul>
+            </div>
+        </div>
+    </form>
+</div><!--post-project-fields end-->
