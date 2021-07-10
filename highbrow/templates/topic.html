@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+<link rel="icon" type="image/x-icon" href="static/images/logo.png">
 <link rel="stylesheet" type="text/css" href="static/animate.css">
 <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="static/line-awesome.css">
@@ -21,12 +22,7 @@
 
 
 <body>
-
-
     <div class="wrapper">
-
-
-
         <header>
             <div class="container">
                 <div class="header-data">
@@ -90,11 +86,10 @@
                                 <li><a href="/user" title="">Profile</a></li>
                                 <li><a href="/user" title="">Saved Posts</a></li>
                                 <li><a href="#" title="">Account Setting</a></li>
-                                <li><a href="#" title="">Privacy</a></li>
-                                <li><a href="#" title="">Faqs</a></li>
-                                <li><a href="#" title="">Terms & Conditions</a></li>
+                                <li><a href="/about" title="">About</a></li>
+                                <li><a href="/contact" title="">Contact Us</a></li>
                             </ul>
-                            <h3 class="tc"><a href="#" title="">Logout</a></h3>
+                            <h3 class="tc"><a href="/login" title="">Logout</a></h3>
                         </div><!--user-account-settingss end-->
                     </div>
                 </div><!--header-data end-->
@@ -107,142 +102,31 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="user-tab-sec">
-                                <h3>PHP</h3>
+                                <h3>{{ topic_details["name"] }}</h3>
                             </div>
                             <div class="forum-questions">
-                                <div class="usr-question">
-                                    <div class="usr_img">
-                                        <img src="http://via.placeholder.com/60x60" alt="">
-                                    </div>
-                                    <div class="usr_quest">
-                                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                        <ul class="react-links">
-                                            <li><a href="#" title=""><i class="la la-heart"></i> Vote 150</a></li>
-                                            <li><a href="#" title=""><i class="la la-comment"></i> Comments  15</a></li>
-                                        </ul>
-                                        <ul class="skill-tags">
-                                            <br><br>
-                                            <li><a href="#" title="">Work</a></li>
-                                            <li><a href="#" title="">Php</a></li>
-                                            <li><a href="#" title="">Design</a></li>
-                                        </ul>
-                                    </div><!--usr_quest end-->
-                                    <span class="quest-posted-time"><i class="la la-clock-o"></i>3 min ago</span>
-                                </div><!--usr-question end-->
-                                <div class="usr-question">
-                                    <div class="usr_img">
-                                        <img src="http://via.placeholder.com/60x60" alt="">
-                                    </div>
-                                    <div class="usr_quest">
-                                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                        <ul class="react-links">
-                                            <li><a href="#" title=""><i class="la la-heart"></i> Vote 150</a></li>
-                                            <li><a href="#" title=""><i class="la la-comment"></i> Comments  15</a></li>
-                                        </ul>
-                                        <ul class="skill-tags">
-                                            <br><br>
-                                            <li><a href="#" title="">Work</a></li>
-                                            <li><a href="#" title="">Php</a></li>
-                                            <li><a href="#" title="">Design</a></li>
-                                        </ul>
-                                    </div><!--usr_quest end-->
-                                    <span class="quest-posted-time"><i class="la la-clock-o"></i>3 min ago</span>
-                                </div><!--usr-question end-->
-                                <div class="usr-question">
-                                    <div class="usr_img">
-                                        <img src="http://via.placeholder.com/60x60" alt="">
-                                    </div>
-                                    <div class="usr_quest">
-                                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                        <ul class="react-links">
-                                            <li><a href="#" title=""><i class="la la-heart"></i> Vote 150</a></li>
-                                            <li><a href="#" title=""><i class="la la-comment"></i> Comments  15</a></li>
-                                        </ul>
-                                        <ul class="skill-tags">
-                                            <br><br>
-                                            <li><a href="#" title="">Work</a></li>
-                                            <li><a href="#" title="">Php</a></li>
-                                            <li><a href="#" title="">Design</a></li>
-                                        </ul>
-                                    </div><!--usr_quest end-->
-                                    <span class="quest-posted-time"><i class="la la-clock-o"></i>3 min ago</span>
-                                </div><!--usr-question end-->
-                                <div class="usr-question">
-                                    <div class="usr_img">
-                                        <img src="http://via.placeholder.com/60x60" alt="">
-                                    </div>
-                                    <div class="usr_quest">
-                                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                        <ul class="react-links">
-                                            <li><a href="#" title=""><i class="la la-heart"></i> Vote 150</a></li>
-                                            <li><a href="#" title=""><i class="la la-comment"></i> Comments  15</a></li>
-                                        </ul>
-                                        <ul class="skill-tags">
-                                            <br><br>
-                                            <li><a href="#" title="">Work</a></li>
-                                            <li><a href="#" title="">Php</a></li>
-                                            <li><a href="#" title="">Design</a></li>
-                                        </ul>
-                                    </div><!--usr_quest end-->
-                                    <span class="quest-posted-time"><i class="la la-clock-o"></i>3 min ago</span>
-                                </div><!--usr-question end-->
-                                <div class="usr-question">
-                                    <div class="usr_img">
-                                        <img src="http://via.placeholder.com/60x60" alt="">
-                                    </div>
-                                    <div class="usr_quest">
-                                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                        <ul class="react-links">
-                                            <li><a href="#" title=""><i class="la la-heart"></i> Vote 150</a></li>
-                                            <li><a href="#" title=""><i class="la la-comment"></i> Comments  15</a></li>
-                                        </ul>
-                                        <ul class="skill-tags">
-                                            <br><br>
-                                            <li><a href="#" title="">Work</a></li>
-                                            <li><a href="#" title="">Php</a></li>
-                                            <li><a href="#" title="">Design</a></li>
-                                        </ul>
-                                    </div><!--usr_quest end-->
-                                    <span class="quest-posted-time"><i class="la la-clock-o"></i>3 min ago</span>
-                                </div><!--usr-question end-->
-                                <div class="usr-question">
-                                    <div class="usr_img">
-                                        <img src="http://via.placeholder.com/60x60" alt="">
-                                    </div>
-                                    <div class="usr_quest">
-                                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                        <ul class="react-links">
-                                            <li><a href="#" title=""><i class="la la-heart"></i> Vote 150</a></li>
-                                            <li><a href="#" title=""><i class="la la-comment"></i> Comments  15</a></li>
-                                        </ul>
-                                        <ul class="skill-tags">
-                                            <br><br>
-                                            <li><a href="#" title="">Work</a></li>
-                                            <li><a href="#" title="">Php</a></li>
-                                            <li><a href="#" title="">Design</a></li>
-                                        </ul>
-                                    </div><!--usr_quest end-->
-                                    <span class="quest-posted-time"><i class="la la-clock-o"></i>3 min ago</span>
-                                </div><!--usr-question end-->
-                                <div class="usr-question">
-                                    <div class="usr_img">
-                                        <img src="http://via.placeholder.com/60x60" alt="">
-                                    </div>
-                                    <div class="usr_quest">
-                                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                        <ul class="react-links">
-                                            <li><a href="#" title=""><i class="la la-heart"></i> Vote 150</a></li>
-                                            <li><a href="#" title=""><i class="la la-comment"></i> Comments  15</a></li>
-                                        </ul>
-                                        <ul class="skill-tags">
-                                            <br><br>
-                                            <li><a href="#" title="">Work</a></li>
-                                            <li><a href="#" title="">Php</a></li>
-                                            <li><a href="#" title="">Design</a></li>
-                                        </ul>
-                                    </div><!--usr_quest end-->
-                                    <span class="quest-posted-time"><i class="la la-clock-o"></i>3 min ago</span>
-                                </div><!--usr-question end-->
+                                {% for post in posts %}
+                                    <div class="usr-question">
+                                        <div class="usr_img">
+                                            <img src="http://via.placeholder.com/60x60" alt="">
+                                        </div>
+                                        <div class="usr_quest">
+                                            <a href={{ post["link"] }}><h3>{{ post["title"] }}</h3></a>
+                                            <a href={{ post["user_profile_link"] }}><h4>{{ post["username"] }}</h4></a>
+                                            <ul class="react-links">
+                                                <li><a href="#" title=""><i class="la la-heart"></i>{{ post["likes"] }} likes</a></li>
+                                                <li><a href={{ post["link"] }} title=""><i class="la la-comment"></i> Comments  {{ post["comments"] }}</a></li>
+                                            </ul>
+                                            <ul class="skill-tags">
+                                                <br><br>
+                                                {% for tag in post["tags"] %}
+                                                    <li><a href={{ tag["link"] }} title={{ tag["name"] }}>{{ tag["name"] }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div><!--usr_quest end-->
+                                        <span class="quest-posted-time"><i class="la la-clock-o"></i>{{ post["time"] }} min ago</span>
+                                    </div><!--usr-question end-->
+                                {% endfor %}
                             </div><!--forum-questions end-->
                         </div>
                     </div>

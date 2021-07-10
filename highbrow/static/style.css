@@ -1680,8 +1680,15 @@ main {
 	width: 100%;
 	padding-left: 10px;
 }
-.comment h3 {
+.comment h3,
+.comment a h3 {
 	color: #d7d7d7;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+.comment a h3:hover {
+	color: #BB86FC;
 	font-size: 16px;
 	font-weight: 600;
 	margin-bottom: 10px;
@@ -5238,11 +5245,34 @@ a:hover {
 	width: 90%;
 	padding-left: 15px;
 }
-.usr_quest > h3 {
+.usr_quest > h3,
+.usr_quest > a h3 {
 	color: #d7d7d7;
-	font-size: 17px;
+	font-size: 25px;
+	font-weight: 600;
+	/*margin-bottom: 20px;*/
+	padding-bottom: 10px;
+}
+.usr_quest > a h3:hover {
+	color: #BB86FC;
+	font-size: 25px;
+	font-weight: 600;
+	/*margin-bottom: 20px;*/
+	padding-bottom: 10px;
+}
+.usr_quest > h4,
+.usr_quest > a h4 {
+	color: #d7d7d7;
+	font-size: 15px;
 	font-weight: 600;
 	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+.usr_quest > a h4:hover {
+	color: #BB86FC;
+	font-size: 15px;
+	font-weight: 600;
+	/*margin-bottom: 20px;*/
 	padding-bottom: 10px;
 }
 .usr_quest > h3 a{
@@ -5454,11 +5484,6 @@ a:hover {
 	background-color: #1d1d1d;
 	padding: 25px 25px 0 25px;
 	border-bottom: 1px solid #e5e5e5;
-	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
 .forum-post-view .usr-question {
 	border-bottom: 0;
@@ -5533,11 +5558,6 @@ a:hover {
 	width: 100%;
 	padding: 20px;
 	background-color: #1d1d1d;
-	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
 .post-comment-box h3 {
 	float: left;

@@ -60,7 +60,7 @@ own_posts = [
             {
                 "name": "NEURAL NETWORKS",
                 "link": "/topic"
-            },
+            }
         ],
         "likes": 125,
         "comments": 533
