@@ -23,7 +23,7 @@ $(window).on("load", function() {
         $(".wrapper").addClass("overlay");
         return false;
     });
-    $(".post-project > a").on("click", function(){
+    $(".post-cancel").on("click", function(){
         $(".post-popup.job_post").removeClass("active");
         $(".wrapper").removeClass("overlay");
         return false;
