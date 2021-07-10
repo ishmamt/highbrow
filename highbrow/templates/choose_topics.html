@@ -47,126 +47,18 @@
                 </div><!--company-title end-->
                 <div class="companies-list">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="company_profile_info">
-                                <div class="company-up-info">
-                                    <h3>Facebook Inc.</h3>
-                                    <ul>
-                                        <li><a href="#" title="" class="follow">Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div><!--company_profile_info end-->
-                        </div>
+                        {% for topic in initial_topics %}
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="company_profile_info">
+                                    <div class="company-up-info">
+                                        <h3>{{ topic }}</h3>
+                                        <ul>
+                                            <li><a href="#" title="" class="follow">Follow</a></li>
+                                        </ul>
+                                    </div>
+                                </div><!--company_profile_info end-->
+                            </div>
+                        {% endfor %}
                     </div>
                 </div><!--companies-list end-->
                 <div class="save-stngs pd3">

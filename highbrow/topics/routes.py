@@ -102,6 +102,9 @@ posts = [
     }
 ]
 
+initial_topics = ["HTML", "CSS", "AI", "ML", "RNN", "CNN", "NEURAL NETWORKS", "QUESTION", "HELP",
+                  "LSTM", "NLP", "IMAGE PROCESSING", "FLASK", "NETWORKS", "PYTHON", "DJANGO"]
+
 
 @topics.route("/topic")
 def topic():
@@ -110,4 +113,4 @@ def topic():
 
 @topics.route("/choose_topics")
 def choose_topics():
-    return render_template("choose_topics.html")
+    return render_template("choose_topics.html", initial_topics=initial_topics)
