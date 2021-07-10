@@ -55,42 +55,17 @@
                                         <a href="#" title="">Clear all</a>
                                     </div>
                                     <div class="nott-list">
-                                        <div class="notfication-details">
-                                            <div class="noty-user-img">
-                                                <img src="static/images/photo-icon.png" alt="">
+                                        {% for notification in notifications %}
+                                            <div class="notfication-details">
+                                                <div class="noty-user-img">
+                                                    <img src="static/images/photo-icon.png" alt="">
+                                                </div>
+                                                <div class="notification-info">
+                                                    <h3><a href={{ notification["link"] }} title="">{{ notification["content"] }}</a></h3>
+                                                    <span>{{ notification["time"] }} min ago</span>
+                                                </div><!--notification-info -->
                                             </div>
-                                            <div class="notification-info">
-                                                <h3><a href="#" title="">Ishmam Tashdeed Comment on your project.</a></h3>
-                                                <span>2 min ago</span>
-                                            </div><!--notification-info -->
-                                        </div>
-                                        <div class="notfication-details">
-                                            <div class="noty-user-img">
-                                                <img src="static/images/photo-icon.png" alt="">
-                                            </div>
-                                            <div class="notification-info">
-                                                <h3><a href="#" title="">Ishmam Tashdeed Comment on your project.</a></h3>
-                                                <span>2 min ago</span>
-                                            </div><!--notification-info -->
-                                        </div>
-                                        <div class="notfication-details">
-                                            <div class="noty-user-img">
-                                                <img src="static/images/photo-icon.png" alt="">
-                                            </div>
-                                            <div class="notification-info">
-                                                <h3><a href="#" title="">Ishmam Tashdeed Comment on your project.</a></h3>
-                                                <span>2 min ago</span>
-                                            </div><!--notification-info -->
-                                        </div>
-                                        <div class="notfication-details">
-                                            <div class="noty-user-img">
-                                                <img src="static/images/photo-icon.png" alt="">
-                                            </div>
-                                            <div class="notification-info">
-                                                <h3><a href="#" title="">Ishmam Tashdeed Comment on your project.</a></h3>
-                                                <span>2 min ago</span>
-                                            </div><!--notification-info -->
-                                        </div>
+                                        {% endfor %}
                                         <div class="view-all-nots">
                                             <a href="#" title="">View All Notification</a>
                                         </div>

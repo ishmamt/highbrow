@@ -21,6 +21,30 @@ comments = [
         "comment": "Hello World"
     }
 ]
+
+notifications = [
+    {
+        "time": 2,
+        "content": "Ishmam Tashdeed commented on your post.",
+        "link": "/post"
+    },
+    {
+        "time": 4,
+        "content": "Nafis Faiyaz liked your post.",
+        "link": "/post"
+    },
+    {
+        "time": 20,
+        "content": "Ishmam Tashdeed liked your post.",
+        "link": "/post"
+    },
+    {
+        "time": 23,
+        "content": "Nafis Faiyaz started following you.",
+        "link": "/user"
+    }
+]
+
 post_details = {
     "username": "Tauseef Tajwar",
     "time": 3,
@@ -44,4 +68,4 @@ def post():
         }
         comments.append(comment_entry)
     return render_template("post.html", comment_form=comment_form, comments=comments,
-                           number_of_comments=len(comments), post_details=post_details)
+                           number_of_comments=len(comments), post_details=post_details, notifications=notifications)
