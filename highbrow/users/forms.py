@@ -22,5 +22,5 @@ class SignupForm(FlaskForm):
     submit = SubmitField('Signup')
 
     def validate_terms_and_conditions(self, c2):
-        if c2.data == False:
+        if c2.data is False:
             raise ValidationError("You must agree to the terms and conditions.")

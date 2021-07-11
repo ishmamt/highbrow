@@ -139,6 +139,17 @@ notifications = [
 ]
 
 
+def create_tags(tags):
+    post_tags = list()
+    for tag in tags:
+        tag = tag.upper()
+        post_tags.append({
+            "name": tag,
+            "link": "/topic"
+        })
+    return post_tags
+
+
 @main.route("/", methods=["GET", "POST"])
 @main.route("/home", methods=["GET", "POST"])
 @main.route("/index", methods=["GET", "POST"])
@@ -149,8 +160,10 @@ def home():
             "username": "Tauseef Tajwar",
             "time": 0,
             "title": form.title.data,
+            "link": "/post",
+            "user_profile_link": "/user",
             "content": form.content.data,
-            "tags": form.topic.data.split(),
+            "tags": create_tags(form.topic.data.split()),
             "likes": 0,
             "comments": 0
         }

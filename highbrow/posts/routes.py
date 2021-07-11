@@ -92,6 +92,7 @@ def post():
     if comment_form.validate_on_submit() and request.method == "POST":
         comment_entry = {
             "username": "Tauseef Tajwaar",
+            "user_profile_link": "/user",
             "time": 0,
             "comment": comment_form.comment.data
         }
