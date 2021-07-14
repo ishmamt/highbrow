@@ -1,30 +1,16 @@
 $(window).on("load", function() {
     "use strict";
 
-    
 
-    //  ============= POST PROJECT POPUP FUNCTION =========
+    //  ============= POST POPUP FUNCTION =========
 
-    $(".post_project").on("click", function(){
-        $(".post-popup.pst-pj").addClass("active");
-        $(".wrapper").addClass("overlay");
-        return false;
-    });
-    $(".post-project > a").on("click", function(){
-        $(".post-popup.pst-pj").removeClass("active");
-        $(".wrapper").removeClass("overlay");
-        return false;
-    });
-
-    //  ============= POST JOB POPUP FUNCTION =========
-
-    $(".post-jb").on("click", function(){
-        $(".post-popup.job_post").addClass("active");
+    $(".create-new-post").on("click", function(){
+        $(".post-popup.new-post").addClass("active");
         $(".wrapper").addClass("overlay");
         return false;
     });
     $(".post-cancel").on("click", function(){
-        $(".post-popup.job_post").removeClass("active");
+        $(".post-popup.new-post").removeClass("active");
         $(".wrapper").removeClass("overlay");
         return false;
     });
@@ -187,7 +173,7 @@ $(window).on("load", function() {
     });
 
 
-    //  ============== ChatBox ============== 
+    //  ============== ChatBox ==============
 
 
     $(".chat-mg").on("click", function(){
@@ -202,15 +188,15 @@ $(window).on("load", function() {
     //  ================== Edit Options Function =================
 
 
-    $(".ed-opts-open").on("click", function(){
-        $(this).next(".ed-options").toggleClass("active");
+    $(".edit-options-open").on("click", function(){
+        $(this).next(".edit-options-list").toggleClass("active");
         return false;
     });
 
 
-    // ============== Menu Script =============
+    // ============== User Menu Script =============
 
-    $(".menu-btn > a").on("click", function(){
+    $(".user-menu-btn > a").on("click", function(){
         $("nav").toggleClass("active");
         return false;
     });
@@ -218,14 +204,14 @@ $(window).on("load", function() {
 
     //  ============ Notifications Open =============
 
-    $(".not-box-open").on("click", function(){
+    $(".notification-box-open").on("click", function(){
         $(this).next(".notification-box").toggleClass("active");
     });
 
     // ============= User Account Setting Open ===========
 
     $(".user-info").on("click", function(){
-        $(this).next(".user-account-settingss").toggleClass("active");
+        $(this).next(".user-account-settings").toggleClass("active");
     });
 
     //  ============= FORUM LINKS MOBILE MENU FUNCTION =========
@@ -276,9 +262,6 @@ $(window).on("load", function() {
             slidesToScroll: 1
           }
         }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
       ]
 
 

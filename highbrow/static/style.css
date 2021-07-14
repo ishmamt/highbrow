@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
 
 /* ==================================================================================
-										Reset Css
+										Css
 ===================================================================================== */
 
 html, body, div, span, applet, object, iframe,
@@ -103,14 +103,14 @@ p {
 nav,
 .notification-box.active,
 nav ul li a,
-.user-account-settingss.active,
+.user-account-settings.active,
 .user-info a,
 .suggestion-usd > span i,
 .view-more > a,
 .tags-sec ul li a,
-.post-st ul li a,
-.ed-opts > a,
-.bk-links li a,
+.new-post-sec ul li a,
+.edit-options > a,
+.bookmark-links li a,
 .like-com li a,
 .user-profy > a,
 .slick-previous:before,
@@ -118,9 +118,9 @@ nav ul li a,
 .comment > a,
 .sign_link > a,
 .post-popup,
-.post-project > a,
-.post-project-fields form ul li button,
-.post-project-fields form ul li a,
+.new-post-box > a,
+.new-post-fields form ul li button,
+.new-post-fields form ul li a,
 .sign-control li a,
 .cover-sec > a,
 .star-descp > a,
@@ -153,18 +153,18 @@ nav ul li:hover > ul,
 .search-bar form input,
 .search-bar form button,
 .search_form form input,
-.post-st ul li a,
+.new-post-sec ul li a,
 .post-bar,
-.bk-links li i,
+.bookmark-links li i,
 .bid_now,
 .user-profy ul li a,
 .posty,
 .comment_box form button,
-.post-project-fields form input,
-.post-project-fields form textarea,
-.post-project-fields form select,
-.post-project-fields form ul li button,
-.post-project-fields form ul li a,
+.new-post-fields form input,
+.new-post-fields form textarea,
+.new-post-fields form select,
+.new-post-fields form ul li button,
+.new-post-fields form ul li a,
 .signin-pop,
 .sign-control,
 .sign_in_sec form input,
@@ -172,7 +172,7 @@ nav ul li:hover > ul,
 .sign_in_sec form button,
 .signup-tab,
 .login-resources ul li a,
-.flw-hr li a,
+.flw-button li a,
 .message-btn a,
 .user-profile-ov,
 .portfolio-gallery-sec,
@@ -189,8 +189,8 @@ nav ul li:hover > ul,
 .payment_methods form input,
 .company-up-info ul li a,
 .search-box form input,
-.filter-dd form input,
-.filter-dd form select,
+.tag-box form input,
+.tag-box form select,
 .conversation-box,
 .save-stngs ul li button,
 .cp-field input,
@@ -406,14 +406,14 @@ nav ul ul li a {
 	line-height: 16px;
 	font-size: 12px;
 }
-.notification-box.msg .nott-list .notification-info span {
+.notification-box.msg .notification-list .notification-info span {
 	bottom: auto;
 	top: 5px;
 }
 .notification-box.msg .notification-info h3 {
 	margin-bottom: 1px;
 }
-.notification-box.msg .nott-list .notfication-details {
+.notification-box.msg .notification-list .notfication-details {
 	padding: 17px 20px 17px 20px;
 }
 .notification-box {
@@ -435,63 +435,63 @@ nav ul ul li a {
 	visibility: visible;
 	z-index: 999999999;
 }
-.nt-title {
+.notification-title {
 	float: left;
 	width: 100%;
 	border-bottom: 1px solid #e5e5e5;
 	padding: 10px 20px;
 }
-.nt-title h4 {
+.notification-title h4 {
 	float: left;
 	color: #707070;
 	font-size: 12px;
 	font-weight: 600;
 }
-.nt-title > a {
+.notification-title > a {
 	float: right;
 	color: #707070;
 	font-size: 12px;
 	font-weight: 600;
 }
-.nt-title > a:hover {
+.notification-title > a:hover {
 	float: right;
 	color: #bb86fc;
 	font-size: 12px;
 	font-weight: 600;
 }
-.nott-list {
+.notification-list {
 	float: left;
 	width: 100%;
 }
-.nott-list .notification-info {
+.notification-list .notification-info {
 	width: 86%;
 	float: left;
 	text-align: left;
 	position: relative;
 }
-.nott-list .notfication-details {
+.notification-list .notfication-details {
 	padding: 20px 20px 12px 20px;
 }
-.nott-list .notification-info h3 {
+.notification-list .notification-info h3 {
 	line-height: 20px;
 	color: #d7d7d7;
 }
-.nott-list .notification-info h3 > a {
+.notification-list .notification-info h3 > a {
 	line-height: 20px;
 	color: #d7d7d7;
 }
-.nott-list .notification-info span {
+.notification-list .notification-info span {
 	position: absolute;
 	bottom: 5px;
 	right: 0;
 	color: #707070;
 	padding-top: 40px;
 }
-.view-all-nots {
+.view-all-notifications {
 	float: left;
 	width: 100%;
 }
-.view-all-nots > a {
+.view-all-notifications > a {
 	float: left;
 	width: 100%;
 	color: #121212 !important;
@@ -502,7 +502,7 @@ nav ul ul li a {
 	background-color: #bb86fc;
 	padding: 18px 0;
 }
-.view-all-nots > a:hover {
+.view-all-notifications > a:hover {
 	float: left;
 	width: 100%;
 	color: #d7d7d7 !important;
@@ -542,7 +542,7 @@ nav > ul > li > a:hover {
 	padding: 13px 10px;
 	position: relative;
 }
-.user-account-settingss {
+.user-account-settings {
 	position: absolute;
 	top: 100%;
 	right: 0;
@@ -564,12 +564,12 @@ nav > ul > li > a:hover {
 	opacity: 0;
 	visibility: hidden;
 }
-.user-account-settingss.active {
+.user-account-settings.active {
 	opacity: 1;
 	visibility: visible;
 	z-index: 9999;
 }
-.user-account-settingss > h3 {
+.user-account-settings > h3 {
 	color: #d7d7d7;
 	font-size: 16px;
 	font-weight: 600;
@@ -636,30 +636,30 @@ nav > ul > li > a:hover {
 }
 
 
-/* ============ us-links ============= */
+/* ============ user-links ============= */
 
-.us-links {
+.user-links {
 	float: left;
 	width: 100%;
 	border-bottom: 1px solid #e5e5e5;
 	padding: 20px;
 }
-.us-links li {
+.user-links li {
 	float: left;
 	width: 100%;
 	margin-bottom: 15px;
 }
-.us-links li:last-child {
+.user-links li:last-child {
 	margin-bottom: 0;
 }
-.us-links li a {
+.user-links li a {
 	float: left;
 	width: 100%;
 	color: #d7d7d7;
 	font-size: 14px;
 	font-weight: 600;
 }
-.us-links li a:hover {
+.user-links li a:hover {
 	float: left;
 	width: 100%;
 	color: #d7d7d7;
@@ -667,13 +667,13 @@ nav > ul > li > a:hover {
 	font-weight: 600;
 	color: #bb86fc;
 }
-.tc {
+.user-logout {
 	text-align: center;
 }
-.tc a {
+.user-logout a {
 	color: #d7d7d7;
 }
-.tc a:hover {
+.user-logout a:hover {
 	color: #bb86fc;
 }
 .user-info img {
@@ -743,7 +743,7 @@ main {
     -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
     box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
-.username-dt {
+.username-details {
 	float: left;
 	width: 100%;
 	background-color: #bb86fc;
@@ -752,13 +752,13 @@ main {
 .user-data {
 	text-align: center;
 }
-.usr-pic {
+.user-profile-picture {
 	width: 110px;
 	height: 110px;
 	margin: 0 auto;
 	margin-bottom: -48px;
 }
-.usr-pic > img {
+.user-profile-picture > img {
 	float: none;
 	/*border: 3px solid #bb86fc;*/
 	-webkit-border-radius: 100px;
@@ -777,19 +777,19 @@ main {
 	float: left;
 	width: 100%;
 }
-.user-specs {
+.username-introduction {
 	float: left;
 	width: 100%;
 	padding: 63px 0 27px 0;
 }
-.user-specs h3 {
+.username-introduction h3 {
 	color: #d7d7d7;
 	font-size: 24px;
 	text-transform: capitalize;
 	font-weight: 600;
 	margin-bottom: 8px;
 }
-.user-specs span {
+.username-introduction span {
 	color: #c2c2c2;
 	font-size: 14px;
 }
@@ -831,20 +831,20 @@ main {
 
 /* ============= Suggestions ============ */
 
-.sd-title {
+.widget-title {
 	float: left;
 	width: 100%;
 	padding: 20px;
 	border-bottom: 1px solid #e5e5e5;
 	position: relative;
 }
-.sd-title h3 {
+.widget-title h3 {
 	color: #d7d7d7;
 	font-size: 18px;
 	font-weight: 600;
 	float: left;
 }
-.sd-title i {
+.widget-title i {
 	float: right;
 	color: #b7b7b7;
 	font-size: 30px;
@@ -975,9 +975,9 @@ main {
 }
 
 
-/* =================== main-ws-sec ================== */
+/* =================== main-posts-sec ================== */
 
-.main-ws-sec {
+.main-posts-sec {
 	float: left;
 	width: 100%;
 }
@@ -1005,26 +1005,26 @@ main {
 	box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.24);
 	margin-bottom: 20px;
 }
-.user-picy {
+.user-profile-pic {
 	float: left;
 	width: 50px;
 }
-.user-picy img {
+.user-profile-pic img {
 	width: 100%;
 	object-fit: cover;
 }
-.post-st {
+.new-post-sec {
 	float: right;
 	margin-top: 5px;
 }
-.post-st ul li {
+.new-post-sec ul li {
 	display: inline-block;
 	margin-right: 6px;
 }
-.post-st ul li:last-child {
+.new-post-sec ul li:last-child {
 	margin-right: 0;
 }
-.post-st ul li a {
+.new-post-sec ul li a {
 	color: #121212;
 	font-size: 16px;
 	display: inline-block;
@@ -1034,8 +1034,8 @@ main {
 	line-height: 40px;
 	font-weight: 500;
 }
-.post-st ul li a:hover,
-.post-st ul li a.active {
+.new-post-sec ul li a:hover,
+.new-post-sec ul li a.active {
 	background-color: #bb86fc;
 	color: #121212;
 }
@@ -1067,29 +1067,29 @@ main {
 	position: relative;
 	padding: 20px 20px 15px 20px;
 }
-.usy-dt {
+.user-details {
 	float: left;
 }
-.usy-dt img {
+.user-details img {
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	-ms-border-radius: 100px;
 	-o-border-radius: 100px;
 	border-radius: 100px;
 }
-.ed-opts {
+.edit-options {
 	float: right;
 	position: relative;
 	top: 7px;
 }
-.ed-opts > a {
+.edit-options > a {
 	color: #b2b2b2;
 	font-size: 30px;
 	float: right;
 	position: relative;
 	left: 13px;
 }
-.ed-options {
+.edit-options-list {
 	position: absolute;
 	top: 100%;
 	right: 0;
@@ -1105,33 +1105,33 @@ main {
 	visibility: hidden;
 	z-index: 0;
 }
-.ed-options.active {
+.edit-options-list.active {
 	opacity: 1;
 	visibility: visible;
 	z-index: 999;
 	background-color: #d7d7d7
 }
-.ed-options li {
+.edit-options-list li {
 	float: left;
 	width: 100%;
 	margin-bottom: 15px;
 }
-.ed-options li:last-child {
+.edit-options-list li:last-child {
 	margin-bottom: 0;
 }
-.ed-options li a {
+.edit-options-list li a {
 	color: #121212;
 	font-size: 14px;
 	font-weight: 600;
 }
-.ed-opts > a:hover {
+.edit-options > a:hover {
 	color: #bb86fc;
 }
-.usy-name {
+.user-name {
 	float: left;
 	margin-left: 10px;
 }
-.usy-name a h3{
+.user-name a h3{
 	color: #d7d7d7;
 	font-size: 16px;
 	text-transform: capitalize;
@@ -1139,7 +1139,7 @@ main {
 	margin-bottom: 6px;
 	margin-top: 2px;
 }
-.usy-name a:hover h3{
+.user-name a:hover h3{
 	color: #BB86FC;
 	font-size: 16px;
 	text-transform: capitalize;
@@ -1147,11 +1147,11 @@ main {
 	margin-bottom: 6px;
 	margin-top: 2px;
 }
-.usy-name span {
+.user-name span {
 	color: #707070;
 	font-size: 14px;
 }
-.usy-name img {
+.user-name img {
 	margin-top: 2px;
 	margin-right: 6px;
 }
@@ -1162,7 +1162,7 @@ main {
 	color: #b2b2b2;
 	font-size: 30px;
 */}
-.epi-sec {
+.bookmark-sec {
 	float: left;
 	width: 100%;
 	margin-bottom: 15px;
@@ -1184,17 +1184,17 @@ main {
 .descp li img {
 	margin-right: 5px;
 }
-.bk-links {
+.bookmark-links {
 	float: right;
 }
-.bk-links li {
+.bookmark-links li {
 	display: inline-block;
 	margin-right: 7px;
 }
-.bk-links li:last-child {
+.bookmark-links li:last-child {
 	margin-right: 0;
 }
-.bk-links li i {
+.bookmark-links li i {
 	color: #d7d7d7;
 	font-size: 24px;
 	width: 30px;
@@ -1203,7 +1203,7 @@ main {
 	text-align: center;
 	line-height: 30px;
 }
-.bk-links li i.la-envelope {
+.bookmark-links li i.la-envelope {
 	background-color: #bb86fc;
 }
 .bid_now {
@@ -1222,31 +1222,31 @@ main {
 }
 
 
-/* ============== job_descp ============ */
+/* ============== post-description ============ */
 
-.job_descp {
+.post-description {
 	float: left;
 	width: 100%;
 	padding: 0 20px 20px 20px;
 	border-bottom: 1px solid #e5e5e5;
 }
 
-.job_descp p {
+.post-description p {
 	white-space: pre-line;
 }
-.job_descp h3 {
+.post-description h3 {
 	color: #d7d7d7;
 	font-size: 18px;
 	font-weight: 600;
 	margin-bottom: 20px;
 }
-.job_descp h3 a{
+.post-description h3 a{
 	color: #d7d7d7;
 	font-size: 18px;
 	font-weight: 600;
 	margin-bottom: 20px;
 }
-.job_descp h3 a:hover{
+.post-description h3 a:hover{
 	color: #bb86fc;
 	font-size: 18px;
 	font-weight: 600;
@@ -1280,29 +1280,29 @@ main {
 	font-size: 16px;
 	font-weight: 600;
 }
-.job_descp > p {
+.post-description > p {
 	color: #c2c2c2;
 	font-size: 16px;
 	line-height: 24px;
 	margin-bottom: 20px;
 }
-.job_descp > p a {
+.post-description > p a {
 	color: #bb86fc;
 	font-weight: 600;
 }
 
-/* ============= skill-tags =========== */
+/* ============= topic-tags =========== */
 
-.skill-tags {
+.topic-tags {
 	float: left;
 	width: 100%;
 }
-.skill-tags li {
+.topic-tags li {
 	display: inline-block;
 	margin-right: 6px;
 	margin-bottom: 10px;
 }
-.skill-tags li a {
+.topic-tags li a {
 	display: inline-block;
 	color: #707070;
 	font-size: 14px;
@@ -1316,9 +1316,9 @@ main {
 	font-weight: 600;
 }
 
-/* ========== job-status-bar ========== */
+/* ========== post-status-bar ========== */
 
-.job-status-bar {
+.post-status-bar {
 	float: left;
 	width: 100%;
 	padding: 15px 20px;
@@ -1374,13 +1374,13 @@ main {
 	margin-right: 10px;
 }
 
-.job-status-bar > a {
+.post-status-bar > a {
 	float: right;
 	color: #b2b2b2;
 	font-size: 14px;
 	margin-top: 5px;
 }
-.job-status-bar > a i {
+.post-status-bar > a i {
 	font-size: 20px;
 	margin-right: 7px;
 	position: relative;
@@ -1533,7 +1533,7 @@ main {
 	/*border-left: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;*/
 }
-.posty .job-status-bar {
+.posty .post-status-bar {
 	/*border-bottom: 1px solid #e4e4e4;*/
 }
 .slick-previous:before {
@@ -1607,22 +1607,22 @@ main {
 	border-radius: 100px;
 }
 
-/* =============== comment-sec ================ */
+/* =============== comments ================ */
 
 
-.comment-sec {
+.comments {
 	float: left;
 	width: 100%;
 }
-.comment-sec ul {
+.comments ul {
 	float: left;
 	width: 100%;
 }
-.comment-sec ul li {
+.comments ul li {
 	float: left;
 	width: 100%;
 }
-.comment-sec ul ul {
+.comments ul ul {
 	padding-left: 50px;
 }
 .comment-list {
@@ -1878,7 +1878,7 @@ main {
 
 
 
-/* ================ post-project-popup =============== */
+/* ================ post-popup =============== */
 
 
 .post-popup {
@@ -1907,7 +1907,7 @@ main {
 	z-index: 999;
 	-webkit-transform: scale(1) translateX(-50%) translateY(-50%);
 }
-.post-project > a {
+.new-post-box > a {
 	position: absolute;
 	top: -20px;
 	right: -20px;
@@ -1915,10 +1915,10 @@ main {
 	font-size: 22px;
 	cursor: pointer;
 }
-.post-project > a:hover {
+.new-post-box > a:hover {
 	color: #d7d7d7;
 }
-.post-project {
+.new-post-box {
 	float: left;
 	width: 100%;
 	position: relative;
@@ -1933,31 +1933,31 @@ main {
 	font-weight: 500;
 	padding: 20px 0;
 }
-.post-project-fields {
+.new-post-fields {
 	float: left;
 	width: 100%;
 	padding: 30px 20px;
 	background-color: #121212;
 }
-.post-project-fields form {
+.new-post-fields form {
 	float: left;
 	width: 100%;
 }
-.post-project-fields form input {
+.new-post-fields form input {
 	padding: 0 15px;
 	height: 40px;
 }
-.post-project-fields form textarea {
+.new-post-fields form textarea {
 	padding: 15px;
 	height: 130px;
 }
-.post-project-fields form label {
+.new-post-fields form label {
 	padding: 10px;
 	color: #d7d7d7;
 }
-.post-project-fields form input,
-.post-project-fields form textarea,
-.post-project-fields form select {
+.new-post-fields form input,
+.new-post-fields form textarea,
+.new-post-fields form select {
 	width: 100%;
 	color: #d7d7d7;
 	background-color: #1d1d1d;
@@ -1971,25 +1971,25 @@ main {
 	-o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 	box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
-.post-project-fields form select {
+.new-post-fields form select {
 	height: 40px;
 	padding: 0 10px;
 }
-.post-project-fields form ul {
+.new-post-fields form ul {
 	float: left;
 	margin-top: 10px;
 	width: 100%;
 }
-.post-project-fields form ul li {
+.new-post-fields form ul li {
 	display: inline-block;
 	margin-right: 15px;
 }
-.post-project-fields form ul li button.active {
+.new-post-fields form ul li button.active {
 	background-color: #bb86fc;
 	color: #121212;
 }
-.post-project-fields form ul li button,
-.post-project-fields form ul li a {
+.new-post-fields form ul li button,
+.new-post-fields form ul li a {
 	color: #000000;
 	font-size: 16px;
 	border: 1px solid #e5e5e5;
@@ -1999,8 +1999,8 @@ main {
 	font-weight: 600;
 	cursor: pointer;
 }
-.post-project-fields form ul li button:hover,
-.post-project-fields form ul li a:hover {
+.new-post-fields form ul li button:hover,
+.new-post-fields form ul li a:hover {
 	background-color: #bb86fc;
 	color: #d7d7d7;
 }
@@ -2064,7 +2064,7 @@ select {
 	color: #717171;
 	font-family: fontawesome;
 }
-.post-popup.job_post .price-br {
+.post-popup.new-post .price-br {
 	width: 100% !important;
 }
 
@@ -2739,26 +2739,26 @@ footer {
 	border-bottom: 1px solid #e5e5e5;
 	padding-bottom: 27px;
 }
-.flw-hr {
+.flw-button {
 	float: left;
 	width: 100%;
 	margin-bottom: 30px;
 }
-.flw-hr li {
+.flw-button li {
 	display: inline-block;
 	margin-right: 17px;
 }
-.flw-hr li:last-child {
+.flw-button li:last-child {
 	margin-right: 0;
 }
-.flw-hr li a {
+.flw-button li a {
 	/*display: inline-block;*/
 	color: #121212;
 	font-size: 16px;
 	font-weight: 600;
 	padding: 11px 15px;
 }
-.flw-hr li a i {
+.flw-button li a i {
 	padding-right: 5px;
 }
 .flww {
@@ -3777,9 +3777,9 @@ a:hover {
 
 
 
-/* =============== filter-secs ============== */
+/* =============== tag-section ============== */
 
-.filter-secs {
+.tag-section {
 	float: left;
 	width: 100%;
 	background-color: #1d1d1d;
@@ -3789,26 +3789,26 @@ a:hover {
 	-o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 	box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
-.filter-heading {
+.tag-heading {
 	float: left;
 	width: 100%;
 	padding: 23px 20px;
 	border-bottom: 1px solid #e5e5e5;
 	margin-bottom: 27px;
 }
-.filter-heading h3 {
+.tag-heading h3 {
 	float: left;
 	color: #d7d7d7;
 	font-size: 18px;
 	font-weight: 600;
 }
-.filter-heading a {
+.tag-heading a {
 	float: right;
 	color: #686868;
 	font-size: 14px;
 	margin-top: 4px;
 }
-.paddy {
+.tag-padding {
 	float: left;
 	width: 100%;
 	padding: 0 20px;
@@ -3831,18 +3831,18 @@ a:hover {
 	font-size: 14px;
 	color: #686868;
 }
-.filter-dd {
+.tag-box {
 	float: left;
 	width: 100%;
 	margin-bottom: 27px;
 }
-.filter-dd form {
+.tag-box form {
 	float: left;
 	width: 100%;
 	position: relative;
 }
-.filter-dd form input,
-.filter-dd form select {
+.tag-box form input,
+.tag-box form select {
 	width: 100%;
 	height: 30px;
 	background-color: #f2f2f2;
@@ -4357,11 +4357,11 @@ a:hover {
 
 /* ============ Menu Btn =============*/
 
-.menu-btn {
+.user-menu-btn {
 	float: right;
 	display: none;
 }
-.menu-btn a {
+.user-menu-btn a {
 	font-size: 24px;
 	color: #d7d7d7;
 	display: inline-block;
@@ -4600,11 +4600,11 @@ a:hover {
 .notfication-details:last-child {
 	border-bottom: 0;
 }
-.noty-user-img {
+.notification-user-image {
 	float: left;
 	width: 35px;
 }
-.noty-user-img img {
+.notification-user-image img {
 	width: 100%;
 }
 .notification-info {
@@ -5166,12 +5166,12 @@ a:hover {
 	display: inline-block;
 }
 
-/* ================ forum-page =============== */
+/* ================ single-post-page =============== */
 
-.forum-page {
+.single-post-page {
 	padding: 50px 0;
 }
-.forum-questions-sec {
+.single-post-sec {
 	float: left;
 	width: 100%;
 	background-color: #1d1d1d;
@@ -5181,23 +5181,23 @@ a:hover {
     -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
     box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
-.forum-questions {
+.topic-posts {
 	float: left;
 	width: 100%;
 	/*background-color: #1d1d1d;*/
 }
-.usr-question {
+.single-post {
 	float: left;
 	width: 100%;
 	position: relative;
 	padding: 25px;
 	border-bottom: 1px solid #e5e5e5;
 }
-.usr_img {
+.post-user-image {
 	float: left;
 	width: 60px;
 }
-.usr_img img {
+.post-user-image img {
 	width: 100%;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
@@ -5205,66 +5205,66 @@ a:hover {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 }
-.usr_quest {
+.single-post-content {
 	float: left;
 	width: 90%;
 	padding-left: 15px;
 }
-.usr_quest > h3,
-.usr_quest > a h3 {
+.single-post-content > h3,
+.single-post-content > a h3 {
 	color: #d7d7d7;
 	font-size: 25px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 	padding-bottom: 10px;
 }
-.usr_quest > a h3:hover {
+.single-post-content > a h3:hover {
 	color: #BB86FC;
 	font-size: 25px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 	padding-bottom: 10px;
 }
-.usr_quest > h4,
-.usr_quest > a h4 {
+.single-post-content > h4,
+.single-post-content > a h4 {
 	color: #d7d7d7;
 	font-size: 15px;
 	font-weight: 600;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
 }
-.usr_quest > a h4:hover {
+.single-post-content > a h4:hover {
 	color: #BB86FC;
 	font-size: 15px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 	padding-bottom: 10px;
 }
-.usr_quest > h3 a{
+.single-post-content > h3 a{
 	color: #d7d7d7;
 	font-size: 17px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 }
-.usr_quest > h3 a:hover{
+.single-post-content > h3 a:hover{
 	color: #bb86fc;
 	font-size: 17px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 }
-.usr_quest span {
+.single-post-content span {
 	color: #707070;
 	font-size: 14px;
 }
-.usr_quest p {
+.single-post-content p {
 	color: #d7d7d7;
 	white-space: pre-line;
 }
-.usr_quest img {
+.single-post-content img {
 	margin-top: 1px;
 	margin-right: 6px;
 }
-.forum-post-view .usr_quest > h3 {
+.single-post-view .single-post-content > h3 {
 	margin-bottom: 10px;
 }
 .react-links {
@@ -5441,38 +5441,38 @@ a:hover {
 }
 
 
-/* ============ forum-post-view ============ */
+/* ============ single-post-view ============ */
 
-.forum-post-view {
+.single-post-view {
 	float: left;
 	width: 100%;
 	background-color: #1d1d1d;
 	padding: 25px 25px 0 25px;
 	border-bottom: 1px solid #e5e5e5;
 }
-.forum-post-view .usr-question {
+.single-post-view .single-post {
 	border-bottom: 0;
 	padding: 0;
 }
-.forum-post-view .usr_quest span {
+.single-post-view .single-post-content span {
 	color: #707070;
 	font-size: 14px;
 	display: inline-block;
 	margin-bottom: 20px;
 }
-.forum-post-view .usr_quest li span {
+.single-post-view .single-post-content li span {
 	color: #121212;
 	font-size: 14px;
 	display: inline-block;
 	margin-bottom: 20px;
 }
-.forum-post-view .usr_quest span i {
+.single-post-view .single-post-content span i {
 	padding-right: 7px;
 }
-.forum-post-view .quest-tags {
+.single-post-view .quest-tags {
 	margin-bottom: 30px;
 }
-.forum-post-view .usr_quest > p {
+.single-post-view .single-post-content > p {
 	float: left;
 	width: 100%;
 	color: #c2c2c2;
@@ -5480,11 +5480,11 @@ a:hover {
 	line-height: 24px;
 	margin-bottom: 40px;
 }
-.forum-post-view .comment-section {
+.single-post-view .comment-section {
 	padding: 0;
 	background-color: #1d1d1d;
 }
-.forum-post-view .comment-section > h3 {
+.single-post-view .comment-section > h3 {
 	float: left;
 	width: 100%;
 	color: #d7d7d7;
@@ -5493,25 +5493,25 @@ a:hover {
 	border-bottom: 1px solid #e5e5e5;
 	padding-bottom: 15px;
 }
-.forum-post-view .comment-sec ul li {
+.single-post-view .comments ul li {
 	border-bottom: 1px solid #e5e5e5;
 	padding: 23px 0;
 }
-.forum-post-view .comment span {
+.single-post-view .comment span {
 	margin-bottom: 10px;
 }
-.forum-post-view .comment-list {
+.single-post-view .comment-list {
 	padding-bottom: 0;
 	margin-bottom: -4px;
 }
-.forum-post-view .comment p {
+.single-post-view .comment p {
 	margin: 0;
 	margin-top: 5px;
 }
-.forum-post-view .comment h3 {
+.single-post-view .comment h3 {
 	margin-bottom: 9px;
 }
-.forum-post-view .comment-sec ul li:last-child {
+.single-post-view .comments ul li:last-child {
 	border-bottom: 0;
 }
 
@@ -5536,12 +5536,12 @@ a:hover {
 	float: left;
 	width: 100%;
 }
-.usr-post-img {
+.comment-user-image {
 	float: left;
 	width: 50px;
 	margin-right: 15px;
 }
-.usr-post-img img {
+.comment-user-image img {
 	width: 100%;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;

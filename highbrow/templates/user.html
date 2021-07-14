@@ -40,25 +40,24 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href="/" title="">
+                                <a href="/" title="Home">
                                     <span><img src="static/images/icon1.png" alt=""></span>
                                     Home
                                 </a>
                             </li>
                             <li>
-                                <a href="#" title="" class="not-box-open">
+                                <a href="#" title="Notification" class="notification-box-open">
                                     <span><img src="static/images/icon7.png" alt=""></span>
                                     Notification
                                 </a>
                                 <div class="notification-box">
-                                    <div class="nt-title">
-                                        <h4>Setting</h4>
+                                    <div class="notification-title">
                                         <a href="#" title="">Clear all</a>
                                     </div>
-                                    <div class="nott-list">
+                                    <div class="notification-list">
                                         {% for notification in notifications %}
                                             <div class="notfication-details">
-                                                <div class="noty-user-img">
+                                                <div class="notification-user-image">
                                                     <img src="static/images/photo-icon.png" alt="">
                                                 </div>
                                                 <div class="notification-info">
@@ -67,32 +66,32 @@
                                                 </div><!--notification-info -->
                                             </div>
                                         {% endfor %}
-                                        <div class="view-all-nots">
-                                            <a href="#" title="">View All Notification</a>
+                                        <div class="view-all-notifications">
+                                            <a href="#" title="">View All Notifications</a>
                                         </div>
-                                    </div><!--nott-list end-->
+                                    </div><!--notification-list end-->
                                 </div><!--notification-box end-->
                             </li>
                         </ul>
                     </nav><!--nav end-->
-                    <div class="menu-btn">
+                    <div class="user-menu-btn">
                         <a href="#" title=""><i class="fa fa-bars"></i></a>
-                    </div><!--menu-btn end-->
+                    </div><!--user-menu-btn end-->
                     <div class="user-account">
                         <div class="user-info">
                             <img src="http://via.placeholder.com/30x30" alt="">
                             <a href="#" title="">Tauseef</a>
                         </div>
-                        <div class="user-account-settingss">
-                            <ul class="us-links">
+                        <div class="user-account-settings">
+                            <ul class="user-links">
                                 <li><a href="/user" title="">Profile</a></li>
                                 <li><a href="/user" title="">Saved Posts</a></li>
                                 <li><a href="#" title="">Account Setting</a></li>
                                 <li><a href="/about" title="">About</a></li>
                                 <li><a href="/contact" title="">Contact Us</a></li>
                             </ul>
-                            <h3 class="tc"><a href="/login" title="">Logout</a></h3>
-                        </div><!--user-account-settingss end-->
+                            <h3 class="user-logout"><a href="/login" title="">Logout</a></h3>
+                        </div><!--user-account-settings end-->
                     </div>
                 </div><!--header-data end-->
             </div>
@@ -107,13 +106,13 @@
                                 <div class="main-left-sidebar no-margin">
                                     <div class="user-data full-width">
                                         <div class="user-profile">
-                                            <div class="username-dt">
-                                                <div class="usr-pic">
+                                            <div class="username-details">
+                                                <div class="user-profile-picture">
                                                     <img src="http://via.placeholder.com/100x100" alt="">
                                                 </div>
-                                            </div><!--username-dt end-->
-                                            <div class="user-specs">
-                                                <h3>{{ user_details["name"]}}</h3>
+                                            </div><!--username-details end-->
+                                            <div class="username-introduction">
+                                                <h3>{{ user_details["name"] }}</h3>
                                                 <span>{{ user_details["current_job"] }} at {{ user_details["current_job_details"] }}</span>
                                             </div>
                                         </div><!--user-profile end-->
@@ -127,14 +126,14 @@
                                                 <span>{{ user_details["followers"] }}</span>
                                             </li>
                                             <li>
-                                                <ul class="flw-hr">
+                                                <ul class="flw-button">
                                                     <li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </div><!--user-data end-->
-                                    <div class="widget widget-jobs">
-                                        <div class="sd-title">
+                                    <div class="widget widget-info">
+                                        <div class="widget-title">
                                             <h3>Bio</h3>
                                         </div>
                                         <div class="jobs-list">
@@ -147,9 +146,9 @@
                                                 </div><!--job-info end-->
                                             {% endfor %}
                                         </div><!--jobs-list end-->
-                                    </div><!--widget-jobs end-->
-                                    <div class="widget widget-jobs">
-                                        <div class="sd-title">
+                                    </div><!--widget-info end-->
+                                    <div class="widget widget-info">
+                                        <div class="widget-title">
                                             <h3>Contact</h3>
                                         </div>
                                         <div class="jobs-list">
@@ -162,59 +161,61 @@
                                                 </div><!--job-info end-->
                                             {% endfor %}
                                         </div><!--jobs-list end-->
-                                    </div><!--widget-jobs end-->
-                                    <div class="filter-secs">
-                                        <div class="filter-heading">
+                                    </div><!--widget-info end-->
+                                    <div class="tag-section">
+                                        <div class="tag-heading">
                                             <h3>Interests</h3>
-                                        </div><!--filter-heading end-->
-                                        <div class="paddy">
-                                            <div class="filter-dd">
-                                                <ul class="skill-tags">
+                                        </div><!--tag-heading end-->
+                                        <div class="tag-padding">
+                                            <div class="tag-box">
+                                                <ul class="topic-tags">
                                                     {% for interest in interests %}
                                                         <li><a href={{ interest["link"] }} title={{ interest["name"] }}>{{ interest["name"] }}</a></li>
                                                     {% endfor %}
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div><!--filter-secs end-->
+                                    </div><!--tag-section end-->
                                 </div><!--main-left-sidebar end-->
                             </div>
                             <div class="col-lg-9">
-                                <div class="main-ws-sec">
+                                <div class="main-posts-sec">
                                     <div class="posts-section">
                                         {% for post in posts %}
                                             <div class="post-bar">
                                                 <div class="post_topbar">
-                                                    <div class="usy-dt">
+                                                    <div class="user-details">
                                                         <img src="http://via.placeholder.com/50x50" alt="">
-                                                        <div class="usy-name">
+                                                        <div class="user-name">
                                                             <a href={{ post["user_profile_link"] }}><h3>{{ post["username"] }}</h3></a>
                                                             <span><img src="static/images/clock.png" alt="">{{ post["time"] }} min ago</span>
                                                         </div>
                                                     </div>
-                                                    <div class="ed-opts">
-                                                        <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                        <ul class="ed-options">
+                                                    <div class="edit-options">
+                                                        <a href="#" title="" class="edit-options-open"><i class="la la-ellipsis-v"></i></a>
+                                                        <ul class="edit-options-list">
                                                             <li><a href="#" title="">Report</a></li>
+                                                            <li><a href="#" title="">Edit</a></li>
+                                                            <li><a href="#" title="">Delete</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="epi-sec">
-                                                    <ul class="bk-links">
+                                                <div class="bookmark-sec">
+                                                    <ul class="bookmark-links">
                                                         <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
                                                     </ul>
                                                 </div>
-                                                <div class="job_descp">
+                                                <div class="post-description">
                                                     <h3><a href={{ post["link"] }}>{{ post["title"] }}</a></h3>
                                                     <p>{{ post["content"] }} <a href="#" title="">view more</a></p>
-                                                    <ul class="skill-tags">
+                                                    <ul class="topic-tags">
                                                         {% for tag in post["tags"] %}
                                                             <li><a href={{ tag["link"] }} title={{ tag["name"] }}>{{ tag["name"] }}</a></li>
                                                         {% endfor %}
 
                                                     </ul>
                                                 </div>
-                                                <div class="job-status-bar">
+                                                <div class="post-status-bar">
                                                     <ul class="like-com">
                                                         <li>
                                                             <a href="#"><i class="la la-heart"></i>Like</a>
@@ -225,13 +226,6 @@
                                                 </div>
                                             </div><!--post-bar end-->
                                         {% endfor %}
-                                        <!-- <div class="process-comm">
-                                            <div class="spinner">
-                                                <div class="bounce1"></div>
-                                                <div class="bounce2"></div>
-                                                <div class="bounce3"></div>
-                                            </div>
-                                        </div> process-comm end-->
                                         <nav aria-label="Page navigation" class="full-pagi">
                                             <ul class="pagination">
                                                 <li class="page-item"><a class="page-link pvr" href="#">Previous</a></li>
@@ -245,7 +239,7 @@
                                             </ul>
                                         </nav>
                                     </div><!--posts-section end-->
-                                </div><!--main-ws-sec end-->
+                                </div><!--main-posts-sec end-->
                             </div>
                         </div>
                     </div><!-- main-section-data end-->
