@@ -172,7 +172,7 @@ nav ul li:hover > ul,
 .sign_in_sec form button,
 .signup-tab,
 .login-resources ul li a,
-.flw-hr li a,
+.flw-button li a,
 .message-btn a,
 .user-profile-ov,
 .portfolio-gallery-sec,
@@ -752,13 +752,13 @@ main {
 .user-data {
 	text-align: center;
 }
-.usr-pic {
+.user-profile-picture {
 	width: 110px;
 	height: 110px;
 	margin: 0 auto;
 	margin-bottom: -48px;
 }
-.usr-pic > img {
+.user-profile-picture > img {
 	float: none;
 	/*border: 3px solid #bb86fc;*/
 	-webkit-border-radius: 100px;
@@ -777,19 +777,19 @@ main {
 	float: left;
 	width: 100%;
 }
-.user-specs {
+.username-introduction {
 	float: left;
 	width: 100%;
 	padding: 63px 0 27px 0;
 }
-.user-specs h3 {
+.username-introduction h3 {
 	color: #d7d7d7;
 	font-size: 24px;
 	text-transform: capitalize;
 	font-weight: 600;
 	margin-bottom: 8px;
 }
-.user-specs span {
+.username-introduction span {
 	color: #c2c2c2;
 	font-size: 14px;
 }
@@ -831,20 +831,20 @@ main {
 
 /* ============= Suggestions ============ */
 
-.sd-title {
+.widget-title {
 	float: left;
 	width: 100%;
 	padding: 20px;
 	border-bottom: 1px solid #e5e5e5;
 	position: relative;
 }
-.sd-title h3 {
+.widget-title h3 {
 	color: #d7d7d7;
 	font-size: 18px;
 	font-weight: 600;
 	float: left;
 }
-.sd-title i {
+.widget-title i {
 	float: right;
 	color: #b7b7b7;
 	font-size: 30px;
@@ -1607,22 +1607,22 @@ main {
 	border-radius: 100px;
 }
 
-/* =============== comment-sec ================ */
+/* =============== comments ================ */
 
 
-.comment-sec {
+.comments {
 	float: left;
 	width: 100%;
 }
-.comment-sec ul {
+.comments ul {
 	float: left;
 	width: 100%;
 }
-.comment-sec ul li {
+.comments ul li {
 	float: left;
 	width: 100%;
 }
-.comment-sec ul ul {
+.comments ul ul {
 	padding-left: 50px;
 }
 .comment-list {
@@ -2739,26 +2739,26 @@ footer {
 	border-bottom: 1px solid #e5e5e5;
 	padding-bottom: 27px;
 }
-.flw-hr {
+.flw-button {
 	float: left;
 	width: 100%;
 	margin-bottom: 30px;
 }
-.flw-hr li {
+.flw-button li {
 	display: inline-block;
 	margin-right: 17px;
 }
-.flw-hr li:last-child {
+.flw-button li:last-child {
 	margin-right: 0;
 }
-.flw-hr li a {
+.flw-button li a {
 	/*display: inline-block;*/
 	color: #121212;
 	font-size: 16px;
 	font-weight: 600;
 	padding: 11px 15px;
 }
-.flw-hr li a i {
+.flw-button li a i {
 	padding-right: 5px;
 }
 .flww {
@@ -5166,12 +5166,12 @@ a:hover {
 	display: inline-block;
 }
 
-/* ================ forum-page =============== */
+/* ================ single-post-page =============== */
 
-.forum-page {
+.single-post-page {
 	padding: 50px 0;
 }
-.forum-questions-sec {
+.single-post-sec {
 	float: left;
 	width: 100%;
 	background-color: #1d1d1d;
@@ -5181,23 +5181,23 @@ a:hover {
     -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
     box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
-.forum-questions {
+.topic-posts {
 	float: left;
 	width: 100%;
 	/*background-color: #1d1d1d;*/
 }
-.usr-question {
+.single-post {
 	float: left;
 	width: 100%;
 	position: relative;
 	padding: 25px;
 	border-bottom: 1px solid #e5e5e5;
 }
-.usr_img {
+.post-user-image {
 	float: left;
 	width: 60px;
 }
-.usr_img img {
+.post-user-image img {
 	width: 100%;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
@@ -5205,66 +5205,66 @@ a:hover {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 }
-.usr_quest {
+.single-post-content {
 	float: left;
 	width: 90%;
 	padding-left: 15px;
 }
-.usr_quest > h3,
-.usr_quest > a h3 {
+.single-post-content > h3,
+.single-post-content > a h3 {
 	color: #d7d7d7;
 	font-size: 25px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 	padding-bottom: 10px;
 }
-.usr_quest > a h3:hover {
+.single-post-content > a h3:hover {
 	color: #BB86FC;
 	font-size: 25px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 	padding-bottom: 10px;
 }
-.usr_quest > h4,
-.usr_quest > a h4 {
+.single-post-content > h4,
+.single-post-content > a h4 {
 	color: #d7d7d7;
 	font-size: 15px;
 	font-weight: 600;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
 }
-.usr_quest > a h4:hover {
+.single-post-content > a h4:hover {
 	color: #BB86FC;
 	font-size: 15px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 	padding-bottom: 10px;
 }
-.usr_quest > h3 a{
+.single-post-content > h3 a{
 	color: #d7d7d7;
 	font-size: 17px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 }
-.usr_quest > h3 a:hover{
+.single-post-content > h3 a:hover{
 	color: #bb86fc;
 	font-size: 17px;
 	font-weight: 600;
 	/*margin-bottom: 20px;*/
 }
-.usr_quest span {
+.single-post-content span {
 	color: #707070;
 	font-size: 14px;
 }
-.usr_quest p {
+.single-post-content p {
 	color: #d7d7d7;
 	white-space: pre-line;
 }
-.usr_quest img {
+.single-post-content img {
 	margin-top: 1px;
 	margin-right: 6px;
 }
-.forum-post-view .usr_quest > h3 {
+.single-post-view .single-post-content > h3 {
 	margin-bottom: 10px;
 }
 .react-links {
@@ -5441,38 +5441,38 @@ a:hover {
 }
 
 
-/* ============ forum-post-view ============ */
+/* ============ single-post-view ============ */
 
-.forum-post-view {
+.single-post-view {
 	float: left;
 	width: 100%;
 	background-color: #1d1d1d;
 	padding: 25px 25px 0 25px;
 	border-bottom: 1px solid #e5e5e5;
 }
-.forum-post-view .usr-question {
+.single-post-view .single-post {
 	border-bottom: 0;
 	padding: 0;
 }
-.forum-post-view .usr_quest span {
+.single-post-view .single-post-content span {
 	color: #707070;
 	font-size: 14px;
 	display: inline-block;
 	margin-bottom: 20px;
 }
-.forum-post-view .usr_quest li span {
+.single-post-view .single-post-content li span {
 	color: #121212;
 	font-size: 14px;
 	display: inline-block;
 	margin-bottom: 20px;
 }
-.forum-post-view .usr_quest span i {
+.single-post-view .single-post-content span i {
 	padding-right: 7px;
 }
-.forum-post-view .quest-tags {
+.single-post-view .quest-tags {
 	margin-bottom: 30px;
 }
-.forum-post-view .usr_quest > p {
+.single-post-view .single-post-content > p {
 	float: left;
 	width: 100%;
 	color: #c2c2c2;
@@ -5480,11 +5480,11 @@ a:hover {
 	line-height: 24px;
 	margin-bottom: 40px;
 }
-.forum-post-view .comment-section {
+.single-post-view .comment-section {
 	padding: 0;
 	background-color: #1d1d1d;
 }
-.forum-post-view .comment-section > h3 {
+.single-post-view .comment-section > h3 {
 	float: left;
 	width: 100%;
 	color: #d7d7d7;
@@ -5493,25 +5493,25 @@ a:hover {
 	border-bottom: 1px solid #e5e5e5;
 	padding-bottom: 15px;
 }
-.forum-post-view .comment-sec ul li {
+.single-post-view .comments ul li {
 	border-bottom: 1px solid #e5e5e5;
 	padding: 23px 0;
 }
-.forum-post-view .comment span {
+.single-post-view .comment span {
 	margin-bottom: 10px;
 }
-.forum-post-view .comment-list {
+.single-post-view .comment-list {
 	padding-bottom: 0;
 	margin-bottom: -4px;
 }
-.forum-post-view .comment p {
+.single-post-view .comment p {
 	margin: 0;
 	margin-top: 5px;
 }
-.forum-post-view .comment h3 {
+.single-post-view .comment h3 {
 	margin-bottom: 9px;
 }
-.forum-post-view .comment-sec ul li:last-child {
+.single-post-view .comments ul li:last-child {
 	border-bottom: 0;
 }
 
@@ -5536,12 +5536,12 @@ a:hover {
 	float: left;
 	width: 100%;
 }
-.usr-post-img {
+.comment-user-image {
 	float: left;
 	width: 50px;
 	margin-right: 15px;
 }
-.usr-post-img img {
+.comment-user-image img {
 	width: 100%;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;

@@ -107,12 +107,12 @@
                                     <div class="user-data full-width">
                                         <div class="user-profile">
                                             <div class="username-details">
-                                                <div class="usr-pic">
+                                                <div class="user-profile-picture">
                                                     <img src="http://via.placeholder.com/100x100" alt="">
                                                 </div>
                                             </div><!--username-details end-->
-                                            <div class="user-specs">
-                                                <h3>{{ user_details["name"]}}</h3>
+                                            <div class="username-introduction">
+                                                <h3>{{ user_details["name"] }}</h3>
                                                 <span>{{ user_details["current_job"] }} at {{ user_details["current_job_details"] }}</span>
                                             </div>
                                         </div><!--user-profile end-->
@@ -126,14 +126,14 @@
                                                 <span>{{ user_details["followers"] }}</span>
                                             </li>
                                             <li>
-                                                <ul class="flw-hr">
+                                                <ul class="flw-button">
                                                     <li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </div><!--user-data end-->
-                                    <div class="widget widget-jobs">
-                                        <div class="sd-title">
+                                    <div class="widget widget-info">
+                                        <div class="widget-title">
                                             <h3>Bio</h3>
                                         </div>
                                         <div class="jobs-list">
@@ -146,9 +146,9 @@
                                                 </div><!--job-info end-->
                                             {% endfor %}
                                         </div><!--jobs-list end-->
-                                    </div><!--widget-jobs end-->
-                                    <div class="widget widget-jobs">
-                                        <div class="sd-title">
+                                    </div><!--widget-info end-->
+                                    <div class="widget widget-info">
+                                        <div class="widget-title">
                                             <h3>Contact</h3>
                                         </div>
                                         <div class="jobs-list">
@@ -161,7 +161,7 @@
                                                 </div><!--job-info end-->
                                             {% endfor %}
                                         </div><!--jobs-list end-->
-                                    </div><!--widget-jobs end-->
+                                    </div><!--widget-info end-->
                                     <div class="tag-section">
                                         <div class="tag-heading">
                                             <h3>Interests</h3>

@@ -95,17 +95,17 @@
             </div>
         </header><!--header end-->
 
-        <section class="forum-page">
+        <section class="single-post-page">
             <div class="container">
-                <div class="forum-questions-sec">
+                <div class="single-post-sec">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="forum-post-view">
-                                <div class="usr-question">
-                                    <div class="usr_img">
+                            <div class="single-post-view">
+                                <div class="single-post">
+                                    <div class="post-user-image">
                                         <img src="http://via.placeholder.com/60x60" alt="">
                                     </div>
-                                    <div class="usr_quest">
+                                    <div class="single-post-content">
                                         <h3><a href={{ post_details["user_profile_link"] }}> {{ post_details["username"] }} </a></h3>
                                         <span><img src="static/images/clock.png" alt="">{{ post_details["time"] }} min ago</span>
                                         <ul class="react-links">
@@ -123,7 +123,7 @@
                                         <p>{{ post_details["content"] }}</p>
                                         <div class="comment-section">
                                             <h3>{{ number_of_comments }} Comments</h3>
-                                            <div class="comment-sec">
+                                            <div class="comments">
                                                 <ul>
                                                     {% for comment in comments %}
                                                         <li>
@@ -140,14 +140,14 @@
                                                         </li>
                                                     {% endfor %}
                                                 </ul>
-                                            </div><!--comment-sec end-->
+                                            </div><!--comments end-->
                                         </div>
-                                    </div><!--usr_quest end-->
-                                </div><!--usr-question end-->
-                            </div><!--forum-post-view end-->
+                                    </div><!--single-post-content end-->
+                                </div><!--single-post end-->
+                            </div><!--single-post-view end-->
                             <div class="post-comment-box">
                                 <div class="user-poster">
-                                    <div class="usr-post-img">
+                                    <div class="comment-user-image">
                                         <img src="http://via.placeholder.com/40x40" alt="">
                                     </div>
                                     <div class="post_comment_sec">
@@ -162,9 +162,9 @@
                         </div>
 
                     </div>
-                </div><!--forum-questions-sec end-->
+                </div><!--single-post-sec end-->
             </div>
-        </section><!--forum-page end-->
+        </section><!--single-post-page end-->
 
 
     </div><!--theme-layout end-->

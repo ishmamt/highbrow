@@ -95,21 +95,21 @@
             </div>
         </header>
 
-        <section class="forum-page">
+        <section class="single-post-page">
             <div class="container">
-                <div class="forum-questions-sec">
+                <div class="single-post-sec">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="user-tab-sec">
                                 <h3>{{ topic_details["name"] }}</h3>
                             </div>
-                            <div class="forum-questions">
+                            <div class="topic-posts">
                                 {% for post in posts %}
-                                    <div class="usr-question">
-                                        <div class="usr_img">
+                                    <div class="single-post">
+                                        <div class="post-user-image">
                                             <img src="http://via.placeholder.com/60x60" alt="">
                                         </div>
-                                        <div class="usr_quest">
+                                        <div class="single-post-content">
                                             <a href={{ post["link"] }}><h3>{{ post["title"] }}</h3></a>
                                             <a href={{ post["user_profile_link"] }}><h4>{{ post["username"] }}</h4></a>
                                             <ul class="react-links">
@@ -122,14 +122,14 @@
                                                     <li><a href={{ tag["link"] }} title={{ tag["name"] }}>{{ tag["name"] }}</a></li>
                                                 {% endfor %}
                                             </ul>
-                                        </div><!--usr_quest end-->
+                                        </div><!--single-post-content end-->
                                         <span class="quest-posted-time"><i class="la la-clock-o"></i>{{ post["time"] }} min ago</span>
-                                    </div><!--usr-question end-->
+                                    </div><!--single-post end-->
                                 {% endfor %}
-                            </div><!--forum-questions end-->
+                            </div><!--topic-posts end-->
                         </div>
                     </div>
-                </div><!--forum-questions-sec end-->
+                </div><!--single-post-sec end-->
                 <nav aria-label="Page navigation" class="full-pagi">
                     <ul class="pagination">
                         <li class="page-item"><a class="page-link pvr" href="#">Previous</a></li>
@@ -143,7 +143,7 @@
                     </ul>
                 </nav>
             </div>
-        </section><!--forum-page end-->
+        </section><!--single-post-page end-->
     </div><!--theme-layout end-->
 
 
