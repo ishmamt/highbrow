@@ -106,11 +106,11 @@
                                 <div class="main-left-sidebar no-margin">
                                     <div class="user-data full-width">
                                         <div class="user-profile">
-                                            <div class="username-dt">
+                                            <div class="username-details">
                                                 <div class="usr-pic">
                                                     <img src="http://via.placeholder.com/100x100" alt="">
                                                 </div>
-                                            </div><!--username-dt end-->
+                                            </div><!--username-details end-->
                                             <div class="user-specs">
                                                 <h3>{{ user_details["name"]}}</h3>
                                                 <span>{{ user_details["current_job"] }} at {{ user_details["current_job_details"] }}</span>
@@ -184,26 +184,28 @@
                                         {% for post in posts %}
                                             <div class="post-bar">
                                                 <div class="post_topbar">
-                                                    <div class="usy-dt">
+                                                    <div class="user-details">
                                                         <img src="http://via.placeholder.com/50x50" alt="">
-                                                        <div class="usy-name">
+                                                        <div class="user-name">
                                                             <a href={{ post["user_profile_link"] }}><h3>{{ post["username"] }}</h3></a>
                                                             <span><img src="static/images/clock.png" alt="">{{ post["time"] }} min ago</span>
                                                         </div>
                                                     </div>
-                                                    <div class="ed-opts">
-                                                        <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                        <ul class="ed-options">
+                                                    <div class="edit-options">
+                                                        <a href="#" title="" class="edit-options-open"><i class="la la-ellipsis-v"></i></a>
+                                                        <ul class="edit-options-list">
                                                             <li><a href="#" title="">Report</a></li>
+                                                            <li><a href="#" title="">Edit</a></li>
+                                                            <li><a href="#" title="">Delete</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="epi-sec">
-                                                    <ul class="bk-links">
+                                                <div class="bookmark-sec">
+                                                    <ul class="bookmark-links">
                                                         <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
                                                     </ul>
                                                 </div>
-                                                <div class="job_descp">
+                                                <div class="post-description">
                                                     <h3><a href={{ post["link"] }}>{{ post["title"] }}</a></h3>
                                                     <p>{{ post["content"] }} <a href="#" title="">view more</a></p>
                                                     <ul class="topic-tags">
@@ -213,7 +215,7 @@
 
                                                     </ul>
                                                 </div>
-                                                <div class="job-status-bar">
+                                                <div class="post-status-bar">
                                                     <ul class="like-com">
                                                         <li>
                                                             <a href="#"><i class="la la-heart"></i>Like</a>
@@ -224,13 +226,6 @@
                                                 </div>
                                             </div><!--post-bar end-->
                                         {% endfor %}
-                                        <!-- <div class="process-comm">
-                                            <div class="spinner">
-                                                <div class="bounce1"></div>
-                                                <div class="bounce2"></div>
-                                                <div class="bounce3"></div>
-                                            </div>
-                                        </div> process-comm end-->
                                         <nav aria-label="Page navigation" class="full-pagi">
                                             <ul class="pagination">
                                                 <li class="page-item"><a class="page-link pvr" href="#">Previous</a></li>
