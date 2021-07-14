@@ -1,7 +1,7 @@
 $(window).on("load", function() {
     "use strict";
 
-    
+
 
     //  ============= POST PROJECT POPUP FUNCTION =========
 
@@ -187,7 +187,7 @@ $(window).on("load", function() {
     });
 
 
-    //  ============== ChatBox ============== 
+    //  ============== ChatBox ==============
 
 
     $(".chat-mg").on("click", function(){
@@ -276,9 +276,6 @@ $(window).on("load", function() {
             slidesToScroll: 1
           }
         }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
       ]
 
 
