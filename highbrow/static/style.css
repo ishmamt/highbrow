@@ -592,7 +592,7 @@ nav > ul > li > a:hover {
 .on-off-status li:last-child {
 	margin-bottom: 0;
 }
-.on-off-status li .fgt-sec small {
+.on-off-status li .forgot-section small {
 	color: #686868;
 }
 
@@ -2155,21 +2155,21 @@ select {
 	display: block;
 }
 
-.cmp-info {
+.highbrow-info {
 	float: left;
 	width: 100%;
 	padding: 70px 5px 92px 5px;
 }
-.cm-logo {
+.highbrow-logo {
 	float: left;
 	width: 100%;
 	padding-left: 45px;
 	margin-bottom: 120px;
 }
-.cm-logo img {
+.highbrow-logo img {
 	margin-bottom: 30px;
 }
-.cm-logo > p {
+.highbrow-logo > p {
 	color: #d7d7d7;
 	font-size: 14px;
 	font-weight: 700;
@@ -2177,7 +2177,7 @@ select {
 	float: left;
 	width: 100%;
 }
-.cmp-info > img {
+.highbrow-info > img {
 	width: 100%;
 	padding-left: 10px;
 }
@@ -2298,7 +2298,7 @@ select {
 	float: left;
 	width: 100%;
 }
-.sn-field {
+.signin-field {
 	float: left;
 	width: 100%;
 	margin-bottom: 20px;
@@ -2309,13 +2309,13 @@ select {
     -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
     box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
 }
-.sn-field.pd-more {
+.signin-field.pd-more {
 	margin-bottom: 0;
 }
-.sn-field.pd-more input {
+.signin-field.pd-more input {
 	padding-left: 40px;
 }
-.sn-field > i {
+.signin-field > i {
 	position: absolute;
 	top: 50%;
 	left: 15px;
@@ -2327,7 +2327,7 @@ select {
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
-.sn-field > span {
+.signin-field > span {
 	position: absolute;
 	top: 50%;
 	right: 15px;
@@ -2365,29 +2365,29 @@ select {
 	margin-top: 30px;
 	cursor: pointer;
 }
-.checky-sec {
+.check-section {
 	float: left;
 	width: 100%;
 	margin-top: 10px;
 }
-.checky-sec.st2 small {
+.check-section.st2 small {
 	font-size: 13px;
 	width: 90%;
 	line-height: 20px;
 }
-.checky-sec.st2 .fgt-sec input[type="checkbox"] + label span {
+.check-section.st2 .forgot-section input[type="checkbox"] + label span {
 	margin-top: 3px;
 }
-.fgt-sec {
+.forgot-section {
 	float: left;
 }
-.fgt-sec input[type="checkbox"] {
+.forgot-section input[type="checkbox"] {
 	display: none;
 }
-.fgt-sec label {
+.forgot-section label {
 	float: left;
 }
-.fgt-sec input[type="checkbox"] + label span {
+.forgot-section input[type="checkbox"] + label span {
 	display: inline-block;
 	width: 15px;
 	height: 15px;
@@ -2399,7 +2399,7 @@ select {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 }
-.fgt-sec input[type="checkbox"] + label span:before {
+.forgot-section input[type="checkbox"] + label span:before {
 	content: '';
 	width: 7px;
 	height: 7px;
@@ -2409,7 +2409,7 @@ select {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 	font-size: 8px;
-	color: #d7d7d7fff;
+	color: #d7d7d7;
 	opacity: 0;
 	visibility: hidden;
 	background-color: #bb86fc;
@@ -2423,11 +2423,11 @@ select {
 	-o-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
 }
-.fgt-sec input[type="checkbox"]:checked + label span:before {
+.forgot-section input[type="checkbox"]:checked + label span:before {
 	opacity: 1;
 	visibility: visible;
 }
-.fgt-sec small {
+.forgot-section small {
 	float: left;
 	color: #d7d7d7;
 	font-size: 14px;
@@ -2435,13 +2435,13 @@ select {
 	margin-left: 10px;
 	font-weight: 700;
 }
-.checky-sec > a {
+.check-section > a {
 	float: right;
 	color: #d7d7d7;
 	font-size: 14px;
 	font-weight: 600;
 }
-.checky-sec > a:hover {
+.check-section > a:hover {
 	float: right;
 	color: #bb86fc;
 	font-size: 14px;
@@ -2450,13 +2450,13 @@ select {
 
 /* ======= Radio Button Styles ======= */
 
-.fgt-sec input[type="radio"] {
+.forgot-section input[type="radio"] {
 	display: none;
 }
-.fgt-sec label {
+.forgot-section label {
 	float: left;
 }
-.fgt-sec input[type="radio"] + label span {
+.forgot-section input[type="radio"] + label span {
 	display: inline-block;
 	width: 15px;
 	height: 15px;
@@ -2468,7 +2468,7 @@ select {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 }
-.fgt-sec input[type="radio"] + label span:before {
+.forgot-section input[type="radio"] + label span:before {
 	content: '';
 	width: 7px;
 	height: 7px;
@@ -2478,7 +2478,7 @@ select {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 	font-size: 8px;
-	color: #d7d7d7fff;
+	color: #d7d7d7;
 	opacity: 0;
 	visibility: hidden;
 	background-color: #bb86fc;
@@ -2492,7 +2492,7 @@ select {
 	-o-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
 }
-.fgt-sec input[type="radio"]:checked + label span:before {
+.forgot-section input[type="radio"]:checked + label span:before {
 	opacity: 1;
 	visibility: visible;
 }
@@ -2579,7 +2579,7 @@ select {
 	margin-bottom: 20px;
 }
 .login-resources ul li a {
-	color: #d7d7d7fff;
+	color: #d7d7d7;
 	font-size: 16px;
 	font-weight: 600;
 	float: left;

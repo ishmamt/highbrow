@@ -30,13 +30,13 @@
                 <div class="signin-pop">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="cmp-info">
-                                <div class="cm-logo">
-                                    <img src="static/images/cm-logo.png" alt="">
+                            <div class="highbrow-info">
+                                <div class="highbrow-logo">
+                                    <img src="static/images/highbrow-logo.png" alt="">
                                     <p>Highbrow is a networking hub for people who want to explore their academic interests and share their knowledge and experience with the world.</p>
-                                </div><!--cm-logo end-->
+                                </div><!--highbrow-logo end-->
                                 <img src="static/images/cm-main-img.png" alt="">
-                            </div><!--cmp-info end-->
+                            </div><!--highbrow-info end-->
                         </div>
                         <div class="col-lg-6">
                             <div class="login-sec">
@@ -50,29 +50,29 @@
                                         {{ signin_form.hidden_tag() }}
                                         <div class="row">
                                             <div class="col-lg-12 no-pdd">
-                                                <div class="sn-field">
+                                                <div class="signin-field">
                                                     {{ signin_form.signin_username(placeholder="Username") }}
                                                     <!-- <input type="text" name="username" placeholder="Username"> -->
                                                     <i class="la la-user"></i>
-                                                </div><!--sn-field end-->
+                                                </div><!--signin-field end-->
                                             </div>
                                             <div class="col-lg-12 no-pdd">
-                                                <div class="sn-field">
+                                                <div class="signin-field">
                                                     {{ signin_form.signin_password(placeholder="Password") }}
                                                     <!-- <input type="password" name="password" placeholder="Password"> -->
                                                     <i class="la la-lock"></i>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 no-pdd">
-                                                <div class="checky-sec">
-                                                    <div class="fgt-sec">
+                                                <div class="check-section">
+                                                    <div class="forgot-section">
                                                         <!-- <input type="checkbox" name="cc" id="c1"> -->
                                                         {{ signin_form.c1 }}
                                                         <label for="c1">
                                                             <span></span>
                                                         </label>
                                                         <small>Remember me</small>
-                                                    </div><!--fgt-sec end-->
+                                                    </div><!--forgot-section end-->
                                                     <a href="#" title="">Forgot Password?</a>
                                                 </div>
                                             </div>
@@ -88,50 +88,50 @@
                                             {{ signup_form.hidden_tag() }}
                                             <div class="row">
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
+                                                    <div class="signin-field">
                                                         <!-- <input type="text" name="name" placeholder="Full Name"> -->
                                                         {{ signup_form.signup_fullname(placeholder="Full Name") }}
                                                         <i class="la la-male"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
+                                                    <div class="signin-field">
                                                         <!-- <input type="text" name="username" placeholder="Username"> -->
                                                         {{ signup_form.signup_username(placeholder="Username") }}
                                                         <i class="la la-user"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
+                                                    <div class="signin-field">
                                                         <!-- <input type="text" name="email" placeholder="Email"> -->
                                                         {{ signup_form.signup_email(placeholder="Email") }}
                                                         <i class="la la-envelope"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
+                                                    <div class="signin-field">
                                                         <!-- <input type="password" name="password" placeholder="Password"> -->
                                                         {{ signup_form.signup_password(placeholder="Password") }}
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
+                                                    <div class="signin-field">
                                                         <!-- <input type="password" name="repeat-password" placeholder="Repeat Password"> -->
                                                         {{ signup_form.signup_repeat_password(placeholder="Repeat Password") }}
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="checky-sec st2">
-                                                        <div class="fgt-sec">
+                                                    <div class="check-section st2">
+                                                        <div class="forgot-section">
                                                             <!-- <input type="checkbox" name="cc" id="c2"> -->
                                                             {{ signup_form.c2 }}
                                                             <label for="c2">
                                                                 <span></span>
                                                             </label>
                                                             <small>Yes, I understand and agree to the workwise Terms & Conditions.</small>
-                                                        </div><!--fgt-sec end-->
+                                                        </div><!--forgot-section end-->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
@@ -144,38 +144,38 @@
                                         <form>
                                             <div class="row">
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
+                                                    <div class="signin-field">
                                                         <input type="text" name="company-name" placeholder="Company Name">
                                                         <i class="la la-building"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
+                                                    <div class="signin-field">
                                                         <input type="text" name="country" placeholder="Country">
                                                         <i class="la la-globe"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
+                                                    <div class="signin-field">
                                                         <input type="password" name="password" placeholder="Password">
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
+                                                    <div class="signin-field">
                                                         <input type="password" name="repeat-password" placeholder="Repeat Password">
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <div class="checky-sec st2">
-                                                        <div class="fgt-sec">
+                                                    <div class="check-section st2">
+                                                        <div class="forgot-section">
                                                             <input type="checkbox" name="cc" id="c3">
                                                             <label for="c3">
                                                                 <span></span>
                                                             </label>
                                                             <small>Yes, I understand and agree to the workwise Terms & Conditions.</small>
-                                                        </div><!--fgt-sec end-->
+                                                        </div><!--forgot-section end-->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
