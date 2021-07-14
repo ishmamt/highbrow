@@ -38,25 +38,24 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href="/" title="">
+                                <a href="/" title="Home">
                                     <span><img src="static/images/icon1.png" alt=""></span>
                                     Home
                                 </a>
                             </li>
                             <li>
-                                <a href="#" title="" class="not-box-open">
+                                <a href="#" title="Notification" class="notification-box-open">
                                     <span><img src="static/images/icon7.png" alt=""></span>
                                     Notification
                                 </a>
                                 <div class="notification-box">
-                                    <div class="nt-title">
-                                        <h4>Setting</h4>
+                                    <div class="notification-title">
                                         <a href="#" title="">Clear all</a>
                                     </div>
-                                    <div class="nott-list">
+                                    <div class="notification-list">
                                         {% for notification in notifications %}
                                             <div class="notfication-details">
-                                                <div class="noty-user-img">
+                                                <div class="notification-user-image">
                                                     <img src="static/images/photo-icon.png" alt="">
                                                 </div>
                                                 <div class="notification-info">
@@ -65,32 +64,32 @@
                                                 </div><!--notification-info -->
                                             </div>
                                         {% endfor %}
-                                        <div class="view-all-nots">
-                                            <a href="#" title="">View All Notification</a>
+                                        <div class="view-all-notifications">
+                                            <a href="#" title="">View All Notifications</a>
                                         </div>
-                                    </div><!--nott-list end-->
+                                    </div><!--notification-list end-->
                                 </div><!--notification-box end-->
                             </li>
                         </ul>
                     </nav><!--nav end-->
-                    <div class="menu-btn">
+                    <div class="user-menu-btn">
                         <a href="#" title=""><i class="fa fa-bars"></i></a>
-                    </div><!--menu-btn end-->
+                    </div><!--user-menu-btn end-->
                     <div class="user-account">
                         <div class="user-info">
                             <img src="http://via.placeholder.com/30x30" alt="">
                             <a href="#" title="">Tauseef</a>
                         </div>
-                        <div class="user-account-settingss">
-                            <ul class="us-links">
+                        <div class="user-account-settings">
+                            <ul class="user-links">
                                 <li><a href="/user" title="">Profile</a></li>
                                 <li><a href="/user" title="">Saved Posts</a></li>
                                 <li><a href="#" title="">Account Setting</a></li>
                                 <li><a href="/about" title="">About</a></li>
                                 <li><a href="/contact" title="">Contact Us</a></li>
                             </ul>
-                            <h3 class="tc"><a href="/login" title="">Logout</a></h3>
-                        </div><!--user-account-settingss end-->
+                            <h3 class="user-logout"><a href="/login" title="">Logout</a></h3>
+                        </div><!--user-account-settings end-->
                     </div>
                 </div><!--header-data end-->
             </div>
@@ -117,7 +116,7 @@
                                                 <li><a href="#" title=""><i class="la la-heart"></i>{{ post["likes"] }} likes</a></li>
                                                 <li><a href={{ post["link"] }} title=""><i class="la la-comment"></i> Comments  {{ post["comments"] }}</a></li>
                                             </ul>
-                                            <ul class="skill-tags">
+                                            <ul class="topic-tags">
                                                 <br><br>
                                                 {% for tag in post["tags"] %}
                                                     <li><a href={{ tag["link"] }} title={{ tag["name"] }}>{{ tag["name"] }}</a></li>

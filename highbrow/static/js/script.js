@@ -208,9 +208,9 @@ $(window).on("load", function() {
     });
 
 
-    // ============== Menu Script =============
+    // ============== User Menu Script =============
 
-    $(".menu-btn > a").on("click", function(){
+    $(".user-menu-btn > a").on("click", function(){
         $("nav").toggleClass("active");
         return false;
     });
@@ -218,14 +218,14 @@ $(window).on("load", function() {
 
     //  ============ Notifications Open =============
 
-    $(".not-box-open").on("click", function(){
+    $(".notification-box-open").on("click", function(){
         $(this).next(".notification-box").toggleClass("active");
     });
 
     // ============= User Account Setting Open ===========
 
     $(".user-info").on("click", function(){
-        $(this).next(".user-account-settingss").toggleClass("active");
+        $(this).next(".user-account-settings").toggleClass("active");
     });
 
     //  ============= FORUM LINKS MOBILE MENU FUNCTION =========
