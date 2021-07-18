@@ -187,16 +187,11 @@ def user():
 def signin():
     signin_form = SigninForm()
     signup_form = SignupForm()
-    if (signin_form.validate_on_submit() or signup_form.validate_on_submit()) and request.method == "POST":
-        # print(signin_form.signin_username.data)
-        # print(signin_form.signin_password.data)
-        # print(signin_form.c1.data)
-        # print("")
-        # print(signup_form.signup_fullname.data)
-        # print(signup_form.signup_username.data)
-        # print(signup_form.signup_email.data)
-        # print(signup_form.signup_password.data)
-        if signin_form.signin_username.data == "admin" and signin_form.signin_password.data == "admin":
+    if request.method == "POST":
+        if signin_form.validate_on_submit():
+            if signin_form.signin_username.data == "admin" and signin_form.signin_password.data == "admin":
+                return redirect(url_for("main.home"))
+        if signup_form.validate_on_submit():
             return redirect(url_for("main.home"))
     return render_template("signin.html", signin_form=signin_form, signup_form=signup_form)
 
