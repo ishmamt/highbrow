@@ -1,5 +1,7 @@
 from flask import render_template, url_for, redirect, request, Blueprint
 from highbrow.users.forms import SigninForm, SignupForm
+from flask_login import login_user, logout_user, current_user
+from highbrow import load_user
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
 
@@ -185,11 +187,16 @@ def user():
 @users.route("/sign-up", methods=["GET", "POST"])
 @users.route("/join", methods=["GET", "POST"])
 def signin():
+    if current_user.is_authenticated:
+        # if user is already logged in
+        return redirect(url_for("main.home"))
     signin_form = SigninForm()
     signup_form = SignupForm()
     if request.method == "POST":
         if signin_form.validate_on_submit():
-            if signin_form.signin_username.data == "admin" and signin_form.signin_password.data == "admin":
+            user = load_user(signin_form.signin_username.data)
+            if user and user.password == signin_form.signin_password.data:
+                login_user(user, remember=signin_form.c1.data)
                 return redirect(url_for("main.home"))
         if signup_form.validate_on_submit():
             return redirect(url_for("main.home"))
@@ -204,3 +211,9 @@ def contact():
 @users.route("/about")
 def about():
     return render_template("about.html")
+
+
+@users.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for("users.signin"))

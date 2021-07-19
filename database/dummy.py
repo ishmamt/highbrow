@@ -16,8 +16,32 @@ mycursor = db.cursor()
 #     print("Something went wrong: {}".format(err))
 
 
+# try:
+#     mycursor.execute('''SELECT * FROM users''')
+# except mysql.connector.Error as err:
+#     print("Something went wrong: {}".format(err))
+
+# for x in mycursor:
+#     print(x)
+
+
+# topic1 = "Machine Learning"
+# topic2 = "HTML"
+# topic3 = "CSS"
+# topic4 = "Python"
+# try:
+#     mycursor.execute('''INSERT INTO Topics(topic_name) VALUES('%s')''' % (topic1))
+#     mycursor.execute('''INSERT INTO Topics(topic_name) VALUES('%s')''' % (topic2))
+#     mycursor.execute('''INSERT INTO Topics(topic_name) VALUES('%s')''' % (topic3))
+#     mycursor.execute('''INSERT INTO Topics(topic_name) VALUES('%s')''' % (topic4))
+# except mysql.connector.Error as err:
+#     print("Something went wrong: {}".format(err))
+
+# db.commit()
+
+
 try:
-    mycursor.execute('''SELECT * FROM users''')
+    mycursor.execute('''SELECT * FROM post_has_topic''')
 except mysql.connector.Error as err:
     print("Something went wrong: {}".format(err))
 
