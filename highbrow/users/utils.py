@@ -1,25 +1,23 @@
-import mysql.connector
 from highbrow import db
-from datetime import datetime
-import uuid
+import mysql.connector
 
 
-def create_new_post(created_by, title, content, tags):
+def find_user(username):
     mycursor = db.cursor()
     try:
-        post_id = str(uuid.uuid4())
-        mycursor.execute('''INSERT INTO Posts(created_by, created_on, post_id, title, content) VALUES(%s, %s, %s, %s, %s)''',
-                         (created_by, datetime.now(), post_id, title, content))
-
-        mycursor.execute('''DELETE FROM Post_has_topic WHERE post_id='%s' ''' % (post_id))
-        for tag in tags:
-            mycursor.execute('''INSERT INTO Post_has_topic(topic_name, post_id) VALUES(%s, %s)''', (tag, post_id))
-
-        db.commit()
+        mycursor.execute("SELECT * FROM Users WHERE username = '%s'" % (username))
+        user = mycursor.fetchone()
+        user_details = {
+            "name": user[0],
+            "short_bio": user[8],
+            "following": user[7],
+            "followers": user[6]
+        }
+        mycursor.close()
+        return user_details
     except mysql.connector.Error as err:
-        print("Something went wrong: {}".format(err))
-        db.rollback()
-    mycursor.close()
+        print("Something went wrong {}".format(err))
+        mycursor.close()
 
 
 def process_tag_links(topic_name):

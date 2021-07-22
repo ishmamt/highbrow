@@ -2,92 +2,9 @@ from flask import render_template, url_for, redirect, request, Blueprint
 from highbrow.users.forms import SigninForm, SignupForm
 from flask_login import login_user, logout_user, current_user
 from highbrow import load_user
+from highbrow.users.utils import find_user, fetch_own_posts
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
-
-
-user_details = {
-    "name": "Tauseef Tajwar",
-    "current_job": "AI Researcher",
-    "current_job_details": "Carnegie Mellon University",
-    "following": 34,
-    "followers": 115
-}
-
-own_posts = [
-    {
-        "username": "Tauseef Tajwar",
-        "time": 3,
-        "title": "Hello World",
-        "link": "/post",
-        "user_profile_link": "/user",
-        "content": "Testing 123",
-        "tags": [
-            {
-                "name": "HTML",
-                "link": "/topic"
-            },
-            {
-                "name": "CSS",
-                "link": "/topic"
-            }
-        ],
-        "likes": 25,
-        "comments": 4
-    },
-    {
-        "username": "Tauseef Tajwar",
-        "time": 30,
-        "title": "First Post",
-        "link": "/post",
-        "user_profile_link": "/user",
-        "content": "The website is live and this is my very first post",
-        "tags": [
-            {
-                "name": "RNN",
-                "link": "/topic"
-            },
-            {
-                "name": "CNN",
-                "link": "/topic"
-            },
-            {
-                "name": "ML",
-                "link": "/topic"
-            },
-            {
-                "name": "DEEP LEARNING",
-                "link": "/topic"
-            },
-            {
-                "name": "NEURAL NETWORKS",
-                "link": "/topic"
-            }
-        ],
-        "likes": 125,
-        "comments": 533
-    },
-    {
-        "username": "Tauseef Tajwar",
-        "time": 45,
-        "title": "Eta ki free?",
-        "link": "/post",
-        "user_profile_link": "/user",
-        "content": "Etae taka deya lagbe ki?",
-        "tags": [
-            {
-                "name": "QUESTION",
-                "link": "/topic"
-            },
-            {
-                "name": "HELP",
-                "link": "/topic"
-            }
-        ],
-        "likes": 525,
-        "comments": 14
-    }
-]
 
 interests = [
     {
@@ -175,8 +92,10 @@ notifications = [
 ]
 
 
-@users.route("/user")
-def user():
+@users.route("/<string:username>")
+def user(username):
+    user_details = find_user(username)
+    own_posts = fetch_own_posts(username)
     return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
                            jobs=jobs, notifications=notifications)
 

@@ -1,25 +1,5 @@
-import mysql.connector
 from highbrow import db
-from datetime import datetime
-import uuid
-
-
-def create_new_post(created_by, title, content, tags):
-    mycursor = db.cursor()
-    try:
-        post_id = str(uuid.uuid4())
-        mycursor.execute('''INSERT INTO Posts(created_by, created_on, post_id, title, content) VALUES(%s, %s, %s, %s, %s)''',
-                         (created_by, datetime.now(), post_id, title, content))
-
-        mycursor.execute('''DELETE FROM Post_has_topic WHERE post_id='%s' ''' % (post_id))
-        for tag in tags:
-            mycursor.execute('''INSERT INTO Post_has_topic(topic_name, post_id) VALUES(%s, %s)''', (tag, post_id))
-
-        db.commit()
-    except mysql.connector.Error as err:
-        print("Something went wrong: {}".format(err))
-        db.rollback()
-    mycursor.close()
+import mysql.connector
 
 
 def process_tag_links(topic_name):
@@ -31,7 +11,7 @@ def process_tag_links(topic_name):
     return link
 
 
-def fetch_own_posts(username):
+def fetch_topic_posts(topic_name):
     topics_connection = mysql.connector.connect(host="localhost",
                                                 user="root",
                                                 passwd="root",
@@ -40,7 +20,8 @@ def fetch_own_posts(username):
     mycursor_topics = topics_connection.cursor()
     try:
         posts = list()
-        mycursor.execute("SELECT * FROM Posts WHERE created_by = '%s'" % (username))
+        mycursor.execute("""SELECT * FROM Posts WHERE post_id IN (
+                        SELECT post_id FROM post_has_topic WHERE topic_name = %s)""" % (topic_name))
         for post in mycursor:
             tags = list()
             try:
