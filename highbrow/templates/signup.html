@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Highbrow</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="icon" type="image/x-icon" href="static/images/logo.png">
+<link rel="stylesheet" type="text/css" href="static/animate.css">
+<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="static/line-awesome.css">
+<link rel="stylesheet" type="text/css" href="static/line-awesome-font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="static/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+
+
+<body class="sign-in">
+
+
+    <div class="wrapper">
+        <div class="sign-in-page">
+            <div class="signin-popup">
+                <div class="signin-pop">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="highbrow-info">
+                                <div class="highbrow-logo">
+                                    <img src="static/images/highbrow-logo.png" alt="">
+                                    <p>Highbrow is a networking hub for people who want to explore their academic interests and share their knowledge and experience with the world.</p>
+                                </div><!--highbrow-logo end-->
+                                <img src="static/images/cm-main-img.png" alt="">
+                            </div><!--highbrow-info end-->
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="login-sec">
+                                <div class="sign_in_sec current" id="tab-2">
+                                    <div class="dff-tab current" id="tab-3">
+                                        <h3>Sign up</h3>
+                                        <form method="POST" action="">
+                                            {{ signup_form.hidden_tag() }}
+                                            <div class="row">
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="signin-field">
+                                                        <!-- <input type="text" name="name" placeholder="Full Name"> -->
+                                                        {{ signup_form.signup_fullname(placeholder="Full Name") }}
+                                                        <i class="la la-male"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="signin-field">
+                                                        <!-- <input type="text" name="username" placeholder="Username"> -->
+                                                        {{ signup_form.signup_username(placeholder="Username") }}
+                                                        <i class="la la-user"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="signin-field">
+                                                        <!-- <input type="text" name="email" placeholder="Email"> -->
+                                                        {{ signup_form.signup_email(placeholder="Email") }}
+                                                        <i class="la la-envelope"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="signin-field">
+                                                        <!-- <input type="password" name="password" placeholder="Password"> -->
+                                                        {{ signup_form.signup_password(placeholder="Password") }}
+                                                        <i class="la la-lock"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="signin-field">
+                                                        <!-- <input type="password" name="repeat-password" placeholder="Repeat Password"> -->
+                                                        {{ signup_form.signup_repeat_password(placeholder="Repeat Password") }}
+                                                        <i class="la la-lock"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="check-section st2">
+                                                        <div class="forgot-section">
+                                                            <!-- <input type="checkbox" name="cc" id="c2"> -->
+                                                            {{ signup_form.c2 }}
+                                                            <label for="c2">
+                                                                <span></span>
+                                                            </label>
+                                                            <small>Yes, I understand and agree to the workwise Terms & Conditions.</small>
+                                                        </div><!--forgot-section end-->
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <button type="submit" value="submit">Get Started</button>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="register-redirect">
+                                                        <small class="mt-4">Already have an account? <a href="{{ url_for('users.signin') }}">Sign in</a></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div><!--dff-tab end-->
+                                </div>
+                            </div><!--login-sec end-->
+                        </div>
+                    </div>
+                </div><!--signin-pop end-->
+            </div><!--signin-popup end-->
+            <div class="footy-sec">
+                <div class="container">
+                    <ul>
+                        <li><a href="/about" title="">About</a></li>
+                        <li><a href="/contact" title="">Contact Us</a></li>
+                    </ul>
+                    <p><img src="static/images/copy-icon.png" alt="">Copyright 2021</p>
+                </div>
+            </div><!--footy-sec end-->
+        </div><!--sign-in-page end-->
+
+
+    </div><!--theme-layout end-->
+
+
+
+<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/script.js"></script>
+</body>
+</html>

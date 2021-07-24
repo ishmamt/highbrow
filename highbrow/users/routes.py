@@ -81,24 +81,32 @@ def user(username):
 
 @users.route("/sign-in", methods=["GET", "POST"])
 @users.route("/login", methods=["GET", "POST"])
-@users.route("/register", methods=["GET", "POST"])
-@users.route("/sign-up", methods=["GET", "POST"])
-@users.route("/join", methods=["GET", "POST"])
 def signin():
     if current_user.is_authenticated:
         # if user is already logged in
         return redirect(url_for("main.home"))
     signin_form = SigninForm()
-    signup_form = SignupForm()
     if request.method == "POST":
         if signin_form.validate_on_submit():
             user = load_user(signin_form.signin_username.data)
             if user and user.password == signin_form.signin_password.data:
                 login_user(user, remember=signin_form.c1.data)
                 return redirect(url_for("main.home"))
+    return render_template("signin.html", signin_form=signin_form)
+
+
+@users.route("/register", methods=["GET", "POST"])
+@users.route("/sign-up", methods=["GET", "POST"])
+@users.route("/join", methods=["GET", "POST"])
+def signup():
+    if current_user.is_authenticated:
+        # if user is already logged in
+        return redirect(url_for("main.home"))
+    signup_form = SignupForm()
+    if request.method == "POST":
         if signup_form.validate_on_submit():
             return redirect(url_for("main.home"))
-    return render_template("signin.html", signin_form=signin_form, signup_form=signup_form)
+    return render_template("signup.html", signup_form=signup_form)
 
 
 @users.route("/contact")

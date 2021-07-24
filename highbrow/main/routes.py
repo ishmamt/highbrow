@@ -2,7 +2,7 @@ from flask import render_template, request, Blueprint, redirect, url_for
 from highbrow.main.forms import NewPostForm
 from highbrow.main.utils import create_new_post, fetch_own_posts
 from highbrow.utils import fetch_notifications
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 main = Blueprint('main', __name__)  # similar to app = Flask(__name__)
 
@@ -51,6 +51,7 @@ def create_tags(tags):
 @main.route("/", methods=["GET", "POST"])
 @main.route("/home", methods=["GET", "POST"])
 @main.route("/index", methods=["GET", "POST"])
+@login_required
 def home():
     posts = fetch_own_posts("tauseef09")
     notifications = fetch_notifications(current_user.username)
