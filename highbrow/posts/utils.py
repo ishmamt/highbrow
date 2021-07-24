@@ -62,7 +62,7 @@ def fetch_comments(post_id):
         for comment in mycursor:
             single_comment = {
                 "username": comment[1],
-                "user_profile_link": "/" + comment[1],
+                "user_profile_link": comment[1],
                 "time": comment[4],
                 "comment": comment[3]
             }

@@ -3,6 +3,7 @@ from highbrow.users.forms import SigninForm, SignupForm
 from flask_login import login_user, logout_user, current_user
 from highbrow import load_user
 from highbrow.users.utils import find_user, fetch_own_posts
+from highbrow.utils import fetch_notifications
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
 
@@ -68,33 +69,11 @@ jobs = [
     }
 ]
 
-notifications = [
-    {
-        "time": 2,
-        "content": "Ishmam Tashdeed commented on your post.",
-        "link": "/post"
-    },
-    {
-        "time": 4,
-        "content": "Nafis Faiyaz liked your post.",
-        "link": "/post"
-    },
-    {
-        "time": 20,
-        "content": "Ishmam Tashdeed liked your post.",
-        "link": "/post"
-    },
-    {
-        "time": 23,
-        "content": "Nafis Faiyaz started following you.",
-        "link": "/user"
-    }
-]
-
 
 @users.route("/<string:username>")
 def user(username):
     user_details = find_user(username)
+    notifications = fetch_notifications(username)
     own_posts = fetch_own_posts(username)
     return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
                            jobs=jobs, notifications=notifications, current_user=current_user.username)

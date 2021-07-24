@@ -55,7 +55,11 @@
                                                     <img src="static/images/photo-icon.png" alt="">
                                                 </div>
                                                 <div class="notification-info">
-                                                    <h3><a href={{ notification["link"] }} title="">{{ notification["content"] }}</a></h3>
+                                                    {% if notification["type"] == "POST" %}
+                                                        <h3><a href={{ url_for('posts.post', post_id=notification["link"]) }} title="">{{ notification["content"] }}</a></h3>
+                                                    {% else %}
+                                                        <h3><a href={{ url_for('users.user', username=notification["link"]) }} title="">{{ notification["content"] }}</a></h3>
+                                                    {% endif %}
                                                     <span>{{ notification["time"] }} min ago</span>
                                                 </div><!--notification-info -->
                                             </div>
