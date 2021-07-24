@@ -25,10 +25,10 @@ mycursor = db.cursor()
 #     print(x)
 
 
-# topic1 = "Machine Learning"
+# topic1 = "MACHINE LEARNING"
 # topic2 = "HTML"
 # topic3 = "CSS"
-# topic4 = "Python"
+# topic4 = "PYTHON"
 # try:
 #     mycursor.execute('''INSERT INTO Topics(topic_name) VALUES('%s')''' % (topic1))
 #     mycursor.execute('''INSERT INTO Topics(topic_name) VALUES('%s')''' % (topic2))
@@ -48,13 +48,13 @@ mycursor = db.cursor()
 # for x in mycursor:
 #     print(x)
 
-try:
-    mycursor.execute('''SELECT * FROM post_has_topic''')
-except mysql.connector.Error as err:
-    print("Something went wrong: {}".format(err))
+# try:
+#     mycursor.execute('''SELECT * FROM post_has_topic''')
+# except mysql.connector.Error as err:
+#     print("Something went wrong: {}".format(err))
 
-for x in mycursor:
-    print(x)
+# for x in mycursor:
+#     print(x)
 
 mycursor.close()
 db.close()

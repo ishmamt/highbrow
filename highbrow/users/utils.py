@@ -9,6 +9,7 @@ def find_user(username):
         user = mycursor.fetchone()
         user_details = {
             "name": user[0],
+            "username": user[1],
             "short_bio": user[8],
             "following": user[7],
             "followers": user[6]
@@ -112,3 +113,18 @@ def create_new_user(fullname, username, email, password):
         db.rollback()
         mycursor.close()
         return False
+
+
+def if_is_following(follower, following):
+    mycursor = db.cursor()
+    try:
+        mycursor.execute('''SELECT * FROM User_follows_user WHERE follower = '%s' AND following = '%s' ''' % (follower, following))
+        follows = mycursor.fetchone()
+        mycursor.close()
+        if follows:
+            return True
+        else:
+            return False
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()

@@ -125,9 +125,17 @@
                                                 <span>{{ user_details["followers"] }}</span>
                                             </li>
                                             <li>
-                                                <ul class="flw-button">
-                                                    <li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
-                                                </ul>
+                                                {% if current_user != user_details["username"] %}
+                                                    {% if is_following %}
+                                                        <ul class="flw-button">
+                                                            <li><a href="#" title="" class="flww">Following</a></li>
+                                                        </ul>
+                                                    {% else %}
+                                                        <ul class="flw-button">
+                                                            <li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
+                                                        </ul>
+                                                    {% endif %}
+                                                {% endif %}
                                             </li>
                                         </ul>
                                     </div><!--user-data end-->

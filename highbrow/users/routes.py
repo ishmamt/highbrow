@@ -1,8 +1,8 @@
 from flask import render_template, url_for, redirect, request, Blueprint
 from highbrow.users.forms import SigninForm, SignupForm
 from flask_login import login_user, logout_user, current_user
-from highbrow import load_user
-from highbrow.users.utils import find_user, fetch_own_posts, create_new_user
+from highbrow import load_user, bcrypt
+from highbrow.users.utils import find_user, fetch_own_posts, create_new_user, if_is_following
 from highbrow.utils import fetch_notifications
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
@@ -75,8 +75,9 @@ def user(username):
     user_details = find_user(username)
     notifications = fetch_notifications(username)
     own_posts = fetch_own_posts(username)
+    is_following = if_is_following(current_user.username, username)
     return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
-                           jobs=jobs, notifications=notifications, current_user=current_user.username)
+                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following)
 
 
 @users.route("/sign-in", methods=["GET", "POST"])
@@ -89,7 +90,7 @@ def signin():
     if request.method == "POST":
         if signin_form.validate_on_submit():
             user = load_user(signin_form.signin_username.data)
-            if user and user.password == signin_form.signin_password.data:
+            if user and bcrypt.check_password_hash(user.password, signin_form.signin_password.data):
                 login_user(user, remember=signin_form.c1.data)
                 return redirect(url_for("main.home"))
     return render_template("signin.html", signin_form=signin_form)
@@ -105,8 +106,9 @@ def signup():
     signup_form = SignupForm()
     if request.method == "POST":
         if signup_form.validate_on_submit():
+            hashed_password = bcrypt.generate_password_hash(signup_form.signup_password.data).decode('utf-8')  # decode needed to get string hash
             status = create_new_user(signup_form.signup_fullname.data, signup_form.signup_username.data,
-                                     signup_form.signup_email.data, signup_form.signup_password.data)
+                                     signup_form.signup_email.data, hashed_password)
             if status:
                 user = load_user(signup_form.signup_username.data)
                 login_user(user, remember=False)
