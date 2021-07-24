@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
+from highbrow.users.utils import check_user, check_email
 
 
 class SigninForm(FlaskForm):
@@ -24,3 +25,15 @@ class SignupForm(FlaskForm):
     def validate_terms_and_conditions(self, c2):
         if c2.data is False:
             raise ValidationError("You must agree to the terms and conditions.")
+
+    def validate_signup_username(self, username):
+        # custom validation check to see if username already exists
+        user = check_user(username.data)  # if user doesn't exist, returns none
+        if user:
+            raise ValidationError("Username already in use. Please choose another one.")
+
+    def validate_signup_email(self, email):
+        # custom validation check to see if email already exists
+        email = check_email(email.data)  # if email doesn't exist, returns none
+        if email:
+            raise ValidationError("Email already in use. Please choose another one.")

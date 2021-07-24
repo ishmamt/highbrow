@@ -71,3 +71,44 @@ def fetch_own_posts(username):
         print("Something went wrong {}".format(err))
         topics_connection.close()
         mycursor.close()
+
+
+def check_user(username):
+    mycursor = db.cursor()
+    try:
+        mycursor.execute("SELECT * FROM Users WHERE username = '%s'" % (username))
+        user = mycursor.fetchone()
+        mycursor.close()
+        return user
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()
+        return None
+
+
+def check_email(email):
+    mycursor = db.cursor()
+    try:
+        mycursor.execute("SELECT * FROM Users WHERE email = '%s'" % (email))
+        email = mycursor.fetchone()
+        mycursor.close()
+        return email
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()
+        return None
+
+
+def create_new_user(fullname, username, email, password):
+    mycursor = db.cursor()
+    try:
+        mycursor.execute('''INSERT INTO Users(full_name, username, email, password) VALUES(%s, %s, %s, %s)''',
+                         (fullname, username, email, password))
+        db.commit()
+        mycursor.close()
+        return True
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+        db.rollback()
+        mycursor.close()
+        return False

@@ -53,7 +53,7 @@ def create_tags(tags):
 @main.route("/index", methods=["GET", "POST"])
 @login_required
 def home():
-    posts = fetch_own_posts("tauseef09")
+    posts = fetch_own_posts(current_user.username)
     notifications = fetch_notifications(current_user.username)
     form = NewPostForm()
     if form.validate_on_submit() and request.method == "POST":

@@ -2,7 +2,7 @@ from flask import render_template, url_for, redirect, request, Blueprint
 from highbrow.users.forms import SigninForm, SignupForm
 from flask_login import login_user, logout_user, current_user
 from highbrow import load_user
-from highbrow.users.utils import find_user, fetch_own_posts
+from highbrow.users.utils import find_user, fetch_own_posts, create_new_user
 from highbrow.utils import fetch_notifications
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
@@ -105,7 +105,14 @@ def signup():
     signup_form = SignupForm()
     if request.method == "POST":
         if signup_form.validate_on_submit():
-            return redirect(url_for("main.home"))
+            status = create_new_user(signup_form.signup_fullname.data, signup_form.signup_username.data,
+                                     signup_form.signup_email.data, signup_form.signup_password.data)
+            if status:
+                user = load_user(signup_form.signup_username.data)
+                login_user(user, remember=False)
+                return redirect(url_for("main.home"))
+            else:
+                return redirect(url_for("users.signup"))
     return render_template("signup.html", signup_form=signup_form)
 
 
