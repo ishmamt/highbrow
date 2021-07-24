@@ -78,8 +78,8 @@
                         </div>
                         <div class="user-account-settings">
                             <ul class="user-links">
-                                <li><a href="/user" title="">Profile</a></li>
-                                <li><a href="/user" title="">Saved Posts</a></li>
+                                <li><a href={{ url_for('users.user', username=current_user) }} title="">Profile</a></li>
+                                <li><a href={{ url_for('users.user', username=current_user) }} title="">Saved Posts</a></li>
                                 <li><a href="#" title="">Account Setting</a></li>
                                 <li><a href="/about" title="">About</a></li>
                                 <li><a href="/contact" title="">Contact Us</a></li>
@@ -105,7 +105,7 @@
                                         <div class="tag-box">
                                             <ul class="topic-tags">
                                                 {% for interest in interests %}
-                                                    <li><a href={{ interest["link"] }} title={{ interest["name"] }}>{{ interest["name"] }}</a></li>
+                                                    <li><a href={{ url_for('topics.topic', topic_name=interest["link"]) }} title={{ interest["name"] }}>{{ interest["name"] }}</a></li>
                                                 {% endfor %}
                                             </ul>
                                         </div>
@@ -164,7 +164,7 @@
                                                             <a href="#"><i class="la la-heart"></i>Like</a>
                                                             <span>{{ post["likes"] }}</span>
                                                         </li>
-                                                        <li><a href={{ post["link"] }} title="" class="com"><img src="static/images/com.png" alt=""> Comment {{ post["comments"] }}</a></li>
+                                                        <li><a href={{ url_for('posts.post', post_id=post["link"]) }} title="" class="com"><img src="static/images/com.png" alt=""> Comment {{ post["comments"] }}</a></li>
                                                     </ul>
                                                 </div>
                                             </div><!--post-bar end-->

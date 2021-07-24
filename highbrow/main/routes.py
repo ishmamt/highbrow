@@ -9,31 +9,31 @@ main = Blueprint('main', __name__)  # similar to app = Flask(__name__)
 interests = [
     {
         "name": "CNN",
-        "link": "/topic"
+        "link": "/CNN"
     },
     {
         "name": "RNN",
-        "link": "/topic"
+        "link": "/RNN"
     },
     {
         "name": "ML",
-        "link": "/topic"
+        "link": "/ML"
     },
     {
         "name": "DEEP LEARNING",
-        "link": "/topic"
+        "link": "/DEEP LEARNING"
     },
     {
         "name": "MACHINE LEARNING",
-        "link": "/topic"
+        "link": "/MAVHINE LEARNING"
     },
     {
         "name": "LSTM",
-        "link": "/topic"
+        "link": "/LSTM"
     },
     {
         "name": "AI",
-        "link": "/topic"
+        "link": "/AI"
     },
 
 ]
@@ -79,4 +79,5 @@ def home():
     if form.validate_on_submit() and request.method == "POST":
         create_new_post(current_user.username, form.title.data, form.content.data, create_tags(form.topic.data.split(', ')))
         return redirect(url_for("main.home"))
-    return render_template("home.html", posts=posts, form=form, interests=interests, notifications=notifications)
+    return render_template("home.html", posts=posts, form=form, interests=interests, notifications=notifications,
+                           current_user=current_user.username)

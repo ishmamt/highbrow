@@ -40,6 +40,14 @@ mycursor = db.cursor()
 # db.commit()
 
 
+# try:
+#     mycursor.execute('''SELECT * FROM post_has_topic''')
+# except mysql.connector.Error as err:
+#     print("Something went wrong: {}".format(err))
+
+# for x in mycursor:
+#     print(x)
+
 try:
     mycursor.execute('''SELECT * FROM post_has_topic''')
 except mysql.connector.Error as err:

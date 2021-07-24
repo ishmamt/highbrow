@@ -1,5 +1,6 @@
 import mysql.connector
 from highbrow import db
+from datetime import datetime
 
 
 def process_tag_links(topic_name):
@@ -51,3 +52,52 @@ def fetch_post(post_id):
         print("Something went wrong {}".format(err))
         topics_connection.close()
         mycursor.close()
+
+
+def fetch_comments(post_id):
+    mycursor = db.cursor()
+    try:
+        mycursor.execute("SELECT * FROM User_comments_on_post WHERE post_id = '%s'" % (post_id))
+        comments = list()
+        for comment in mycursor:
+            single_comment = {
+                "username": comment[1],
+                "user_profile_link": "/" + comment[1],
+                "time": comment[4],
+                "comment": comment[3]
+            }
+            comments.append(single_comment)
+        mycursor.close()
+        return comments
+    except:
+        print("Something went wrong {}".format(err))
+        mycursor.close()
+        return list()
+
+
+def generate_notif_msg(notifying_user, typ):
+    msg = notifying_user + " "
+    if typ == "like":
+        msg = msg + "likes your post."
+    elif typ == "comment":
+        msg = msg + "commented on your post."
+    elif typ == "follow":
+        msg = msg + "started following you."
+    return msg
+
+
+def create_comment(notifying_user, post_id, notified_user, comment_body):
+    mycursor = db.cursor()
+    try:
+        mycursor.execute('''INSERT INTO User_comments_on_post(comment_id, username, post_id, comment_body, created_on)
+                            VALUES(UUID(), %s, %s, %s, %s)''',
+                         (notifying_user, post_id, comment_body, datetime.now()))
+        msg = generate_notif_msg(notifying_user, 'comment')
+        mycursor.execute('''INSERT INTO Notifications(notif_id, hyperlink_post, notif_msg, notified_user, notifying_user, type, not_time)
+                            VALUES(UUID(), %s, %s, %s, %s, 'comment', %s)''',
+                         (post_id, msg, notified_user, notifying_user, datetime.now()))
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+        db.rollback()
+    mycursor.close()

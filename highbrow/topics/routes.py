@@ -1,5 +1,6 @@
 from flask import render_template, url_for, redirect, request, Blueprint
 from highbrow.topics.utils import fetch_topic_posts
+from flask_login import current_user
 
 topics = Blueprint('topics', __name__)  # similar to app = Flask(__name__)
 
@@ -31,10 +32,11 @@ initial_topics = ["HTML", "CSS", "AI", "ML", "RNN", "CNN", "NEURAL NETWORKS", "Q
                   "LSTM", "NLP", "IMAGE PROCESSING", "FLASK", "NETWORKS", "PYTHON", "DJANGO"]
 
 
-@topics.route("/<string:topic_name>")
+@topics.route("/topic/<string:topic_name>")
 def topic(topic_name):
     posts = fetch_topic_posts(topic_name)
-    return render_template("topic.html", notifications=notifications, posts=posts, topic_details=topic_name)
+    return render_template("topic.html", notifications=notifications, posts=posts, topic_details=topic_name,
+                           current_user=current_user.username)
 
 
 @topics.route("/choose_topics")

@@ -97,7 +97,7 @@ def user(username):
     user_details = find_user(username)
     own_posts = fetch_own_posts(username)
     return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
-                           jobs=jobs, notifications=notifications)
+                           jobs=jobs, notifications=notifications, current_user=current_user.username)
 
 
 @users.route("/sign-in", methods=["GET", "POST"])
