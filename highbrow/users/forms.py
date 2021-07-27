@@ -17,12 +17,12 @@ class SignupForm(FlaskForm):
     signup_fullname = StringField("Fullname", validators=[DataRequired()])
     signup_username = StringField("Username", validators=[DataRequired()])
     signup_email = StringField("Email", validators=[DataRequired(), Email()])
-    signup_password = PasswordField("Password", validators=[DataRequired(), EqualTo("signup_repeat_password")])
-    signup_repeat_password = PasswordField("Repeat Password")
-    c2 = BooleanField("Yes, I understand and agree to the workwise Terms & Conditions.", validators=[DataRequired()])
+    signup_password = PasswordField("Password", validators=[DataRequired()])
+    signup_repeat_password = PasswordField("Repeat Password", validators=[DataRequired(), EqualTo("signup_password", message='Passwords must match')])
+    c2 = BooleanField("Yes, I understand and agree to the workwise Terms & Conditions.")
     submit = SubmitField('Signup')
 
-    def validate_terms_and_conditions(self, c2):
+    def validate_c2(self, c2):
         if c2.data is False:
             raise ValidationError("You must agree to the terms and conditions.")
 
@@ -30,10 +30,10 @@ class SignupForm(FlaskForm):
         # custom validation check to see if username already exists
         user = check_user(username.data)  # if user doesn't exist, returns none
         if user:
-            raise ValidationError("Username already in use. Please choose another one.")
+            raise ValidationError("Username already in use.")
 
     def validate_signup_email(self, email):
         # custom validation check to see if email already exists
         email = check_email(email.data)  # if email doesn't exist, returns none
         if email:
-            raise ValidationError("Email already in use. Please choose another one.")
+            raise ValidationError("Email already in use.")

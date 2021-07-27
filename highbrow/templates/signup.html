@@ -17,8 +17,6 @@
 
 
 <body class="sign-in">
-
-
     <div class="wrapper">
         <div class="sign-in-page">
             <div class="signin-popup">
@@ -43,43 +41,97 @@
                                             <div class="row">
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="signin-field">
-                                                        <!-- <input type="text" name="name" placeholder="Full Name"> -->
-                                                        {{ signup_form.signup_fullname(placeholder="Full Name") }}
-                                                        <i class="la la-male"></i>
+                                                        {% if signup_form.signup_fullname.errors %}
+                                                            {{ signup_form.signup_fullname(placeholder="Full Name", class="form-control form-control-lg is-invalid") }}
+                                                            <i class="la la-male"></i>
+                                                            <div class="invalid-feedback">
+                                                                {% for error in signup_form.signup_fullname.errors %}
+                                                                    <span>{{ error }}</span>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            {{ signup_form.signup_fullname(placeholder="Full Name") }}
+                                                            <i class="la la-male"></i>
+                                                        {% endif %}
+                                                        <!-- {{ signup_form.signup_fullname(placeholder="Full Name") }}
+                                                        <i class="la la-male"></i> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="signin-field">
-                                                        <!-- <input type="text" name="username" placeholder="Username"> -->
-                                                        {{ signup_form.signup_username(placeholder="Username") }}
-                                                        <i class="la la-user"></i>
+                                                        {% if signup_form.signup_username.errors %}
+                                                            {{ signup_form.signup_username(placeholder="Username", class="form-control form-control-lg is-invalid") }}
+                                                            <i class="la la-user"></i>
+                                                            <div class="invalid-feedback">
+                                                                {% for error in signup_form.signup_username.errors %}
+                                                                    <span>{{ error }}</span>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            {{ signup_form.signup_username(placeholder="Username") }}
+                                                            <i class="la la-user"></i>
+                                                        {% endif %}
+                                                        <!-- {{ signup_form.signup_username(placeholder="Username") }}
+                                                        <i class="la la-user"></i> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="signin-field">
-                                                        <!-- <input type="text" name="email" placeholder="Email"> -->
-                                                        {{ signup_form.signup_email(placeholder="Email") }}
-                                                        <i class="la la-envelope"></i>
+                                                        {% if signup_form.signup_email.errors %}
+                                                            {{ signup_form.signup_email(placeholder="Email", class="form-control form-control-lg is-invalid") }}
+                                                            <i class="la la-envelope"></i>
+                                                            <div class="invalid-feedback">
+                                                                {% for error in signup_form.signup_email.errors %}
+                                                                    <span>{{ error }}</span>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            {{ signup_form.signup_email(placeholder="Email") }}
+                                                            <i class="la la-envelope"></i>
+                                                        {% endif %}
+                                                        <!-- {{ signup_form.signup_email(placeholder="Email") }}
+                                                        <i class="la la-envelope"></i> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="signin-field">
-                                                        <!-- <input type="password" name="password" placeholder="Password"> -->
-                                                        {{ signup_form.signup_password(placeholder="Password") }}
-                                                        <i class="la la-lock"></i>
+                                                        {% if signup_form.signup_password.errors %}
+                                                            {{ signup_form.signup_password(placeholder="Password", class="form-control form-control-lg is-invalid") }}
+                                                            <i class="la la-lock"></i>
+                                                            <div class="invalid-feedback">
+                                                                {% for error in signup_form.signup_password.errors %}
+                                                                    <span>{{ error }}</span>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            {{ signup_form.signup_password(placeholder="Password") }}
+                                                            <i class="la la-lock"></i>
+                                                        {% endif %}
+                                                        <!-- {{ signup_form.signup_password(placeholder="Password") }}
+                                                        <i class="la la-lock"></i> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="signin-field">
-                                                        <!-- <input type="password" name="repeat-password" placeholder="Repeat Password"> -->
-                                                        {{ signup_form.signup_repeat_password(placeholder="Repeat Password") }}
-                                                        <i class="la la-lock"></i>
+                                                        {% if signup_form.signup_repeat_password.errors %}
+                                                            {{ signup_form.signup_repeat_password(placeholder="Repeat Password", class="form-control form-control-lg is-invalid") }}
+                                                            <i class="la la-lock"></i>
+                                                            <div class="invalid-feedback">
+                                                                {% for error in signup_form.signup_repeat_password.errors %}
+                                                                    <span>{{ error }}</span>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            {{ signup_form.signup_repeat_password(placeholder="Repeat Password") }}
+                                                            <i class="la la-lock"></i>
+                                                        {% endif %}
+                                                        <!-- {{ signup_form.signup_repeat_password(placeholder="Repeat Password") }}
+                                                        <i class="la la-lock"></i> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="check-section st2">
                                                         <div class="forgot-section">
-                                                            <!-- <input type="checkbox" name="cc" id="c2"> -->
                                                             {{ signup_form.c2 }}
                                                             <label for="c2">
                                                                 <span></span>

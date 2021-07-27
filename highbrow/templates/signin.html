@@ -17,8 +17,15 @@
 
 
 <body class="sign-in">
-
-
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <div class="wrapper">
         <div class="sign-in-page">
             <div class="signin-popup">
@@ -42,15 +49,34 @@
                                         <div class="row">
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="signin-field">
-                                                    {{ signin_form.signin_username(placeholder="Username") }}
-                                                    <!-- <input type="text" name="username" placeholder="Username"> -->
-                                                    <i class="la la-user"></i>
+                                                    {% if signin_form.signin_username.errors %}
+                                                        {{ signin_form.signin_username(placeholder="Username", class="form-control form-control-lg is-invalid") }}
+                                                        <i class="la la-user"></i>
+                                                        <div class="invalid-feedback">
+                                                            {% for error in signin_form.signin_username.errors %}
+                                                                <span>{{ error }}</span>
+                                                            {% endfor %}
+                                                        </div>
+                                                    {% else %}
+                                                        {{ signin_form.signin_username(placeholder="Username") }}
+                                                        <i class="la la-user"></i>
+                                                    {% endif %}
                                                 </div><!--signin-field end-->
                                             </div>
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="signin-field">
-                                                    {{ signin_form.signin_password(placeholder="Password") }}
-                                                    <!-- <input type="password" name="password" placeholder="Password"> -->
+                                                    {% if signin_form.signin_password.errors %}
+                                                        {{ signin_form.signin_password(placeholder="Password", class="form-control form-control-lg is-invalid") }}
+                                                        <i class="la la-lock"></i>
+                                                        <div class="invalid-feedback">
+                                                            {% for error in signin_form.signin_password.errors %}
+                                                                <span>{{ error }}</span>
+                                                            {% endfor %}
+                                                        </div>
+                                                    {% else %}
+                                                        {{ signin_form.signin_password(placeholder="Password") }}
+                                                        <i class="la la-lock"></i>
+                                                    {% endif %}
                                                     <i class="la la-lock"></i>
                                                 </div>
                                             </div>

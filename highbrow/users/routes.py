@@ -1,4 +1,4 @@
-from flask import render_template, url_for, redirect, request, Blueprint
+from flask import render_template, url_for, redirect, request, Blueprint, flash
 from highbrow.users.forms import SigninForm, SignupForm
 from flask_login import login_user, logout_user, current_user
 from highbrow import load_user, bcrypt
@@ -93,6 +93,8 @@ def signin():
             if user and bcrypt.check_password_hash(user.password, signin_form.signin_password.data):
                 login_user(user, remember=signin_form.c1.data)
                 return redirect(url_for("main.home"))
+            else:
+                flash("Login unsuccessful. Please check username or password.", "danger")
     return render_template("signin.html", signin_form=signin_form)
 
 
