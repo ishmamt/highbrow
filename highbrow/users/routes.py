@@ -1,91 +1,11 @@
-from flask import render_template, url_for, redirect, request, Blueprint
+from flask import render_template, url_for, redirect, request, Blueprint, flash
 from highbrow.users.forms import SigninForm, SignupForm
+from flask_login import login_user, logout_user, current_user
+from highbrow import load_user, bcrypt
+from highbrow.users.utils import find_user, fetch_own_posts, create_new_user, if_is_following
+from highbrow.utils import fetch_notifications
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
-
-
-user_details = {
-    "name": "Tauseef Tajwar",
-    "current_job": "AI Researcher",
-    "current_job_details": "Carnegie Mellon University",
-    "following": 34,
-    "followers": 115
-}
-
-own_posts = [
-    {
-        "username": "Tauseef Tajwar",
-        "time": 3,
-        "title": "Hello World",
-        "link": "/post",
-        "user_profile_link": "/user",
-        "content": "Testing 123",
-        "tags": [
-            {
-                "name": "HTML",
-                "link": "/topic"
-            },
-            {
-                "name": "CSS",
-                "link": "/topic"
-            }
-        ],
-        "likes": 25,
-        "comments": 4
-    },
-    {
-        "username": "Tauseef Tajwar",
-        "time": 30,
-        "title": "First Post",
-        "link": "/post",
-        "user_profile_link": "/user",
-        "content": "The website is live and this is my very first post",
-        "tags": [
-            {
-                "name": "RNN",
-                "link": "/topic"
-            },
-            {
-                "name": "CNN",
-                "link": "/topic"
-            },
-            {
-                "name": "ML",
-                "link": "/topic"
-            },
-            {
-                "name": "DEEP LEARNING",
-                "link": "/topic"
-            },
-            {
-                "name": "NEURAL NETWORKS",
-                "link": "/topic"
-            }
-        ],
-        "likes": 125,
-        "comments": 533
-    },
-    {
-        "username": "Tauseef Tajwar",
-        "time": 45,
-        "title": "Eta ki free?",
-        "link": "/post",
-        "user_profile_link": "/user",
-        "content": "Etae taka deya lagbe ki?",
-        "tags": [
-            {
-                "name": "QUESTION",
-                "link": "/topic"
-            },
-            {
-                "name": "HELP",
-                "link": "/topic"
-            }
-        ],
-        "likes": 525,
-        "comments": 14
-    }
-]
 
 interests = [
     {
@@ -149,51 +69,55 @@ jobs = [
     }
 ]
 
-notifications = [
-    {
-        "time": 2,
-        "content": "Ishmam Tashdeed commented on your post.",
-        "link": "/post"
-    },
-    {
-        "time": 4,
-        "content": "Nafis Faiyaz liked your post.",
-        "link": "/post"
-    },
-    {
-        "time": 20,
-        "content": "Ishmam Tashdeed liked your post.",
-        "link": "/post"
-    },
-    {
-        "time": 23,
-        "content": "Nafis Faiyaz started following you.",
-        "link": "/user"
-    }
-]
 
-
-@users.route("/user")
-def user():
+@users.route("/<string:username>")
+def user(username):
+    user_details = find_user(username)
+    notifications = fetch_notifications(username)
+    own_posts = fetch_own_posts(username)
+    is_following = if_is_following(current_user.username, username)
     return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
-                           jobs=jobs, notifications=notifications)
+                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following)
 
 
 @users.route("/sign-in", methods=["GET", "POST"])
 @users.route("/login", methods=["GET", "POST"])
+def signin():
+    if current_user.is_authenticated:
+        # if user is already logged in
+        return redirect(url_for("main.home"))
+    signin_form = SigninForm()
+    if request.method == "POST":
+        if signin_form.validate_on_submit():
+            user = load_user(signin_form.signin_username.data)
+            if user and bcrypt.check_password_hash(user.password, signin_form.signin_password.data):
+                login_user(user, remember=signin_form.c1.data)
+                return redirect(url_for("main.home"))
+            else:
+                flash("Login unsuccessful. Please check username or password.", "danger")
+    return render_template("signin.html", signin_form=signin_form)
+
+
 @users.route("/register", methods=["GET", "POST"])
 @users.route("/sign-up", methods=["GET", "POST"])
 @users.route("/join", methods=["GET", "POST"])
-def signin():
-    signin_form = SigninForm()
+def signup():
+    if current_user.is_authenticated:
+        # if user is already logged in
+        return redirect(url_for("main.home"))
     signup_form = SignupForm()
     if request.method == "POST":
-        if signin_form.validate_on_submit():
-            if signin_form.signin_username.data == "admin" and signin_form.signin_password.data == "admin":
-                return redirect(url_for("main.home"))
         if signup_form.validate_on_submit():
-            return redirect(url_for("main.home"))
-    return render_template("signin.html", signin_form=signin_form, signup_form=signup_form)
+            hashed_password = bcrypt.generate_password_hash(signup_form.signup_password.data).decode('utf-8')  # decode needed to get string hash
+            status = create_new_user(signup_form.signup_fullname.data, signup_form.signup_username.data,
+                                     signup_form.signup_email.data, hashed_password)
+            if status:
+                user = load_user(signup_form.signup_username.data)
+                login_user(user, remember=False)
+                return redirect(url_for("main.home"))
+            else:
+                return redirect(url_for("users.signup"))
+    return render_template("signup.html", signup_form=signup_form)
 
 
 @users.route("/contact")
@@ -204,3 +128,9 @@ def contact():
 @users.route("/about")
 def about():
     return render_template("about.html")
+
+
+@users.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for("users.signin"))
