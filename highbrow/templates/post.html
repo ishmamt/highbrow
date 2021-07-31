@@ -7,12 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="icon" type="image/x-icon" href="static/images/logo.png">
-<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="static/line-awesome.css">
-<link rel="stylesheet" type="text/css" href="static/line-awesome-font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="static/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="static/style.css">
+<link rel=icon type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='line-awesome.css') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='line-awesome-font-awesome.min.css') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='font-awesome.min.css') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 
@@ -22,7 +22,7 @@
             <div class="container">
                 <div class="header-data">
                     <div class="logo">
-                        <a href="/" title=""><img src="static/images/logo.png" alt="highbrow"></a>
+                        <a href="/" title=""><img src="{{ url_for('static', filename='images/logo.png') }}" alt="highbrow"></a>
                     </div><!--logo end-->
                     <div class="search-bar">
                         <form>
@@ -34,13 +34,13 @@
                         <ul>
                             <li>
                                 <a href="/" title="Home">
-                                    <span><img src="static/images/icon1.png" alt=""></span>
+                                    <span><img src="{{ url_for('static', filename='images/icon1.png') }}" alt=""></span>
                                     Home
                                 </a>
                             </li>
                             <li>
                                 <a href="#" title="Notification" class="notification-box-open">
-                                    <span><img src="static/images/icon7.png" alt=""></span>
+                                    <span><img src="{{ url_for('static', filename='images/icon7.png') }}" alt=""></span>
                                     Notification
                                 </a>
                                 <div class="notification-box">
@@ -51,10 +51,14 @@
                                         {% for notification in notifications %}
                                             <div class="notfication-details">
                                                 <div class="notification-user-image">
-                                                    <img src="static/images/photo-icon.png" alt="">
+                                                    <img src="{{ url_for('static', filename='images/photo-icon.png') }}" alt="">
                                                 </div>
                                                 <div class="notification-info">
-                                                    <h3><a href={{ notification["link"] }} title="">{{ notification["content"] }}</a></h3>
+                                                    {% if notification["type"] == "POST" %}
+                                                        <h3><a href={{ url_for('posts.post', post_id=notification["link"]) }} title="">{{ notification["content"] }}</a></h3>
+                                                    {% else %}
+                                                        <h3><a href={{ url_for('users.user', username=notification["link"]) }} title="">{{ notification["content"] }}</a></h3>
+                                                    {% endif %}
                                                     <span>{{ notification["time"] }} min ago</span>
                                                 </div><!--notification-info -->
                                             </div>
@@ -77,13 +81,13 @@
                         </div>
                         <div class="user-account-settings">
                             <ul class="user-links">
-                                <li><a href="/user" title="">Profile</a></li>
-                                <li><a href="/user" title="">Saved Posts</a></li>
+                                <li><a href={{ url_for('users.user', username=current_user) }} title="">Profile</a></li>
+                                <li><a href={{ url_for('users.user', username=current_user) }} title="">Saved Posts</a></li>
                                 <li><a href="#" title="">Account Setting</a></li>
                                 <li><a href="/about" title="">About</a></li>
                                 <li><a href="/contact" title="">Contact Us</a></li>
                             </ul>
-                            <h3 class="user-logout"><a href="/login" title="">Logout</a></h3>
+                            <h3 class="user-logout"><a href="/logout" title="">Logout</a></h3>
                         </div><!--user-account-settings end-->
                     </div>
                 </div><!--header-data end-->
@@ -101,8 +105,8 @@
                                         <img src="http://via.placeholder.com/60x60" alt="">
                                     </div>
                                     <div class="single-post-content">
-                                        <h3><a href={{ post_details["user_profile_link"] }}> {{ post_details["username"] }} </a></h3>
-                                        <span><img src="static/images/clock.png" alt="">{{ post_details["time"] }} min ago</span>
+                                        <h3><a href={{ url_for('users.user', username=post_details["user_profile_link"]) }}> {{ post_details["username"] }} </a></h3>
+                                        <span><img src="{{ url_for('static', filename='images/clock.png') }}" alt="">{{ post_details["time"] }} min ago</span>
                                         <ul class="react-links">
                                             <li>
                                                 <a href="#"><i class="la la-heart"></i>Like</a>
@@ -112,7 +116,7 @@
                                         <h3>{{ post_details["title"] }}</h3>
                                         <ul class="topic-tags">
                                             {% for tag in post_details["tags"] %}
-                                                <li><a href={{ tag["link"] }} title={{ tag["name"] }}>{{ tag["name"] }}</a></li>
+                                                <li><a href={{ url_for('topics.topic', topic_name=tag["link"]) }} title={{ tag["name"] }}>{{ tag["name"] }}</a></li>
                                             {% endfor %}
                                         </ul>
                                         <p>{{ post_details["content"] }}</p>
@@ -127,8 +131,8 @@
                                                                     <img src="http://via.placeholder.com/40x40" alt="">
                                                                 </div>
                                                                 <div class="comment">
-                                                                    <a href={{ comment["user_profile_link"] }}><h3>{{ comment["username"] }}</h3></a>
-                                                                    <span><img src="static/images/clock.png" alt=""><small>{{ comment["time"] }} min ago</small></span>
+                                                                    <a href={{ url_for('users.user', username=comment["user_profile_link"]) }}><h3>{{ comment["username"] }}</h3></a>
+                                                                    <span><img src="{{ url_for('static', filename='images/clock.png') }}" alt=""><small>{{ comment["time"] }} min ago</small></span>
                                                                     <p>{{ comment["comment"] }}</p>
                                                                 </div>
                                                             </div><!--comment-list end-->
@@ -166,8 +170,10 @@
 
 
 
-<script type="text/javascript" src="static/js/jquery.min.js"></script>
-<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="static/js/script.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
 </body>
 </html>

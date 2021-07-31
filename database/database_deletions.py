@@ -149,5 +149,6 @@ if DELETE_ALL is "YES":
         print("Something went wrong: {}".format(err))
 
     # Should close connection after retrieving result from a query otherwise server might reach connection limit
+    db.commit()
     mycursor.close()
     db.close()

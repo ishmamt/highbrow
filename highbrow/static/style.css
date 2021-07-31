@@ -5912,3 +5912,14 @@ a:hover {
     width: 100%;
     height: auto;
 }
+
+.register-redirect small, a {
+	color: #d7d7d7;
+	margin-top: 10px;
+	font-size: 15px;
+}
+.register-redirect a:hover {
+	color: #bb86fc;
+	margin-top: 10px;
+	font-size: 15px;
+}

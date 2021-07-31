@@ -30,8 +30,8 @@ if TABLE_TRIGGER_CREATION is "YES":
 	                        (
 	                            full_name VARCHAR(50) NOT NULL,
 	                            username VARCHAR(20),
-	                            email VARCHAR(50) NOT NULL,
-	                            password VARCHAR(30) NOT NULL,
+	                            email VARCHAR(50) NOT NULL UNIQUE,
+	                            password VARCHAR(65) NOT NULL,
 	                            remember_me SMALLINT DEFAULT 0,
 	                            profile_picture VARCHAR(30) DEFAULT NULL,
 	                            num_followers INT DEFAULT 0,
@@ -334,5 +334,6 @@ if TABLE_TRIGGER_CREATION is "YES":
         print("Something went wrong: {}".format(err))
 
     # Should close connection after retrieving result from a query otherwise server might reach connection limit
+    db.commit()
     mycursor.close()
     db.close()
