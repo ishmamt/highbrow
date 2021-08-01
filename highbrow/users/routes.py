@@ -42,7 +42,7 @@ jobs = [
 @users.route("/user/<string:username>")
 def user(username):
     user_details = find_user(username)
-    notifications = fetch_notifications(username)
+    notifications = fetch_notifications(current_user.username)
     own_posts = fetch_own_posts(username, current_user.username)
     interests = fetch_followed_topics(username)
     is_following = if_is_following(current_user.username, username)
