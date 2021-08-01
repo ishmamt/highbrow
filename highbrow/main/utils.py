@@ -1,11 +1,12 @@
 import mysql.connector
 from highbrow import db
+from highbrow.utils import if_is_liked
 from datetime import datetime
 import uuid
 
 
 def create_new_post(created_by, title, content, tags):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     try:
         post_id = str(uuid.uuid4())
         mycursor.execute('''INSERT INTO Posts(created_by, created_on, post_id, title, content) VALUES(%s, %s, %s, %s, %s)''',
@@ -31,13 +32,13 @@ def process_tag_links(topic_name):
     return link
 
 
-def fetch_own_posts(username):
+def fetch_own_posts(username, current_user):
     topics_connection = mysql.connector.connect(host="localhost",
                                                 user="root",
                                                 passwd="root",
                                                 database='highbrow_db')
-    mycursor = db.cursor()
-    mycursor_topics = topics_connection.cursor()
+    mycursor = db.cursor(buffered=True)
+    mycursor_topics = topics_connection.cursor(buffered=True)
     try:
         posts = list()
         mycursor.execute("SELECT * FROM Posts WHERE created_by = '%s'" % (username))
@@ -63,7 +64,8 @@ def fetch_own_posts(username):
                 "likes": post[6],
                 "comments": post[7],
                 "tags": tags,
-                "user_profile_link": post[0]
+                "user_profile_link": post[0],
+                "is_liked": if_is_liked(current_user, post[2])
             }
             posts.append(single_post)
         mycursor.close()

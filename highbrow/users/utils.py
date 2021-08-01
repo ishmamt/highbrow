@@ -1,11 +1,11 @@
 from highbrow import db
-from highbrow.utils import generate_notif_msg
+from highbrow.utils import generate_notif_msg, if_is_liked
 import mysql.connector
 from datetime import datetime
 
 
 def find_user(username):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     try:
         mycursor.execute("SELECT * FROM Users WHERE username = '%s'" % (username))
         user = mycursor.fetchone()
@@ -32,13 +32,13 @@ def process_tag_links(topic_name):
     return link
 
 
-def fetch_own_posts(username):
+def fetch_own_posts(username, current_user):
     topics_connection = mysql.connector.connect(host="localhost",
                                                 user="root",
                                                 passwd="root",
                                                 database='highbrow_db')
-    mycursor = db.cursor()
-    mycursor_topics = topics_connection.cursor()
+    mycursor = db.cursor(buffered=True)
+    mycursor_topics = topics_connection.cursor(buffered=True)
     try:
         posts = list()
         mycursor.execute("SELECT * FROM Posts WHERE created_by = '%s'" % (username))
@@ -64,7 +64,8 @@ def fetch_own_posts(username):
                 "likes": post[6],
                 "comments": post[7],
                 "tags": tags,
-                "user_profile_link": post[0]
+                "user_profile_link": post[0],
+                "is_liked": if_is_liked(current_user, post[2])
             }
             posts.append(single_post)
         mycursor.close()
@@ -77,7 +78,7 @@ def fetch_own_posts(username):
 
 
 def check_user(username):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     try:
         mycursor.execute("SELECT * FROM Users WHERE username = '%s'" % (username))
         user = mycursor.fetchone()
@@ -90,7 +91,7 @@ def check_user(username):
 
 
 def check_email(email):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     try:
         mycursor.execute("SELECT * FROM Users WHERE email = '%s'" % (email))
         email = mycursor.fetchone()
@@ -103,7 +104,7 @@ def check_email(email):
 
 
 def create_new_user(fullname, username, email, password):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     try:
         mycursor.execute('''INSERT INTO Users(full_name, username, email, password) VALUES(%s, %s, %s, %s)''',
                          (fullname, username, email, password))
@@ -118,7 +119,7 @@ def create_new_user(fullname, username, email, password):
 
 
 def if_is_following(follower, following):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     try:
         mycursor.execute('''SELECT * FROM User_follows_user WHERE follower = '%s' AND following = '%s' ''' % (follower, following))
         follows = mycursor.fetchone()
@@ -133,7 +134,7 @@ def if_is_following(follower, following):
 
 
 def follow_unfollow_user(notifying_user, notified_user, is_following):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     if is_following == "True":
         # unfollow
         try:

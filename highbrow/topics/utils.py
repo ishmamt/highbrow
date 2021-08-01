@@ -1,5 +1,6 @@
 from highbrow import db
 import mysql.connector
+from highbrow.utils import if_is_liked
 
 
 def process_tag_links(topic_name):
@@ -11,13 +12,13 @@ def process_tag_links(topic_name):
     return link
 
 
-def fetch_topic_posts(topic_name):
+def fetch_topic_posts(topic_name, current_user):
     topics_connection = mysql.connector.connect(host="localhost",
                                                 user="root",
                                                 passwd="root",
                                                 database='highbrow_db')
-    mycursor = db.cursor()
-    mycursor_topics = topics_connection.cursor()
+    mycursor = db.cursor(buffered=True)
+    mycursor_topics = topics_connection.cursor(buffered=True)
     try:
         posts = list()
         mycursor.execute("""SELECT * FROM Posts WHERE post_id IN (
@@ -44,7 +45,8 @@ def fetch_topic_posts(topic_name):
                 "likes": post[6],
                 "comments": post[7],
                 "tags": tags,
-                "user_profile_link": post[0]
+                "user_profile_link": post[0],
+                "is_liked": if_is_liked(current_user, post[2])
             }
             posts.append(single_post)
         mycursor.close()
@@ -53,4 +55,41 @@ def fetch_topic_posts(topic_name):
     except mysql.connector.Error as err:
         print("Something went wrong {}".format(err))
         topics_connection.close()
+        mycursor.close()
+
+
+def follow_unfollow_topic(username, topic_name, is_following):
+    mycursor = db.cursor(buffered=True)
+    if is_following == "True":
+        # unfollow
+        try:
+            mycursor.execute("DELETE FROM User_follows_topic WHERE username='%s' AND topic_name='%s'" % (username, topic_name))
+            db.commit()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            db.rollback()
+    else:
+        # follow
+        try:
+            mycursor.execute('''INSERT INTO User_follows_topic(username, topic_name) VALUES(%s, %s)''',
+                             (username, topic_name))
+            db.commit()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            db.rollback()
+    mycursor.close()
+
+
+def if_is_following_topic(follower, topic_name):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute('''SELECT * FROM User_follows_topic WHERE username = '%s' AND topic_name = '%s' ''' % (follower, topic_name))
+        follows = mycursor.fetchone()
+        mycursor.close()
+        if follows:
+            return True
+        else:
+            return False
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
         mycursor.close()

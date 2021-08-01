@@ -109,7 +109,11 @@
                                         <span><img src="{{ url_for('static', filename='images/clock.png') }}" alt="">{{ post_details["time"] }} min ago</span>
                                         <ul class="react-links">
                                             <li>
-                                                <a href="#"><i class="la la-heart"></i>Like</a>
+                                                {% if is_liked %}
+                                                    <a href={{ url_for('posts.like_post', notifying_user=current_user, notified_user=post_details["username"], post_id=post_details["link"], is_liked=True) }} style="color: #BB86FC"><i class="la la-heart"></i>Liked</a>
+                                                {% else %}
+                                                    <a href={{ url_for('posts.like_post', notifying_user=current_user, notified_user=post_details["username"], post_id=post_details["link"], is_liked=False) }}><i class="la la-heart"></i>Like</a>
+                                                {% endif %}
                                                 <span>{{ post_details["likes"] }}</span>
                                             </li>
                                         </ul>

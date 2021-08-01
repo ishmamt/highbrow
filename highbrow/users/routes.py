@@ -3,41 +3,10 @@ from highbrow.users.forms import SigninForm, SignupForm
 from flask_login import login_user, logout_user, current_user
 from highbrow import load_user, bcrypt
 from highbrow.users.utils import find_user, fetch_own_posts, create_new_user, if_is_following, follow_unfollow_user
-from highbrow.utils import fetch_notifications
+from highbrow.utils import fetch_notifications, fetch_followed_topics
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
 
-interests = [
-    {
-        "name": "CNN",
-        "link": "/topic"
-    },
-    {
-        "name": "RNN",
-        "link": "/topic"
-    },
-    {
-        "name": "ML",
-        "link": "/topic"
-    },
-    {
-        "name": "DEEP LEARNING",
-        "link": "/topic"
-    },
-    {
-        "name": "MACHINE LEARNING",
-        "link": "/topic"
-    },
-    {
-        "name": "LSTM",
-        "link": "/topic"
-    },
-    {
-        "name": "AI",
-        "link": "/topic"
-    },
-
-]
 
 contacts = [
     {
@@ -74,7 +43,8 @@ jobs = [
 def user(username):
     user_details = find_user(username)
     notifications = fetch_notifications(username)
-    own_posts = fetch_own_posts(username)
+    own_posts = fetch_own_posts(username, current_user.username)
+    interests = fetch_followed_topics(username)
     is_following = if_is_following(current_user.username, username)
     return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
                            jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following)

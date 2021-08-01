@@ -18,8 +18,8 @@ def fetch_post(post_id):
                                                 user="root",
                                                 passwd="root",
                                                 database='highbrow_db')
-    mycursor = db.cursor()
-    mycursor_topics = topics_connection.cursor()
+    mycursor = db.cursor(buffered=True)
+    mycursor_topics = topics_connection.cursor(buffered=True)
     try:
         mycursor.execute("SELECT * FROM Posts WHERE post_id = '%s'" % (post_id))
         post = mycursor.fetchone()
@@ -56,7 +56,7 @@ def fetch_post(post_id):
 
 
 def fetch_comments(post_id):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     try:
         mycursor.execute("SELECT * FROM User_comments_on_post WHERE post_id = '%s'" % (post_id))
         comments = list()
@@ -77,7 +77,7 @@ def fetch_comments(post_id):
 
 
 def create_comment(notifying_user, post_id, notified_user, comment_body):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     try:
         mycursor.execute('''INSERT INTO User_comments_on_post(comment_id, username, post_id, comment_body, created_on)
                             VALUES(UUID(), %s, %s, %s, %s)''',
@@ -90,4 +90,32 @@ def create_comment(notifying_user, post_id, notified_user, comment_body):
     except mysql.connector.Error as err:
         print("Something went wrong: {}".format(err))
         db.rollback()
+    mycursor.close()
+
+
+def like_unlike_post(notifying_user, notified_user, post_id, is_liked):
+    mycursor = db.cursor(buffered=True)
+    if is_liked == "True":
+        # unlike
+        try:
+            mycursor.execute("DELETE FROM User_likes_post WHERE username= '%s' AND post_id='%s'" % (notifying_user, post_id))
+            mycursor.execute('''DELETE FROM Notifications WHERE notified_user='%s' AND notifying_user='%s'
+                                AND hyperlink_post='%s' AND type='like' ''' % (notified_user, notifying_user, post_id))
+            db.commit()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            db.rollback()
+    else:
+        # like
+        try:
+            mycursor.execute('''INSERT INTO User_likes_post(username, post_id) VALUES(%s, %s)''',
+                             (notifying_user, post_id))
+            msg = generate_notif_msg(notifying_user, 'like')
+            mycursor.execute('''INSERT INTO Notifications(notif_id, hyperlink_post, notif_msg, notified_user, notifying_user, type, not_time)
+                                VALUES(UUID(), %s, %s, %s, %s, 'like', %s)''',
+                             (post_id, msg, notified_user, notifying_user, datetime.now()))
+            db.commit()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            db.rollback()
     mycursor.close()

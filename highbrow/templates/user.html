@@ -225,7 +225,11 @@
                                                 <div class="post-status-bar">
                                                     <ul class="like-com">
                                                         <li>
-                                                            <a href="#"><i class="la la-heart"></i>Like</a>
+                                                            {% if post["is_liked"] %}
+                                                                <a href={{ url_for('posts.post', post_id=post["link"]) }} style="color: #BB86FC"><i class="la la-heart"></i>Liked</a>
+                                                            {% else %}
+                                                                <a href={{ url_for('posts.post', post_id=post["link"]) }}><i class="la la-heart"></i>Like</a>
+                                                            {% endif %}
                                                             <span>{{ post["likes"] }}</span>
                                                         </li>
                                                         <li><a href={{ url_for('posts.post', post_id=post["link"]) }} title="" class="com"><img src="static/images/com.png" alt=""> Comment {{ post["comments"] }}</a></li>

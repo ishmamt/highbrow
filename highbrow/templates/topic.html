@@ -100,7 +100,19 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="user-tab-sec">
-                                <h3>{{ topic_details }}</h3>
+                                <h3>{{ topic_details }}
+                                    <div class="topic-follow-button" align="center">
+                                        {% if is_following %}
+                                            <ul class="flw-button">
+                                                <li><a href={{ url_for('topics.follow_topic', username=current_user, topic_name=topic_details, is_following=True) }} title="" class="flww">Following</a></li>
+                                            </ul>
+                                        {% else %}
+                                            <ul class="flw-button">
+                                                <li><a href={{ url_for('topics.follow_topic', username=current_user, topic_name=topic_details, is_following=False) }} title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                </h3>
                             </div>
                             <div class="topic-posts">
                                 {% for post in posts %}
@@ -112,7 +124,11 @@
                                             <a href={{ url_for('posts.post', post_id=post["link"]) }}><h3>{{ post["title"] }}</h3></a>
                                             <a href={{ url_for('users.user', username=post["user_profile_link"]) }}><h4>{{ post["username"] }}</h4></a>
                                             <ul class="react-links">
-                                                <li><a href="#" title=""><i class="la la-heart"></i>{{ post["likes"] }} likes</a></li>
+                                                {% if post["is_liked"] %}
+                                                    <li><a href={{ url_for('posts.post', post_id=post["link"]) }} title="" style="color: #BB86FC"><i class="la la-heart"></i>{{ post["likes"] }} likes</a></li>
+                                                {% else %}
+                                                    <li><a href={{ url_for('posts.post', post_id=post["link"]) }} title=""><i class="la la-heart"></i>{{ post["likes"] }} likes</a></li>
+                                                {% endif %}
                                                 <li><a href={{ url_for('posts.post', post_id=post["link"]) }} title=""><i class="la la-comment"></i> Comments  {{ post["comments"] }}</a></li>
                                             </ul>
                                             <ul class="topic-tags">

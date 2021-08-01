@@ -6,7 +6,7 @@ HYPERLINK_USER = 2
 
 
 def fetch_notifications(username):
-    mycursor = db.cursor()
+    mycursor = db.cursor(buffered=True)
     try:
         mycursor.execute("SELECT * FROM Notifications WHERE notified_user='%s' ORDER BY not_time DESC LIMIT 5" % (username))
         notifications = list()
@@ -41,3 +41,36 @@ def generate_notif_msg(notifying_user, typ):
     elif typ == "follow":
         msg = msg + "started following you."
     return msg
+
+
+def fetch_followed_topics(username):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute("SELECT topic_name FROM User_follows_topic WHERE username='%s'" % (username))
+        interests = list()
+        for topic in mycursor:
+            single_topic = {
+                "name": topic[0],
+                "link": topic[0]
+            }
+            interests.append(single_topic)
+        mycursor.close()
+        return interests
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()
+
+
+def if_is_liked(username, post_id):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute('''SELECT * FROM User_likes_post WHERE username = '%s' AND post_id = '%s' ''' % (username, post_id))
+        likes = mycursor.fetchone()
+        mycursor.close()
+        if likes:
+            return True
+        else:
+            return False
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()

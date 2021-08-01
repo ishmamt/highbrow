@@ -1,43 +1,10 @@
 from flask import render_template, request, Blueprint, redirect, url_for
 from highbrow.main.forms import NewPostForm
 from highbrow.main.utils import create_new_post, fetch_own_posts
-from highbrow.utils import fetch_notifications
+from highbrow.utils import fetch_notifications, fetch_followed_topics
 from flask_login import current_user, login_required
 
 main = Blueprint('main', __name__)  # similar to app = Flask(__name__)
-
-
-interests = [
-    {
-        "name": "CNN",
-        "link": "/CNN"
-    },
-    {
-        "name": "RNN",
-        "link": "/RNN"
-    },
-    {
-        "name": "ML",
-        "link": "/ML"
-    },
-    {
-        "name": "DEEP LEARNING",
-        "link": "/DEEP LEARNING"
-    },
-    {
-        "name": "MACHINE LEARNING",
-        "link": "/MAVHINE LEARNING"
-    },
-    {
-        "name": "LSTM",
-        "link": "/LSTM"
-    },
-    {
-        "name": "AI",
-        "link": "/AI"
-    },
-
-]
 
 
 def create_tags(tags):
@@ -53,8 +20,9 @@ def create_tags(tags):
 @main.route("/index", methods=["GET", "POST"])
 @login_required
 def home():
-    posts = fetch_own_posts(current_user.username)
+    posts = fetch_own_posts(current_user.username, current_user.username)
     notifications = fetch_notifications(current_user.username)
+    interests = fetch_followed_topics(current_user.username)
     form = NewPostForm()
     if form.validate_on_submit() and request.method == "POST":
         create_new_post(current_user.username, form.title.data, form.content.data, create_tags(form.topic.data.split(', ')))
