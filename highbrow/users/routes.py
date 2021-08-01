@@ -2,7 +2,7 @@ from flask import render_template, url_for, redirect, request, Blueprint, flash
 from highbrow.users.forms import SigninForm, SignupForm
 from flask_login import login_user, logout_user, current_user
 from highbrow import load_user, bcrypt
-from highbrow.users.utils import find_user, fetch_own_posts, create_new_user, if_is_following
+from highbrow.users.utils import find_user, fetch_own_posts, create_new_user, if_is_following, follow_unfollow_user
 from highbrow.utils import fetch_notifications
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
@@ -70,7 +70,7 @@ jobs = [
 ]
 
 
-@users.route("/<string:username>")
+@users.route("/user/<string:username>")
 def user(username):
     user_details = find_user(username)
     notifications = fetch_notifications(username)
@@ -78,6 +78,12 @@ def user(username):
     is_following = if_is_following(current_user.username, username)
     return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
                            jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following)
+
+
+@users.route("/follow/<string:notified_user>/<string:notifying_user>/<string:is_following>")
+def follow_user(notifying_user, notified_user, is_following):
+    follow_unfollow_user(notifying_user, notified_user, is_following)
+    return redirect(url_for("users.user", username=notified_user))
 
 
 @users.route("/sign-in", methods=["GET", "POST"])

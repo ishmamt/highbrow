@@ -1,5 +1,7 @@
 from highbrow import db
+from highbrow.utils import generate_notif_msg
 import mysql.connector
+from datetime import datetime
 
 
 def find_user(username):
@@ -128,3 +130,31 @@ def if_is_following(follower, following):
     except mysql.connector.Error as err:
         print("Something went wrong {}".format(err))
         mycursor.close()
+
+
+def follow_unfollow_user(notifying_user, notified_user, is_following):
+    mycursor = db.cursor()
+    if is_following == "True":
+        # unfollow
+        try:
+            mycursor.execute("DELETE FROM User_follows_user WHERE follower='%s' AND following='%s'" % (notifying_user, notified_user))
+            mycursor.execute('''DELETE FROM Notifications WHERE notified_user='%s' AND notifying_user='%s'
+                                AND hyperlink_user='%s' AND type='follow' ''' % (notified_user, notifying_user, notifying_user))
+            db.commit()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            db.rollback()
+    else:
+        # follow
+        try:
+            mycursor.execute('''INSERT INTO User_follows_user(follower, following) VALUES(%s, %s)''',
+                             (notifying_user, notified_user))
+            msg = generate_notif_msg(notifying_user, 'follow')
+            mycursor.execute('''INSERT INTO Notifications(notif_id, hyperlink_user, notif_msg, notified_user, notifying_user, type, not_time)
+                                VALUES(UUID(), %s, %s, %s, %s, 'follow', %s)''',
+                             (notifying_user, msg, notified_user, notifying_user, datetime.now()))
+            db.commit()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            db.rollback()
+    mycursor.close()

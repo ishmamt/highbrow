@@ -7,12 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="icon" type="image/x-icon" href="static/images/logo.png">
-<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="static/line-awesome.css">
-<link rel="stylesheet" type="text/css" href="static/line-awesome-font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="static/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="static/style.css">
+<link rel=icon type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='line-awesome.css') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='line-awesome-font-awesome.min.css') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='font-awesome.min.css') }}">
+<link rel=stylesheet type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 
@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="header-data">
                     <div class="logo">
-                        <a href="/" title=""><img src="static/images/logo.png" alt="highbrow"></a>
+                        <a href="/" title=""><img src="{{ url_for('static', filename='images/logo.png') }}" alt="highbrow"></a>
                     </div><!--logo end-->
                     <div class="search-bar">
                         <form>
@@ -36,13 +36,13 @@
                         <ul>
                             <li>
                                 <a href="/" title="Home">
-                                    <span><img src="static/images/icon1.png" alt=""></span>
+                                    <span><img src="{{ url_for('static', filename='images/icon1.png') }}" alt=""></span>
                                     Home
                                 </a>
                             </li>
                             <li>
                                 <a href="#" title="Notification" class="notification-box-open">
-                                    <span><img src="static/images/icon7.png" alt=""></span>
+                                    <span><img src="{{ url_for('static', filename='images/icon7.png') }}" alt=""></span>
                                     Notification
                                 </a>
                                 <div class="notification-box">
@@ -53,7 +53,7 @@
                                         {% for notification in notifications %}
                                             <div class="notfication-details">
                                                 <div class="notification-user-image">
-                                                    <img src="static/images/photo-icon.png" alt="">
+                                                    <img src="{{ url_for('static', filename='images/photo-icon.png') }}" alt="">
                                                 </div>
                                                 <div class="notification-info">
                                                     {% if notification["type"] == "POST" %}
@@ -79,7 +79,7 @@
                     <div class="user-account">
                         <div class="user-info">
                             <img src="http://via.placeholder.com/30x30" alt="">
-                            <a href="#" title="">Tauseef</a>
+                            <a href="#" title="">{{ current_user }}</a>
                         </div>
                         <div class="user-account-settings">
                             <ul class="user-links">
@@ -128,11 +128,11 @@
                                                 {% if current_user != user_details["username"] %}
                                                     {% if is_following %}
                                                         <ul class="flw-button">
-                                                            <li><a href="#" title="" class="flww">Following</a></li>
+                                                            <li><a href={{ url_for('users.follow_user', notifying_user=current_user, notified_user=user_details["username"], is_following=True) }} title="" class="flww">Following</a></li>
                                                         </ul>
                                                     {% else %}
                                                         <ul class="flw-button">
-                                                            <li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
+                                                            <li><a href={{ url_for('users.follow_user', notifying_user=current_user, notified_user=user_details["username"], is_following=False) }} title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
                                                         </ul>
                                                     {% endif %}
                                                 {% endif %}
@@ -258,9 +258,9 @@
 
 
 
-<script type="text/javascript" src="static/js/jquery.min.js"></script>
-<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="static/js/script.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 </html>

@@ -30,3 +30,14 @@ def fetch_notifications(username):
         print("Something went wrong {}".format(err))
         mycursor.close()
         return list()
+
+
+def generate_notif_msg(notifying_user, typ):
+    msg = notifying_user + " "
+    if typ == "like":
+        msg = msg + "likes your post."
+    elif typ == "comment":
+        msg = msg + "commented on your post."
+    elif typ == "follow":
+        msg = msg + "started following you."
+    return msg

@@ -1,5 +1,6 @@
 import mysql.connector
 from highbrow import db
+from highbrow.utils import generate_notif_msg
 from datetime import datetime
 
 
@@ -69,21 +70,10 @@ def fetch_comments(post_id):
             comments.append(single_comment)
         mycursor.close()
         return comments
-    except:
+    except mysql.connector.Error as err:
         print("Something went wrong {}".format(err))
         mycursor.close()
         return list()
-
-
-def generate_notif_msg(notifying_user, typ):
-    msg = notifying_user + " "
-    if typ == "like":
-        msg = msg + "likes your post."
-    elif typ == "comment":
-        msg = msg + "commented on your post."
-    elif typ == "follow":
-        msg = msg + "started following you."
-    return msg
 
 
 def create_comment(notifying_user, post_id, notified_user, comment_body):
