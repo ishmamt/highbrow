@@ -22,7 +22,7 @@ def fetch_topic_posts(topic_name, current_user):
     try:
         posts = list()
         mycursor.execute("""SELECT * FROM Posts WHERE post_id IN (
-                        SELECT post_id FROM post_has_topic WHERE topic_name = '%s')""" % (topic_name))
+                        SELECT post_id FROM post_has_topic WHERE topic_name = '%s') ORDER BY created_on DESC""" % (topic_name))
         for post in mycursor:
             tags = list()
             try:

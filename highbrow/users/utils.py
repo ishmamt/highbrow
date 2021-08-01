@@ -41,7 +41,7 @@ def fetch_own_posts(username, current_user):
     mycursor_topics = topics_connection.cursor(buffered=True)
     try:
         posts = list()
-        mycursor.execute("SELECT * FROM Posts WHERE created_by = '%s'" % (username))
+        mycursor.execute("SELECT * FROM Posts WHERE created_by = '%s' ORDER BY created_on DESC" % (username))
         for post in mycursor:
             tags = list()
             try:

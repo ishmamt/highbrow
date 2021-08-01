@@ -58,7 +58,7 @@ def fetch_post(post_id):
 def fetch_comments(post_id):
     mycursor = db.cursor(buffered=True)
     try:
-        mycursor.execute("SELECT * FROM User_comments_on_post WHERE post_id = '%s'" % (post_id))
+        mycursor.execute("SELECT * FROM User_comments_on_post WHERE post_id = '%s' ORDER BY created_on DESC" % (post_id))
         comments = list()
         for comment in mycursor:
             single_comment = {
