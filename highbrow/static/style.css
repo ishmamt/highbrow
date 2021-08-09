@@ -1162,6 +1162,13 @@ main {
 	margin-bottom: 15px;
 	padding: 0 20px;
 }
+.bookmark-sec-post {
+	float: left;
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 0 0px;
+	padding-top: 10px;
+}
 .descp {
 	float: left;
 	margin-top: 3px;
@@ -1193,7 +1200,7 @@ main {
 	font-size: 24px;
 	width: 30px;
 	height: 30px;
-	background-color: #53d690;
+	/*background-color: #53d690;*/
 	text-align: center;
 	line-height: 30px;
 }

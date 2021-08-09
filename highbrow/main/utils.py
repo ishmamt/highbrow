@@ -1,6 +1,6 @@
 import mysql.connector
 from highbrow import db
-from highbrow.utils import if_is_liked
+from highbrow.utils import if_is_liked, if_is_saved
 from datetime import datetime
 import uuid
 
@@ -72,7 +72,8 @@ def fetch_index_posts(current_user):
                 "comments": post[7],
                 "tags": tags,
                 "user_profile_link": post[0],
-                "is_liked": if_is_liked(current_user, post[2])
+                "is_liked": if_is_liked(current_user, post[2]),
+                "is_saved": if_is_saved(current_user, post[2])
             }
             if single_post not in posts:
                 posts.append(single_post)

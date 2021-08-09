@@ -1,5 +1,5 @@
 from highbrow import db
-from highbrow.utils import generate_notif_msg, if_is_liked
+from highbrow.utils import generate_notif_msg, if_is_liked, if_is_saved
 import mysql.connector
 from datetime import datetime
 
@@ -65,7 +65,8 @@ def fetch_own_posts(username, current_user):
                 "comments": post[7],
                 "tags": tags,
                 "user_profile_link": post[0],
-                "is_liked": if_is_liked(current_user, post[2])
+                "is_liked": if_is_liked(current_user, post[2]),
+                "is_saved": if_is_saved(current_user, post[2])
             }
             posts.append(single_post)
         mycursor.close()
@@ -196,7 +197,8 @@ def fetch_saved_posts(current_user):
                 "comments": post[7],
                 "tags": tags,
                 "user_profile_link": post[0],
-                "is_liked": if_is_liked(current_user, post[2])
+                "is_liked": if_is_liked(current_user, post[2]),
+                "is_saved": if_is_saved(current_user, post[2])
             }
             posts.append(single_post)
         mycursor.close()

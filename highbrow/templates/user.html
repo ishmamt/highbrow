@@ -209,7 +209,13 @@
                                                 </div>
                                                 <div class="bookmark-sec">
                                                     <ul class="bookmark-links">
-                                                        <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
+                                                        <li>
+                                                            {% if post["is_saved"] %}
+                                                                <a href={{ url_for('posts.post', post_id=post["link"]) }} style="background-color: #53d690"><i class="la la-bookmark" style="background-color: #53d690"></i></a>
+                                                            {% else %}
+                                                                <a href={{ url_for('posts.post', post_id=post["link"]) }}><i class="la la-bookmark"></i></a>
+                                                            {% endif %}
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class="post-description">

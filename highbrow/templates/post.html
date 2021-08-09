@@ -107,6 +107,25 @@
                                     <div class="single-post-content">
                                         <h3><a href={{ url_for('users.user', username=post_details["user_profile_link"]) }}> {{ post_details["username"] }} </a></h3>
                                         <span><img src="{{ url_for('static', filename='images/clock.png') }}" alt="">{{ post_details["time"] }} min ago</span>
+                                        <div class="edit-options">
+                                            <a href="#" title="" class="edit-options-open"><i class="la la-ellipsis-v"></i></a>
+                                            <ul class="edit-options-list">
+                                                <li><a href="#" title="">Report</a></li>
+                                                <li><a href="#" title="">Edit</a></li>
+                                                <li><a href="#" title="">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="bookmark-sec-post">
+                                            <ul class="bookmark-links">
+                                                <li>
+                                                    {% if is_saved %}
+                                                        <a href={{ url_for('users.add_post_to_saved', username=current_user, post_id=post_details["link"], is_saved=True) }} style="background-color: #53d690"><i class="la la-bookmark" style="background-color: #53d690"></i></a>
+                                                    {% else %}
+                                                        <a href={{ url_for('users.add_post_to_saved', username=current_user, post_id=post_details["link"], is_saved=False) }}><i class="la la-bookmark"></i></a>
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <ul class="react-links">
                                             <li>
                                                 {% if is_liked %}

@@ -74,3 +74,38 @@ def if_is_liked(username, post_id):
     except mysql.connector.Error as err:
         print("Something went wrong {}".format(err))
         mycursor.close()
+
+
+def if_is_saved(username, post_id):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute('''SELECT * FROM User_saves_post WHERE username = '%s' AND post_id = '%s' ''' % (username, post_id))
+        saved = mycursor.fetchone()
+        mycursor.close()
+        if saved:
+            return True
+        else:
+            return False
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()
+
+
+def add_remove_to_saved(username, post_id, is_saved):
+    mycursor = db.cursor(buffered=True)
+    if is_saved == "True":
+        try:
+            mycursor.execute("DELETE FROM User_saves_post WHERE username= '%s' AND post_id= '%s'" % (username, post_id))
+            db.commit()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            db.rollback()
+    else:
+        try:
+            mycursor.execute('''INSERT INTO User_saves_post(username, post_id) VALUES(%s, %s)''',
+                             (username, post_id))
+            db.commit()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            db.rollback()
+    mycursor.close()
