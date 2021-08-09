@@ -84,7 +84,7 @@
                             <ul class="user-links">
                                 <li><a href={{ url_for('users.user', username=current_user) }} title="">Profile</a></li>
                                 <li><a href={{ url_for('users.saved_posts', username=current_user) }} title="">Saved Posts</a></li>
-                                <li><a href="#" title="">Account Setting</a></li>
+                                <li><a href={{ url_for('users.user_settings', username=current_user) }} title="">Account Setting</a></li>
                                 <li><a href="/about" title="">About</a></li>
                                 <li><a href="/contact" title="">Contact Us</a></li>
                             </ul>
@@ -217,7 +217,7 @@
                             <div class="col-lg-12">
                                 <!-- <input type="text" name="topic" placeholder="Topic"> -->
                                 {{ form.topic.label(class_="new-post-fields form label") }}
-                                {{ form.topic(placeholder="Put a space in between each topic.") }}
+                                {{ form.topic(placeholder="Put a comma in between each topic.") }}
                             </div>
                             <div class="col-lg-12">
                                 <!-- <textarea name="share" placeholder="Share your experience"></textarea> -->

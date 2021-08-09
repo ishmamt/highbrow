@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, request, Blueprint, flash
-from highbrow.users.forms import SigninForm, SignupForm
+from highbrow.users.forms import SigninForm, SignupForm, User_settings_short_bio_form, User_settings_experience_form, User_settings_contact_form, User_settings_profile_picture_form
 from flask_login import login_user, logout_user, current_user
 from highbrow import load_user, bcrypt
 from highbrow.users.utils import find_user, fetch_own_posts, create_new_user, if_is_following, follow_unfollow_user, fetch_saved_posts
@@ -10,15 +10,15 @@ users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
 
 contacts = [
     {
-        "website_name": "Twitter",
+        "name": "Twitter",
         "link": "https://twitter.com"
     },
     {
-        "website_name": "Facebook",
+        "name": "Facebook",
         "link": "https://facebook.com"
     },
     {
-        "website_name": "Email",
+        "name": "Email",
         "link": "https://gmail.com"
     }
 ]
@@ -114,6 +114,26 @@ def signup():
             else:
                 return redirect(url_for("users.signup"))
     return render_template("signup.html", signup_form=signup_form)
+
+
+@users.route("/<string:username>/profile_setting")
+def user_settings(username):
+    bio_form = User_settings_short_bio_form()
+    experience_form = User_settings_experience_form()
+    contact_form = User_settings_contact_form()
+    profile_pic_form = User_settings_profile_picture_form()
+    if username == current_user.username:
+        if bio_form.validate_on_submit():
+            pass
+        if experience_form.validate_on_submit():
+            pass
+        if contact_form.validate_on_submit():
+            pass
+        if profile_pic_form.validate_on_submit():
+            pass
+        return render_template("profile_settings.html", bio_form=bio_form, experience_form=experience_form,
+                               contact_form=contact_form, profile_pic_form=profile_pic_form, jobs=jobs, contacts=contacts)
+    return redirect(url_for("users.user", username=current_user.username))
 
 
 @users.route("/contact")

@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField, TextAreaField
+from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from highbrow.users.utils import check_user, check_email
 
@@ -37,3 +38,28 @@ class SignupForm(FlaskForm):
         email = check_email(email.data)  # if email doesn't exist, returns none
         if email:
             raise ValidationError("Email already in use.")
+
+
+class User_settings_short_bio_form(FlaskForm):
+    # for editing user info
+    short_bio = TextAreaField("Something about yourself...", validators=[DataRequired()])
+    submit = SubmitField('Update Bio')
+
+
+class User_settings_experience_form(FlaskForm):
+    # for editing and adding experience
+    designation = StringField("Enter designation", validators=[DataRequired()])
+    institution = StringField("Enter institution", validators=[DataRequired()])
+    submit = SubmitField('Add experience')
+
+
+class User_settings_contact_form(FlaskForm):
+    # for editing and adding contacts
+    title = StringField("Enter contact name", validators=[DataRequired()])
+    contact_link = StringField("Enter contact link", validators=[DataRequired()])
+    submit = SubmitField('Add contact')
+
+
+class User_settings_profile_picture_form(FlaskForm):
+    picture = FileField('Update profile picture', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif'])])
+    submit = SubmitField('Update')

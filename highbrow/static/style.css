@@ -1851,6 +1851,28 @@ main {
 	font-weight: 600;
 	margin-bottom: 10px;
 }
+.job-details-settings {
+	color: #d7d7d7;
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	border-bottom: 2px;
+	font-weight: 2px;
+}
+.job-details-settings h2 {
+	color: #d7d7d7;
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 3px;
+	font-weight: 2px;
+}
+.job-details-settings p {
+	color: #d7d7d7;
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 5px;
+	font-weight: 2px;
+}
 .job-details p {
 	color: #c2c2c2;
 	font-size: 14px;
@@ -5863,6 +5885,18 @@ a:hover {
 
 .content-container p a:hover{
     color: #C2C2C2;
+}
+
+.content-container form{
+    color: #D7D7D7;
+}
+
+.content-container form h3{
+    color: #D7D7D7;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #bb86fc
 }
 
 #welcome h2 .fa {}

@@ -85,7 +85,7 @@
                             <ul class="user-links">
                                 <li><a href={{ url_for('users.user', username=current_user) }} title="">Profile</a></li>
                                 <li><a href={{ url_for('users.saved_posts', username=current_user) }} title="">Saved Posts</a></li>
-                                <li><a href="#" title="">Account Setting</a></li>
+                                <li><a href={{ url_for('users.user_settings', username=current_user) }} title="">Account Setting</a></li>
                                 <li><a href="/about" title="">About</a></li>
                                 <li><a href="/contact" title="">Contact Us</a></li>
                             </ul>
@@ -141,7 +141,7 @@
                                     </div><!--user-data end-->
                                     <div class="widget widget-info">
                                         <div class="widget-title">
-                                            <h3>Bio</h3>
+                                            <h3>Experience</h3>
                                         </div>
                                         <div class="jobs-list">
                                             {% for job in jobs %}

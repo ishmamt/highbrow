@@ -208,3 +208,16 @@ def fetch_saved_posts(current_user):
         print("Something went wrong {}".format(err))
         topics_connection.close()
         mycursor.close()
+
+
+def check_if_experience_exists(designation, institution, username):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute("SELECT * FROM Experience WHERE username = '%s' AND designation = '%s' AND institution = '%s'" % (username, designation, institution))
+        experience = mycursor.fetchone()
+        mycursor.close()
+        return experience
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()
+        return None
