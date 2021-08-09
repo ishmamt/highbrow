@@ -354,8 +354,8 @@ header {
 }
 
 nav {
-	float: left;
-	width: 60%;
+	float: right;
+	/* width: 60%; */
 	text-align: right;
 	padding-right: 13px;
 }
@@ -370,7 +370,7 @@ nav ul li:hover > ul {
 	visibility: visible;
 	z-index: 9999;
 }
-nav ul ul {
+/* nav ul ul {
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -395,7 +395,7 @@ nav ul ul li a:hover {
 }
 nav ul ul li a {
 	font-size: 16px;
-}
+} */
 .notification-box.msg p {
 	line-height: 16px;
 	font-size: 12px;
@@ -524,7 +524,8 @@ nav > ul > li > a:hover {
 
 .user-account {
 	float: right;
-	width: 110px;
+	/* width: 110px; */
+	/* display: inline-block; */
 	/*border-left: 1px solid #dd3e2b;
 	border-right: 1px solid #dd3e2b;*/
 	box-sizing: border-box;
@@ -533,7 +534,8 @@ nav > ul > li > a:hover {
 .user-info {
 	float: left;
 	width: 100%;
-	padding: 13px 10px;
+	
+	/* padding: 13px 10px; */
 	position: relative;
 }
 .user-account-settings {
@@ -682,14 +684,14 @@ nav > ul > li > a:hover {
 	color: #d7d7d7;
 	font-size: 14px;
 	float: left;
-	margin-top: 8px;
+	/* margin-top: 8px; */
 }
 .user-info a:hover {
 	color: #bb86fc;
 }
 .user-info > i {
 	position: relative;
-	top: 51%;
+	/* top: 51%; */
 	right: 20px;
 	color: #d7d7d7;
 	font-size: 12px;
