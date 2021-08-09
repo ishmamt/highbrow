@@ -70,30 +70,27 @@
                                     </div><!--notification-list end-->
                                 </div><!--notification-box end-->
                             </li>
-                            <li>
-                                <div class="user-menu-btn">
-                                    <a href="#" title=""><i class="fa fa-bars"></i></a>
-                                </div><!--user-menu-btn end-->
-                                <div class="user-account">
-                                    <div class="user-info">
-                                        <img src="http://via.placeholder.com/30x30" alt="">
-                                        <a href="#" title="">{{ current_user }}</a>
-                                    </div>
-                                    <div class="user-account-settings">
-                                        <ul class="user-links">
-                                            <li><a href={{ url_for('users.user', username=current_user) }} title="">Profile</a></li>
-                                            <li><a href={{ url_for('users.saved_posts', username=current_user) }} title="">Saved Posts</a></li>
-                                            <li><a href="#" title="">Account Setting</a></li>
-                                            <li><a href="/about" title="">About</a></li>
-                                            <li><a href="/contact" title="">Contact Us</a></li>
-                                        </ul>
-                                        <h3 class="user-logout"><a href="/logout" title="">Logout</a></h3>
-                                    </div><!--user-account-settings end-->
-                                </div>
-
-                            </li>
                         </ul>
                     </nav><!--nav end-->
+                    <div class="user-menu-btn">
+                        <a href="#" title=""><i class="fa fa-bars"></i></a>
+                    </div><!--user-menu-btn end-->
+                    <div class="user-account">
+                        <div class="user-info">
+                            <img src="http://via.placeholder.com/30x30" alt="">
+                            <a href="#" title="">{{ current_user }}</a>
+                        </div>
+                        <div class="user-account-settings">
+                            <ul class="user-links">
+                                <li><a href={{ url_for('users.user', username=current_user) }} title="">Profile</a></li>
+                                <li><a href={{ url_for('users.saved_posts', username=current_user) }} title="">Saved Posts</a></li>
+                                <li><a href="#" title="">Account Setting</a></li>
+                                <li><a href="/about" title="">About</a></li>
+                                <li><a href="/contact" title="">Contact Us</a></li>
+                            </ul>
+                            <h3 class="user-logout"><a href="/logout" title="">Logout</a></h3>
+                        </div><!--user-account-settings end-->
+                    </div>
                 </div><!--header-data end-->
             </div>
         </header><!--header end-->
