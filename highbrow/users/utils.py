@@ -221,3 +221,123 @@ def check_if_experience_exists(designation, institution, username):
         print("Something went wrong {}".format(err))
         mycursor.close()
         return None
+
+
+def check_if_contact_exists(title, username):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute("SELECT * FROM Contact_info WHERE username = '%s' AND contact_title = '%s'" % (username, title))
+        contact = mycursor.fetchone()
+        mycursor.close()
+        return contact
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()
+        return None
+
+
+def add_bio(short_bio, username):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute("UPDATE Users SET short_bio ='%s' WHERE username ='%s' " % (short_bio, username))
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+        db.rollback()
+    mycursor.close()
+
+
+def fetch_bio(username):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute("SELECT short_bio FROM Users WHERE username ='%s' " % (username))
+        short_bio = mycursor.fetchone()
+        mycursor.close()
+        return short_bio[0]
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+        mycursor.close()
+
+
+def add_experience(designation, institution, username):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute('''INSERT INTO Experience(designation, institution, username) VALUES(%s, %s, %s)''',
+                         (designation, institution, username))
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+        db.rollback()
+    mycursor.close()
+
+
+def add_contact(title, contact_link, username):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute('''INSERT INTO Contact_info(contact_title, contact_link, username) VALUES(%s, %s, %s)''',
+                         (title, contact_link, username))
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+        db.rollback()
+    mycursor.close()
+
+
+def fetch_experience(username):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute("SELECT * FROM Experience WHERE username = '%s'" % (username))
+        experiences = list()
+        for experience in mycursor:
+            single_experience = {
+                "name": experience[0],
+                "details": experience[1]
+            }
+            experiences.append(single_experience)
+        mycursor.close()
+        return experiences
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()
+
+
+def fetch_contact(username):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute("SELECT * FROM Contact_info WHERE username = '%s'" % (username))
+        contacts = list()
+        for contact in mycursor:
+            single_contact = {
+                "name": contact[0],
+                "link": contact[1]
+            }
+            contacts.append(single_contact)
+        mycursor.close()
+        return contacts
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        mycursor.close()
+
+
+def delete_experience(username, designation, institution):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute('''DELETE FROM Experience WHERE username='%s' AND designation='%s' AND institution='%s' '''
+                         % (username, designation, institution))
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        db.rollback()
+    mycursor.close()
+
+
+def delete_contact(username, title):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute('''DELETE FROM Contact_info WHERE username='%s' AND contact_title='%s' '''
+                         % (username, title))
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        db.rollback()
+    mycursor.close()

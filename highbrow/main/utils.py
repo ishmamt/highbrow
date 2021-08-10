@@ -84,3 +84,27 @@ def fetch_index_posts(current_user):
         print("Something went wrong {}".format(err))
         topics_connection.close()
         mycursor.close()
+
+
+def list_to_string_tags(tags):
+    tag_string = ""
+    for tag in tags:
+        tag_string = tag_string + ", " + tag["name"]
+    return tag_string[2:]
+
+
+def update_post(created_by, title, content, tags, post_id):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute('''UPDATE Posts SET title='%s', content='%s' WHERE post_id='%s' AND created_by='%s' '''
+                         % (title, content, post_id, created_by))
+
+        mycursor.execute('''DELETE FROM Post_has_topic WHERE post_id='%s' ''' % (post_id))
+        for tag in tags:
+            mycursor.execute('''INSERT INTO Post_has_topic(topic_name, post_id) VALUES(%s, %s)''', (tag, post_id))
+
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+        db.rollback()
+    mycursor.close()

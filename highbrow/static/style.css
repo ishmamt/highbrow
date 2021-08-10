@@ -1930,6 +1930,33 @@ main {
 	z-index: 999;
 	-webkit-transform: scale(1) translateX(-50%) translateY(-50%);
 }
+.post-popup-edit {
+	width: 800px;
+	/*height: 500px;*/
+	margin: 0 auto;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(0.65);
+	-moz-transform: translateX(-50%) translateY(-50%) scale(0.65);
+	-ms-transform: translateX(-50%) translateY(-50%) scale(0.65);
+	-o-transform: translateX(-50%) translateY(-50%) scale(0.65);
+	transform: translateX(-50%) translateY(-50%) scale(0.65);
+	opacity: 0;
+	visibility: hidden;
+	z-index: 0;
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	-moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	-ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	-o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+}
+.post-popup-edit.active {
+	opacity: 1;
+	visibility: visible;
+	z-index: 999;
+	-webkit-transform: scale(1) translateX(-50%) translateY(-50%);
+}
 .new-post-box > a {
 	position: absolute;
 	top: -20px;
@@ -2789,6 +2816,18 @@ footer {
 }
 .hre {
 	background-color: #51a5fb;
+}
+
+.delete-button li a {
+	/*display: inline-block;*/
+	color: #d7d7d7;
+	background-color: #bf343d;
+	font-size: 16px;
+	font-weight: 600;
+	padding: 11px 15px;
+	margin-bottom: 15px;
+	margin-top: 10px;
+	margin-left: 0px;
 }
 
 

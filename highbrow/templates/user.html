@@ -79,7 +79,6 @@
                     <div class="user-account">
                         <div class="user-info">
                             <img src="http://via.placeholder.com/30x30" alt="">
-                            <a href="#" title="">{{ current_user }}</a>
                         </div>
                         <div class="user-account-settings">
                             <ul class="user-links">
@@ -162,8 +161,7 @@
                                             {% for contact in contacts %}
                                                 <div class="job-info">
                                                     <div class="job-details">
-                                                        <h3>{{ contact["website_name"] }}</h3>
-                                                         <p><a href={{ contact["link"] }}>{{ contact["link"] }}</a></p>
+                                                         <p><a href={{ contact["link"] }}>{{ contact["name"] }}</a></p>
                                                     </div>
                                                 </div><!--job-info end-->
                                             {% endfor %}
@@ -201,9 +199,11 @@
                                                     <div class="edit-options">
                                                         <a href="#" title="" class="edit-options-open"><i class="la la-ellipsis-v"></i></a>
                                                         <ul class="edit-options-list">
+                                                            {% if post["user_profile_link"] == current_user %}
+                                                                <li><a href={{ url_for('main.edit_post', post_id=post["link"]) }} title="">Edit</a></li>
+                                                                <li><a href="#" title="">Delete</a></li>
+                                                            {% endif %}
                                                             <li><a href="#" title="">Report</a></li>
-                                                            <li><a href="#" title="">Edit</a></li>
-                                                            <li><a href="#" title="">Delete</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>

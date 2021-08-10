@@ -77,7 +77,6 @@
                     <div class="user-account">
                         <div class="user-info">
                             <img src="http://via.placeholder.com/30x30" alt="">
-                            <a href="#" title="">{{ current_user }}</a>
                         </div>
                         <div class="user-account-settings">
                             <ul class="user-links">
@@ -110,9 +109,11 @@
                                         <div class="edit-options">
                                             <a href="#" title="" class="edit-options-open"><i class="la la-ellipsis-v"></i></a>
                                             <ul class="edit-options-list">
+                                                {% if post_details["user_profile_link"] == current_user %}
+                                                    <li><a href={{ url_for('main.edit_post', post_id=post_details["link"]) }} title="">Edit</a></li>
+                                                    <li><a href="#" title="">Delete</a></li>
+                                                {% endif %}
                                                 <li><a href="#" title="">Report</a></li>
-                                                <li><a href="#" title="">Edit</a></li>
-                                                <li><a href="#" title="">Delete</a></li>
                                             </ul>
                                         </div>
                                         <div class="bookmark-sec-post">
