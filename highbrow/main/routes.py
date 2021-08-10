@@ -1,6 +1,6 @@
 from flask import render_template, request, Blueprint, redirect, url_for
 from highbrow.main.forms import NewPostForm
-from highbrow.main.utils import create_new_post, fetch_index_posts, list_to_string_tags, update_post
+from highbrow.main.utils import create_new_post, fetch_index_posts, list_to_string_tags, update_post, delete_post
 from highbrow.posts.utils import fetch_post
 from highbrow.utils import fetch_notifications, fetch_followed_topics
 from flask_login import current_user, login_required
@@ -46,3 +46,9 @@ def edit_post(post_id):
         form.topic.data = list_to_string_tags(post["tags"])
         form.content.data = post["content"]
     return render_template("edit_post.html", form=form, notifications=notifications, current_user=current_user.username)
+
+
+@main.route("/delete_post/<string:post_id>")
+def delete_post_route(post_id):
+    delete_post(post_id)
+    return redirect(url_for("users.user", username=current_user.username))

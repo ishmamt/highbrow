@@ -108,3 +108,15 @@ def update_post(created_by, title, content, tags, post_id):
         print("Something went wrong: {}".format(err))
         db.rollback()
     mycursor.close()
+
+
+def delete_post(post_id):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute('''DELETE FROM Posts WHERE post_id='%s' '''
+                         % (post_id))
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+        db.rollback()
+    mycursor.close()

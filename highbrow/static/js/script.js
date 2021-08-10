@@ -9,8 +9,23 @@ $(window).on("load", function() {
         $(".wrapper").addClass("overlay");
         return false;
     });
+
+
     $(".post-cancel").on("click", function(){
         $(".post-popup.new-post").removeClass("active");
+        $(".wrapper").removeClass("overlay");
+        return false;
+    });
+
+    //  ============= POST DELETE POPUP FUNCTION =========
+
+    $(".delete-post").on("click", function(){
+        $(".delete-post-popup.new-post").addClass("active");
+        $(".wrapper").addClass("overlay");
+        return false;
+    });
+    $(".post-cancel").on("click", function(){
+        $(".delete-post-popup.new-post").removeClass("active");
         $(".wrapper").removeClass("overlay");
         return false;
     });

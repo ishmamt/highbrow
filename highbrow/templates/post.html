@@ -111,7 +111,7 @@
                                             <ul class="edit-options-list">
                                                 {% if post_details["user_profile_link"] == current_user %}
                                                     <li><a href={{ url_for('main.edit_post', post_id=post_details["link"]) }} title="">Edit</a></li>
-                                                    <li><a href="#" title="">Delete</a></li>
+                                                    <li><a href={{ url_for('main.delete_post_route', post_id=post_details["link"]) }} title="">Delete</a></li>
                                                 {% endif %}
                                                 <li><a href="#" title="">Report</a></li>
                                             </ul>

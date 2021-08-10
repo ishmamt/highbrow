@@ -1,99 +1,18 @@
--webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    -moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    -ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    -o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-    box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
-
-background-color: #bb86fc;
-
-
-
-
-707070 - unimportant
-c2c2c2 - paragraph
-d7d7d7 - heading
-
-
-.like-com {
-    float: left;
-}
-.like-com li {
-    display: inline-block;
-    margin-right: 15px;
-}
-.like-com li a {
-    color: #d7d7d7;
-    font-size: 14px;
-    float: left;
-    margin-top: 6px;
-    margin-right: 5px;
-}
-.like-com li a:hover {
-    color: #bb86fc;
-}
-.like-com li a.active {
-    color: #bb86fc;
-}
-.like-com li a i {
-    margin-right: 2px;
-    font-size: 17px;
-    position: relative;
-    top: 2px;
-}
-.like-com li span {
-    color: #121212;
-    font-size: 13px;
-    width: 30px;
-    height: 30px;
-    background-color: #bb86fc;
-    line-height: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
-    border-radius: 30px;
-    float: left;
-    text-align: center;
-    font-weight: 600;
-    margin-left: 1px;
-}
-.like-com li .com {
-    position: relative;
-    top: -5px;
-}
-.like-com li .com img {
-    margin-right: 10px;
-}
-
-
-
-<div class="post-project-fields">
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <div class="row">
-            <div class="col-lg-12">
-                <!-- <input type="text" name="title" placeholder="Title"> -->
-                {{ form.title.label }}
-                {{ form.title }}
-            </div>
-            <div class="col-lg-12">
-                <!-- <input type="text" name="topic" placeholder="Topic"> -->
-                {{ form.topic.label }}
-                {{ form.topic }}
-            </div>
-            <div class="col-lg-12">
-                <!-- <textarea name="share" placeholder="Share your experience"></textarea> -->
-                {{ form.content.label }}
-                {{ form.content }}
-            </div>
-            <div class="col-lg-12">
-                <ul>
-                    <li><button class="active" type="submit" value="post">Post</button></li>
-                    <li><a href="/" title="">Cancel</a></li>
-                    {{ form.submit(class_="active") }}
-                    <!--<li><button class="active" type="submit" value="post">{{ form.submit }}</button></li> -->
-                </ul>
-            </div>
-        </div>
-    </form>
-</div><!--post-project-fields end-->
+<div class="delete-post-popup new-post">
+            <div class="new-post-box">
+                <div class="delete-post-fields">
+                    <form method="POST" action="">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                Are you sure you want to delete?
+                                <ul>
+                                    <li><a href={{ url_for('main.delete_post_route', post_id=post["link"]) }}><button class="btn btn-danger mt-3" type="submit" value="post">Delete</button></a></li>
+                                    <!-- <li><a class="post-cancel" href="#" title="">Cancel</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--delete-post-fields end-->
+                <a class="post-cancel" href="#" title=""><i class="la la-times-circle-o"></i></a>
+            </div><!--new-post-box end-->
+        </div><!--post-popup end-->

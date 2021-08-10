@@ -1930,6 +1930,32 @@ main {
 	z-index: 999;
 	-webkit-transform: scale(1) translateX(-50%) translateY(-50%);
 }
+.delete-post-popup {
+	width: 570px;
+	margin: 0 auto;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(0.65);
+	-moz-transform: translateX(-50%) translateY(-50%) scale(0.65);
+	-ms-transform: translateX(-50%) translateY(-50%) scale(0.65);
+	-o-transform: translateX(-50%) translateY(-50%) scale(0.65);
+	transform: translateX(-50%) translateY(-50%) scale(0.65);
+	opacity: 0;
+	visibility: hidden;
+	z-index: 0;
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	-moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	-ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	-o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+}
+.delete-post-popup.active {
+	opacity: 1;
+	visibility: visible;
+	z-index: 999;
+	-webkit-transform: scale(1) translateX(-50%) translateY(-50%);
+}
 .post-popup-edit {
 	width: 800px;
 	/*height: 500px;*/
@@ -2054,6 +2080,78 @@ main {
 	background-color: #bb86fc;
 	color: #d7d7d7;
 }
+
+
+
+
+.delete-post-fields {
+	float: left;
+	width: 100%;
+	padding: 30px 20px;
+	background-color: #121212;
+	color: #d7d7d7
+}
+.delete-post-fields form {
+	float: left;
+	width: 100%;
+}
+.delete-post-fields form input {
+	padding: 0 15px;
+	height: 40px;
+}
+.delete-post-fields form textarea {
+	padding: 15px;
+	height: 130px;
+}
+.delete-post-fields form label {
+	padding: 10px;
+	color: #d7d7d7;
+}
+.delete-post-fields form input,
+.delete-post-fields form textarea,
+.delete-post-fields form select {
+	width: 100%;
+	color: #d7d7d7;
+	background-color: #1d1d1d;
+	font-size: 14px;
+	border: 1px solid #e5e5e5;
+	margin-bottom: 20px;
+	font-weight: 500;
+	-webkit-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	-moz-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	-ms-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	-o-box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+	box-shadow: 1px 1px 6px 6px rgba(0,0,0,0.24);
+}
+.delete-post-fields form select {
+	height: 40px;
+	padding: 0 10px;
+}
+.delete-post-fields form ul {
+	float: left;
+	margin-top: 10px;
+	width: 100%;
+}
+.delete-post-fields form ul li {
+	display: inline-block;
+	margin-right: 15px;
+}
+.delete-post-fields form ul li button.active {
+	background-color: #bb86fc;
+	color: #121212;
+}
+.delete-post-fields form ul li button,
+.delete-post-fields form ul li a {
+	color: #000000;
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	padding: 10px 25px;
+	display: inline-block;
+	background-color: ##b53333;
+	font-weight: 600;
+	cursor: pointer;
+}
+
 
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
