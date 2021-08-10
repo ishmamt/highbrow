@@ -1,7 +1,12 @@
 from highbrow import db
-from highbrow.utils import generate_notif_msg, if_is_liked, if_is_saved
+from highbrow.utils import generate_notif_msg, if_is_liked, if_is_saved, fetch_profile_picture
 import mysql.connector
 from datetime import datetime
+import os
+import secrets
+from PIL import Image
+from flask import url_for, current_app
+from flask_login import current_user
 
 
 def find_user(username):
@@ -66,7 +71,8 @@ def fetch_own_posts(username, current_user):
                 "tags": tags,
                 "user_profile_link": post[0],
                 "is_liked": if_is_liked(current_user, post[2]),
-                "is_saved": if_is_saved(current_user, post[2])
+                "is_saved": if_is_saved(current_user, post[2]),
+                "creator_profile_pic": fetch_profile_picture(post[0])
             }
             posts.append(single_post)
         mycursor.close()
@@ -107,8 +113,8 @@ def check_email(email):
 def create_new_user(fullname, username, email, password):
     mycursor = db.cursor(buffered=True)
     try:
-        mycursor.execute('''INSERT INTO Users(full_name, username, email, password) VALUES(%s, %s, %s, %s)''',
-                         (fullname, username, email, password))
+        mycursor.execute('''INSERT INTO Users(full_name, username, email, password, profile_picture) VALUES(%s, %s, %s, %s, %s)''',
+                         (fullname, username, email, password, "default.jpg"))
         db.commit()
         mycursor.close()
         return True
@@ -198,7 +204,8 @@ def fetch_saved_posts(current_user):
                 "tags": tags,
                 "user_profile_link": post[0],
                 "is_liked": if_is_liked(current_user, post[2]),
-                "is_saved": if_is_saved(current_user, post[2])
+                "is_saved": if_is_saved(current_user, post[2]),
+                "creator_profile_pic": fetch_profile_picture(post[0])
             }
             posts.append(single_post)
         mycursor.close()
@@ -339,5 +346,40 @@ def delete_contact(username, title):
         db.commit()
     except mysql.connector.Error as err:
         print("Something went wrong {}".format(err))
+        db.rollback()
+    mycursor.close()
+
+
+def save_picture(username, form_picture):
+    random_hex = secrets.token_hex(8)  # random name of the picture
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_filename = username + random_hex + f_ext
+    picture_path = os.path.join(current_app.root_path, 'static/profile_pictures', picture_filename)
+
+    # resizing the image
+    output_size = (125, 125)
+    image = Image.open(form_picture)
+    image.thumbnail(output_size)
+
+    # saving the image
+    image.save(picture_path)
+
+    # deleting the old profile pic
+    if current_user.profile_picture:
+        old_pic = current_user.profile_picture
+        old_pic_path = os.path.join(current_app.root_path, 'static/profile_pictures', old_pic)
+        if old_pic != 'default.jpg' and os.path.exists(old_pic_path):
+            os.remove(old_pic_path)
+
+    return picture_filename
+
+
+def update_profile_picture(username, picture):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute("UPDATE Users SET profile_picture ='%s' WHERE username ='%s' " % (picture, username))
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
         db.rollback()
     mycursor.close()

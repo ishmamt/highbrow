@@ -1,6 +1,6 @@
 import mysql.connector
 from highbrow import db
-from highbrow.utils import generate_notif_msg
+from highbrow.utils import generate_notif_msg, fetch_profile_picture
 from datetime import datetime
 
 
@@ -44,7 +44,8 @@ def fetch_post(post_id):
             "likes": post[6],
             "comments": post[7],
             "tags": tags,
-            "user_profile_link": post[0]
+            "user_profile_link": post[0],
+            "creator_profile_pic": fetch_profile_picture(post[0])
         }
         mycursor.close()
         topics_connection.close()
@@ -65,7 +66,8 @@ def fetch_comments(post_id):
                 "username": comment[1],
                 "user_profile_link": comment[1],
                 "time": comment[4],
-                "comment": comment[3]
+                "comment": comment[3],
+                "creator_profile_pic": fetch_profile_picture(comment[1])
             }
             comments.append(single_comment)
         mycursor.close()

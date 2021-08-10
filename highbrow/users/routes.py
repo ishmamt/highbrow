@@ -3,8 +3,8 @@ from highbrow.users.forms import SigninForm, SignupForm, User_settings_short_bio
 from flask_login import login_user, logout_user, current_user
 from highbrow import load_user, bcrypt
 from highbrow.users.utils import find_user, fetch_own_posts, create_new_user, if_is_following, follow_unfollow_user, fetch_saved_posts, add_bio, fetch_bio, check_if_experience_exists, add_experience, fetch_experience
-from highbrow.users.utils import delete_experience, check_if_contact_exists, add_contact, delete_contact, fetch_contact
-from highbrow.utils import fetch_notifications, fetch_followed_topics, add_remove_to_saved
+from highbrow.users.utils import delete_experience, check_if_contact_exists, add_contact, delete_contact, fetch_contact, save_picture, update_profile_picture
+from highbrow.utils import fetch_notifications, fetch_followed_topics, add_remove_to_saved, fetch_profile_picture
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
 
@@ -18,8 +18,11 @@ def user(username):
     is_following = if_is_following(current_user.username, username)
     jobs = fetch_experience(username)
     contacts = fetch_contact(username)
+    profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
+    visiting_user_profile_picture = url_for('static', filename='profile_pictures/' + fetch_profile_picture(username))
     return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
-                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following)
+                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following,
+                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture)
 
 
 @users.route("/user/<string:username>/saved_posts")
@@ -28,6 +31,8 @@ def saved_posts(username):
     notifications = fetch_notifications(current_user.username)
     jobs = fetch_experience(username)
     contacts = fetch_contact(username)
+    profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
+    visiting_user_profile_picture = profile_picture
     if username == current_user.username:
         user_saved_posts = fetch_saved_posts(current_user.username)
     else:
@@ -35,7 +40,8 @@ def saved_posts(username):
     interests = fetch_followed_topics(username)
     is_following = if_is_following(current_user.username, username)
     return render_template("user.html", user_details=user_details, posts=user_saved_posts, interests=interests, contacts=contacts,
-                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following)
+                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following,
+                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture)
 
 
 @users.route("/post/save/<string:username>/<string:post_id>/<string:is_saved>")
@@ -84,7 +90,7 @@ def signup():
             if status:
                 user = load_user(signup_form.signup_username.data)
                 login_user(user, remember=False)
-                return redirect(url_for("main.home"))
+                return redirect(url_for("users.user_settings", username=user.username))
             else:
                 return redirect(url_for("users.signup"))
     return render_template("signup.html", signup_form=signup_form)
@@ -99,9 +105,11 @@ def user_settings(username):
     contact_form = User_settings_contact_form()
     profile_pic_form = User_settings_profile_picture_form()
     if username == current_user.username:
+        profile_picture = url_for('static', filename=f'profile_pictures/{current_user.profile_picture}')
+
         if bio_form.validate_on_submit():
             add_bio(bio_form.short_bio.data, current_user.username)
-            return redirect(url_for("users.user_settings", username=current_user.username))
+            return redirect(url_for("users.user_settings", username=current_user.username, profile_picture=profile_picture))
         elif request.method == "GET":
             bio_form.short_bio.data = fetch_bio(current_user.username)
 
@@ -110,31 +118,41 @@ def user_settings(username):
                 flash("Experience already exists.", "danger")
             else:
                 add_experience(experience_form.designation.data, experience_form.institution.data, current_user.username)
-                return redirect(url_for("users.user_settings", username=current_user.username))
+                return redirect(url_for("users.user_settings", username=current_user.username, profile_picture=profile_picture))
+
         if contact_form.validate_on_submit():
             if check_if_contact_exists(contact_form.title.data, current_user.username):
                 flash("Contact already exists.", "danger")
             else:
                 add_contact(contact_form.title.data, contact_form.contact_link.data, current_user.username)
-                return redirect(url_for("users.user_settings", username=current_user.username))
+                return redirect(url_for("users.user_settings", username=current_user.username, profile_picture=profile_picture))
+
         if profile_pic_form.validate_on_submit():
-            pass
+            if profile_pic_form.picture.data:
+                picture_file = save_picture(current_user.username, profile_pic_form.picture.data)
+                print(picture_file)
+                update_profile_picture(current_user.username, picture_file)
+            return redirect(url_for("users.user_settings", username=current_user.username, profile_picture=profile_picture))
+
         return render_template("profile_settings.html", bio_form=bio_form, experience_form=experience_form,
                                contact_form=contact_form, profile_pic_form=profile_pic_form, jobs=jobs,
-                               contacts=contacts, current_user=current_user.username)
+                               contacts=contacts, current_user=current_user.username, profile_picture=profile_picture)
+
     return redirect(url_for("users.user", username=current_user.username))
 
 
 @users.route("/profile_settings/<string:username>/<string:designation>/<string:institution>")
 def delete_experience_route(username, designation, institution):
+    profile_picture = url_for('static', filename=f'profile_pictures/{current_user.profile_picture}')
     delete_experience(username, designation, institution)
-    return redirect(url_for("users.user_settings", username=current_user.username))
+    return redirect(url_for("users.user_settings", username=current_user.username, profile_picture=profile_picture))
 
 
 @users.route("/profile_settings/<string:username>/<string:title>")
 def delete_contact_route(username, title):
+    profile_picture = url_for('static', filename=f'profile_pictures/{current_user.profile_picture}')
     delete_contact(username, title)
-    return redirect(url_for("users.user_settings", username=current_user.username))
+    return redirect(url_for("users.user_settings", username=current_user.username, profile_picture=profile_picture))
 
 
 @users.route("/contact")

@@ -56,5 +56,6 @@ mycursor = db.cursor()
 # for x in mycursor:
 #     print(x)
 
+
 mycursor.close()
 db.close()

@@ -1,6 +1,6 @@
 import mysql.connector
 from highbrow import db
-from highbrow.utils import if_is_liked, if_is_saved
+from highbrow.utils import if_is_liked, if_is_saved, fetch_profile_picture
 from datetime import datetime
 import uuid
 
@@ -73,7 +73,8 @@ def fetch_index_posts(current_user):
                 "tags": tags,
                 "user_profile_link": post[0],
                 "is_liked": if_is_liked(current_user, post[2]),
-                "is_saved": if_is_saved(current_user, post[2])
+                "is_saved": if_is_saved(current_user, post[2]),
+                "creator_profile_pic": fetch_profile_picture(post[0])
             }
             if single_post not in posts:
                 posts.append(single_post)

@@ -24,12 +24,13 @@ def home():
     posts = fetch_index_posts(current_user.username)
     notifications = fetch_notifications(current_user.username)
     interests = fetch_followed_topics(current_user.username)
+    profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
     form = NewPostForm()
     if form.validate_on_submit() and request.method == "POST":
         create_new_post(current_user.username, form.title.data, form.content.data, create_tags(form.topic.data.split(', ')))
-        return redirect(url_for("main.home"))
+        return redirect(url_for("users.user", username=current_user.username))
     return render_template("home.html", posts=posts, form=form, interests=interests, notifications=notifications,
-                           current_user=current_user.username)
+                           current_user=current_user.username, profile_picture=profile_picture)
 
 
 @main.route("/edit_post/<string:post_id>", methods=["GET", "POST"])
@@ -37,6 +38,7 @@ def edit_post(post_id):
     form = NewPostForm()
     notifications = fetch_notifications(current_user.username)
     post = fetch_post(post_id)
+    profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
     if form.validate_on_submit():
         # update
         update_post(post["username"], form.title.data, form.content.data, create_tags(form.topic.data.split(', ')), post["link"])
@@ -45,7 +47,8 @@ def edit_post(post_id):
         form.title.data = post["title"]
         form.topic.data = list_to_string_tags(post["tags"])
         form.content.data = post["content"]
-    return render_template("edit_post.html", form=form, notifications=notifications, current_user=current_user.username)
+    return render_template("edit_post.html", form=form, notifications=notifications, current_user=current_user.username,
+                           profile_picture=profile_picture)
 
 
 @main.route("/delete_post/<string:post_id>")

@@ -51,7 +51,7 @@
                                         {% for notification in notifications %}
                                             <div class="notfication-details">
                                                 <div class="notification-user-image">
-                                                    <img src="{{ url_for('static', filename='images/photo-icon.png') }}" alt="">
+                                                    <img src="{{ url_for('static', filename='profile_pictures/' + notification["notifying_user_profile_pic"]) }}" alt="">
                                                 </div>
                                                 <div class="notification-info">
                                                     {% if notification["type"] == "POST" %}
@@ -76,7 +76,7 @@
                     </div><!--user-menu-btn end-->
                     <div class="user-account">
                         <div class="user-info">
-                            <img src="http://via.placeholder.com/30x30" alt="">
+                            <img src="{{ profile_picture }}" alt="">
                         </div>
                         <div class="user-account-settings">
                             <ul class="user-links">
@@ -101,7 +101,7 @@
                             <div class="single-post-view">
                                 <div class="single-post">
                                     <div class="post-user-image">
-                                        <img src="http://via.placeholder.com/60x60" alt="">
+                                        <img src="{{ url_for('static', filename='profile_pictures/' + post_details["creator_profile_pic"]) }}" alt="">
                                     </div>
                                     <div class="single-post-content">
                                         <h3><a href={{ url_for('users.user', username=post_details["user_profile_link"]) }}> {{ post_details["username"] }} </a></h3>
@@ -152,7 +152,7 @@
                                                         <li>
                                                             <div class="comment-list">
                                                                 <div class="bg-img">
-                                                                    <img src="http://via.placeholder.com/40x40" alt="">
+                                                                    <img src="{{ url_for('static', filename='profile_pictures/' + comment["creator_profile_pic"]) }}" alt="">
                                                                 </div>
                                                                 <div class="comment">
                                                                     <a href={{ url_for('users.user', username=comment["user_profile_link"]) }}><h3>{{ comment["username"] }}</h3></a>
@@ -171,7 +171,7 @@
                             <div class="post-comment-box">
                                 <div class="user-poster">
                                     <div class="comment-user-image">
-                                        <img src="http://via.placeholder.com/40x40" alt="">
+                                        <img src="{{ profile_picture }}" alt="">
                                     </div>
                                     <div class="post_comment_sec">
                                         <form method="POST" action="">

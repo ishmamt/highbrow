@@ -51,7 +51,7 @@
                                         {% for notification in notifications %}
                                             <div class="notfication-details">
                                                 <div class="notification-user-image">
-                                                    <img src="{{ url_for('static', filename='images/photo-icon.png') }}" alt="">
+                                                    <img src="{{ url_for('static', filename='profile_pictures/' + notification["notifying_user_profile_pic"]) }}" alt="">
                                                 </div>
                                                 <div class="notification-info">
                                                     {% if notification["type"] == "POST" %}
@@ -76,7 +76,7 @@
                     </div><!--user-menu-btn end-->
                     <div class="user-account">
                         <div class="user-info">
-                            <img src="http://via.placeholder.com/30x30" alt="">
+                            <img src="{{ profile_picture }}" alt="">
                         </div>
                         <div class="user-account-settings">
                             <ul class="user-links">
@@ -117,7 +117,7 @@
                                 {% for post in posts %}
                                     <div class="single-post">
                                         <div class="post-user-image">
-                                            <img src="http://via.placeholder.com/60x60" alt="">
+                                            <img src="{{ url_for('static', filename='profile_pictures/' + post["creator_profile_pic"]) }}" alt="">
                                         </div>
                                         <div class="single-post-content">
                                             <a href={{ url_for('posts.post', post_id=post["link"]) }}><h3>{{ post["title"] }}</h3></a>

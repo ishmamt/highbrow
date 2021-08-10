@@ -52,7 +52,7 @@
                                         {% for notification in notifications %}
                                             <div class="notfication-details">
                                                 <div class="notification-user-image">
-                                                    <img src="static/images/photo-icon.png" alt="">
+                                                    <img src="{{ url_for('static', filename='profile_pictures/' + notification["notifying_user_profile_pic"]) }}" alt="">
                                                 </div>
                                                 <div class="notification-info">
                                                     {% if notification["type"] == "POST" %}
@@ -77,7 +77,7 @@
                     </div><!--user-menu-btn end-->
                     <div class="user-account">
                         <div class="user-info">
-                            <img src="http://via.placeholder.com/30x30" alt="">
+                            <img src="{{ profile_picture }}" alt="">
                         </div>
                         <div class="user-account-settings">
                             <ul class="user-links">
@@ -119,7 +119,7 @@
                                 <div class="main-posts-sec">
                                     <div class="post-topbar">
                                         <div class="user-profile-pic">
-                                            <img src="http://via.placeholder.com/100x100" alt="">
+                                            <img src="{{ profile_picture }}" alt="">
                                         </div>
                                         <div class="new-post-sec">
                                             <ul>
@@ -132,10 +132,12 @@
                                             <div class="post-bar">
                                                 <div class="post_topbar">
                                                     <div class="user-details">
-                                                        <img src="http://via.placeholder.com/50x50" alt="">
-                                                        <div class="user-name">
-                                                            <a href={{ url_for('users.user', username=post["user_profile_link"]) }}><h3>{{ post["username"] }}</h3></a>
-                                                            <span><img src="static/images/clock.png" alt="">{{ post["time"] }} min ago</span>
+                                                        <div class="profile-picture-feed">
+                                                            <img src="{{ url_for('static', filename='profile_pictures/' + post["creator_profile_pic"]) }}" alt="">
+                                                            <div class="user-name">
+                                                                <a href={{ url_for('users.user', username=post["user_profile_link"]) }}><h3>{{ post["username"] }}</h3></a>
+                                                                <span><img src="static/images/clock.png" alt="">{{ post["time"] }} min ago</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="edit-options">

@@ -61,5 +61,5 @@ class User_settings_contact_form(FlaskForm):
 
 
 class User_settings_profile_picture_form(FlaskForm):
-    picture = FileField('Update profile picture', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif'])])
+    picture = FileField('Update profile picture', validators=[DataRequired(), FileAllowed(['jpg', 'png', 'jpeg', 'gif'])])
     submit = SubmitField('Update')

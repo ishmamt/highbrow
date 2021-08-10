@@ -1,6 +1,6 @@
 from highbrow import db
 import mysql.connector
-from highbrow.utils import if_is_liked
+from highbrow.utils import if_is_liked, fetch_profile_picture
 
 
 def process_tag_links(topic_name):
@@ -46,7 +46,8 @@ def fetch_topic_posts(topic_name, current_user):
                 "comments": post[7],
                 "tags": tags,
                 "user_profile_link": post[0],
-                "is_liked": if_is_liked(current_user, post[2])
+                "is_liked": if_is_liked(current_user, post[2]),
+                "creator_profile_pic": fetch_profile_picture(post[0])
             }
             posts.append(single_post)
         mycursor.close()

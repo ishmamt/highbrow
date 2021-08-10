@@ -677,6 +677,8 @@ nav > ul > li > a:hover {
 	-ms-border-radius: 100px;
 	-o-border-radius: 100px;
 	border-radius: 100px;
+	height: 30px;
+	width: 30px;
 }
 .user-info a {
 	color: #d7d7d7;
@@ -1070,6 +1072,17 @@ main {
 	-ms-border-radius: 100px;
 	-o-border-radius: 100px;
 	border-radius: 100px;
+	/*width: 110px;
+	height: 110px;*/
+}
+.profile-picture-feed img {
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-ms-border-radius: 100px;
+	-o-border-radius: 100px;
+	border-radius: 100px;
+	width: 50px;
+	height: 50px;
 }
 .edit-options {
 	float: right;
@@ -1148,6 +1161,8 @@ main {
 .user-name img {
 	margin-top: 2px;
 	margin-right: 6px;
+	height: 12px;
+	width: 12px;
 }
 .post_topbar i {
 /*	position: absolute;
@@ -1639,6 +1654,8 @@ main {
 	-ms-border-radius: 100px;
 	-o-border-radius: 100px;
 	border-radius: 100px;
+	height: 40px;
+	width: 40px;
 }
 .comment {
 	display: table-cell;
@@ -4771,7 +4788,8 @@ a:hover {
 	width: 35px;
 }
 .notification-user-image img {
-	width: 100%;
+	width: 35px;
+	height: 35px;
 }
 .notification-info {
 	float: left;
@@ -5364,7 +5382,8 @@ a:hover {
 	width: 60px;
 }
 .post-user-image img {
-	width: 100%;
+	width: 60px;
+	height: 60px;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	-ms-border-radius: 100px;
@@ -5708,12 +5727,13 @@ a:hover {
 	margin-right: 15px;
 }
 .comment-user-image img {
-	width: 100%;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	-ms-border-radius: 100px;
 	-o-border-radius: 100px;
 	border-radius: 100px;
+	width: 50px;
+	height: 50px;
 }
 .post_comment_sec {
 	float: left;

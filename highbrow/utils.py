@@ -21,7 +21,8 @@ def fetch_notifications(username):
                 "time": notification[7],
                 "content": notification[3],
                 "link": link,
-                "type": notif_type
+                "type": notif_type,
+                "notifying_user_profile_pic": fetch_profile_picture(notification[5])
             }
             notifications.append(single_notification)
         mycursor.close()
@@ -109,3 +110,19 @@ def add_remove_to_saved(username, post_id, is_saved):
             print("Something went wrong: {}".format(err))
             db.rollback()
     mycursor.close()
+
+
+def fetch_profile_picture(username):
+    pic_cursor = db.cursor(buffered=True)
+    try:
+        pic_cursor.execute('''SELECT profile_picture FROM Users WHERE username = '%s' ''' % (username))
+        picture = pic_cursor.fetchone()
+        pic_cursor.close()
+        if picture:
+            return picture[0]
+        else:
+            return "default.jpg"
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        pic_cursor.close()
+        return "default.jpg"
