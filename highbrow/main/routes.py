@@ -59,6 +59,7 @@ def edit_post(post_id):
         form.title.data = post["title"]
         form.topic.data = list_to_string_tags(post["tags"])
         form.content.data = post["content"]
+        form.picture.data = post["image"]
     return render_template("edit_post.html", form=form, notifications=notifications, current_user=current_user.username,
                            profile_picture=profile_picture)
 

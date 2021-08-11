@@ -127,14 +127,25 @@ def update_post(created_by, title, content, tags, post_id):
 
 def delete_post(post_id):
     mycursor = db.cursor(buffered=True)
+    picture_cursor = db.cursor(buffered=True)
     try:
+        picture_cursor.execute('''SELECT img FROM Posts WHERE post_id = '%s' ''' % (post_id))
+        picture = picture_cursor.fetchone()
+
         mycursor.execute('''DELETE FROM Posts WHERE post_id='%s' '''
                          % (post_id))
         db.commit()
+
+        if picture[0]:
+            pic_path = os.path.join(current_app.root_path, 'static/post_pictures', picture[0])
+            if os.path.exists(pic_path):
+                os.remove(pic_path)
+
     except mysql.connector.Error as err:
         print("Something went wrong: {}".format(err))
         db.rollback()
     mycursor.close()
+    picture_cursor.close()
 
 
 def check_if_tag_exists(topic):
