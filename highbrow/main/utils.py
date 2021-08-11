@@ -3,6 +3,7 @@ from highbrow import db
 from highbrow.utils import if_is_liked, if_is_saved, fetch_profile_picture, process_tag_links
 from datetime import datetime
 import uuid
+import re
 
 
 def create_new_post(created_by, title, content, tags):
@@ -142,3 +143,11 @@ def check_if_tag_exists(topic):
         print("Something went wrong {}".format(err))
         tag_cursor.close()
         return False
+
+
+def check_topic_validity(topic):
+    reg = "^[A-Za-z0-9 ,]*$"  # only allows [A~Z], [a~z], [0~9], " ", ","
+    status = re.search(reg, topic)
+    if not status:
+        return False
+    return True

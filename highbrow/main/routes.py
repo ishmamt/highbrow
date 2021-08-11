@@ -1,6 +1,6 @@
-from flask import render_template, request, Blueprint, redirect, url_for
+from flask import render_template, request, Blueprint, redirect, url_for, flash
 from highbrow.main.forms import NewPostForm
-from highbrow.main.utils import create_new_post, fetch_index_posts, list_to_string_tags, update_post, delete_post
+from highbrow.main.utils import create_new_post, fetch_index_posts, list_to_string_tags, update_post, delete_post, check_topic_validity
 from highbrow.posts.utils import fetch_post
 from highbrow.utils import fetch_notifications, fetch_followed_topics
 from flask_login import current_user, login_required
@@ -27,8 +27,11 @@ def home():
     profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
     form = NewPostForm()
     if form.validate_on_submit() and request.method == "POST":
-        create_new_post(current_user.username, form.title.data, form.content.data, create_tags(form.topic.data.split(',')))
-        return redirect(url_for("users.user", username=current_user.username))
+        if check_topic_validity(form.topic.data):
+            create_new_post(current_user.username, form.title.data, form.content.data, create_tags(form.topic.data.split(',')))
+            return redirect(url_for("users.user", username=current_user.username))
+        else:
+            flash('Allowed characters in topics field A~Z and a~z and 0~9 and " " and ","', "danger")
     return render_template("home.html", posts=posts, form=form, interests=interests, notifications=notifications,
                            current_user=current_user.username, profile_picture=profile_picture)
 
@@ -40,9 +43,11 @@ def edit_post(post_id):
     post = fetch_post(post_id)
     profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
     if form.validate_on_submit():
-        # update
-        update_post(post["username"], form.title.data, form.content.data, create_tags(form.topic.data.split(',')), post["link"])
-        return redirect(url_for("posts.post", post_id=post_id))
+        if check_topic_validity(form.topic.data):
+            update_post(post["username"], form.title.data, form.content.data, create_tags(form.topic.data.split(',')), post["link"])
+            return redirect(url_for("posts.post", post_id=post_id))
+        else:
+            flash('Allowed characters in topics field A~Z and a~z and 0~9 and " " and ","', "danger")
     elif request.method == "GET":
         form.title.data = post["title"]
         form.topic.data = list_to_string_tags(post["tags"])
