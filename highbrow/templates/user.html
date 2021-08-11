@@ -222,7 +222,14 @@
                                                 </div>
                                                 <div class="post-description">
                                                     <h3><a href={{ url_for('posts.post', post_id=post["link"]) }}>{{ post["title"] }}</a></h3>
-                                                    <p>{{ post["content"] }} <a href="#" title="">view more</a></p>
+                                                    <p>
+                                                        {{ post["content"] }}
+                                                        {% if post["image"] %}
+                                                            <a href={{ url_for('posts.post', post_id=post["link"]) }} title="">Post contains an image. View full post</a>
+                                                        {% else %}
+                                                            <a href={{ url_for('posts.post', post_id=post["link"]) }} title="">View full post</a>
+                                                        {% endif %}
+                                                    </p>
                                                     <ul class="topic-tags">
                                                         {% for tag in post["tags"] %}
                                                             <li><a href={{ url_for('topics.topic', topic_name=tag["link"]) }}>{{ tag["name"] }}</a></li>

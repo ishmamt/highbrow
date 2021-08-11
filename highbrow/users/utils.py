@@ -63,7 +63,8 @@ def fetch_own_posts(username, current_user):
                 "user_profile_link": post[0],
                 "is_liked": if_is_liked(current_user, post[2]),
                 "is_saved": if_is_saved(current_user, post[2]),
-                "creator_profile_pic": fetch_profile_picture(post[0])
+                "creator_profile_pic": fetch_profile_picture(post[0]),
+                "image": post[5]
             }
             posts.append(single_post)
         mycursor.close()
@@ -196,7 +197,8 @@ def fetch_saved_posts(current_user):
                 "user_profile_link": post[0],
                 "is_liked": if_is_liked(current_user, post[2]),
                 "is_saved": if_is_saved(current_user, post[2]),
-                "creator_profile_pic": fetch_profile_picture(post[0])
+                "creator_profile_pic": fetch_profile_picture(post[0]),
+                "image": post[5]
             }
             posts.append(single_post)
         mycursor.close()

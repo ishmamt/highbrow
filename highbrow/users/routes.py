@@ -130,7 +130,6 @@ def user_settings(username):
         if profile_pic_form.validate_on_submit():
             if profile_pic_form.picture.data:
                 picture_file = save_picture(current_user.username, profile_pic_form.picture.data)
-                print(picture_file)
                 update_profile_picture(current_user.username, picture_file)
             return redirect(url_for("users.user_settings", username=current_user.username, profile_picture=profile_picture))
 

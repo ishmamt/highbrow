@@ -144,6 +144,14 @@
                                             {% endfor %}
                                         </ul>
                                         <p>{{ post_details["content"] }}</p>
+
+                                        {% if post_details["image"] %}
+                                            <div class="single-post-content-image">
+                                                <!-- <img src="{{ url_for('static', filename='profile_pictures/' + "default.jpg") }}"> -->
+                                                <img src="{{ url_for('static', filename='profile_pictures/' + post_details["image"]) }}">
+                                            </div>
+                                        {% endif %}
+
                                         <div class="comment-section">
                                             <h3>{{ number_of_comments }} Comments</h3>
                                             <div class="comments">

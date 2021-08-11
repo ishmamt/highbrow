@@ -36,7 +36,8 @@ def fetch_post(post_id):
             "comments": post[7],
             "tags": tags,
             "user_profile_link": post[0],
-            "creator_profile_pic": fetch_profile_picture(post[0])
+            "creator_profile_pic": fetch_profile_picture(post[0]),
+            "image": post[5]
         }
         mycursor.close()
         topics_connection.close()

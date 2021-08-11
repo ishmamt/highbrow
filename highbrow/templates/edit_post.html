@@ -101,7 +101,7 @@
         <div class="post-popup-edit new-post active">
             <div class="new-post-box">
                 <div class="new-post-fields">
-                    <form method="POST" action="">
+                    <form method="POST" action="" enctype="multipart/form-data">
                         {{ form.hidden_tag() }}
                         <div class="row">
                             <div class="col-lg-12">
@@ -116,6 +116,10 @@
                             <div class="col-lg-12">
                                 <!-- <textarea name="share" placeholder="Share your experience"></textarea> -->
                                 {{ form.content(placeholder="Share your experience...") }}
+                            </div>
+                            <div class="col-lg-12">
+                                {{ form.picture.label(class_="new-post-fields form label") }}
+                                {{ form.picture(class="form-control-file pt-2", placeholder="Upload a picture") }}
                             </div>
                             <div class="col-lg-12">
                                 <ul>

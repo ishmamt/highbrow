@@ -4,6 +4,10 @@ from highbrow.utils import if_is_liked, if_is_saved, fetch_profile_picture, proc
 from datetime import datetime
 import uuid
 import re
+import os
+import secrets
+from PIL import Image
+from flask import url_for, current_app
 
 
 def create_new_post(created_by, title, content, tags):
@@ -25,10 +29,13 @@ def create_new_post(created_by, title, content, tags):
             mycursor.execute('''INSERT INTO Post_has_topic(topic_name, post_id) VALUES(%s, %s)''', (tag, post_id))
 
         db.commit()
+        mycursor.close()
+        return post_id
     except mysql.connector.Error as err:
         print("Something went wrong: {}".format(err))
         db.rollback()
-    mycursor.close()
+        mycursor.close()
+        return None
 
 
 def fetch_index_posts(current_user):
@@ -73,7 +80,8 @@ def fetch_index_posts(current_user):
                 "user_profile_link": post[0],
                 "is_liked": if_is_liked(current_user, post[2]),
                 "is_saved": if_is_saved(current_user, post[2]),
-                "creator_profile_pic": fetch_profile_picture(post[0])
+                "creator_profile_pic": fetch_profile_picture(post[0]),
+                "image": post[5]
             }
             if single_post not in posts:
                 posts.append(single_post)
@@ -151,3 +159,33 @@ def check_topic_validity(topic):
     if not status:
         return False
     return True
+
+
+def save_post_picture(post_id, form_picture, old_picture):
+    random_hex = secrets.token_hex(8)  # random name of the picture
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_filename = post_id + "_" + random_hex + f_ext
+    picture_path = os.path.join(current_app.root_path, 'static/post_pictures', picture_filename)
+
+    # saving the image
+    image = Image.open(form_picture)
+    image.save(picture_path)
+
+    # deleting the old picture
+    if old_picture:
+        old_pic_path = os.path.join(current_app.root_path, 'static/post_pictures', old_picture)
+        if os.path.exists(old_pic_path):
+            os.remove(old_pic_path)
+
+    return picture_filename
+
+
+def update_post_picture(post_id, picture):
+    mycursor = db.cursor(buffered=True)
+    try:
+        mycursor.execute("UPDATE Posts SET img ='%s' WHERE post_id ='%s' " % (picture, post_id))
+        db.commit()
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+        db.rollback()
+    mycursor.close()

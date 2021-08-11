@@ -33,7 +33,7 @@ if TABLE_TRIGGER_CREATION is "YES":
 	                            email VARCHAR(50) NOT NULL UNIQUE,
 	                            password VARCHAR(65) NOT NULL,
 	                            remember_me SMALLINT DEFAULT 0,
-	                            profile_picture VARCHAR(30) DEFAULT NULL,
+	                            profile_picture VARCHAR(50) DEFAULT NULL,
 	                            num_followers INT DEFAULT 0,
 	                            num_following INT DEFAULT 0,
 	                            short_bio TINYTEXT DEFAULT NULL,
@@ -51,7 +51,7 @@ if TABLE_TRIGGER_CREATION is "YES":
 	                            post_id VARCHAR(36),
 	                            title TINYTEXT NOT NULL,
 	                            content TEXT NOT NULL,
-	                            img VARCHAR(30) DEFAULT NULL,
+	                            img VARCHAR(65) DEFAULT NULL,
 	                            num_likes INT DEFAULT 0,
 	                            num_comments INT DEFAULT 0,
 	                            CONSTRAINT posts_pk PRIMARY KEY(post_id),
@@ -275,8 +275,8 @@ if TABLE_TRIGGER_CREATION is "YES":
     try:
         mycursor.execute('''CREATE TABLE IF NOT EXISTS Contact_info
 	                        (
-	                            contact_title VARCHAR(20),
-	                            contact_link VARCHAR(50),
+	                            contact_title VARCHAR(40),
+	                            contact_link VARCHAR(350),
 	                            username VARCHAR(20),
 	                            CONSTRAINT contact_info_pk PRIMARY KEY(contact_title, contact_link, username),
 	                            CONSTRAINT contact_info_user_fk FOREIGN KEY(username) REFERENCES Users(username) ON DELETE CASCADE
@@ -288,8 +288,8 @@ if TABLE_TRIGGER_CREATION is "YES":
     try:
         mycursor.execute('''CREATE TABLE IF NOT EXISTS Experience
 	                        (
-	                            designation VARCHAR(30),
-	                            institution VARCHAR(40),
+	                            designation VARCHAR(50),
+	                            institution VARCHAR(150),
 	                            username VARCHAR(20),
 	                            CONSTRAINT experience_pk PRIMARY KEY(designation, institution, username),
 	                            CONSTRAINT experience_user_fk FOREIGN KEY(username) REFERENCES Users(username) ON DELETE CASCADE
@@ -301,7 +301,7 @@ if TABLE_TRIGGER_CREATION is "YES":
     try:
         mycursor.execute('''CREATE TABLE IF NOT EXISTS Topics
 	                        (
-	                            topic_name VARCHAR(35),
+	                            topic_name VARCHAR(50),
 	                            CONSTRAINT topics_pk PRIMARY KEY(topic_name)
 	                        )''')
     except mysql.connector.Error as err:
@@ -311,7 +311,7 @@ if TABLE_TRIGGER_CREATION is "YES":
     try:
         mycursor.execute('''CREATE TABLE IF NOT EXISTS User_follows_topic
 	                        (
-	                            topic_name VARCHAR(35),
+	                            topic_name VARCHAR(50),
 	                            username VARCHAR(20),
 	                            CONSTRAINT user_follows_topic_pk PRIMARY KEY(topic_name, username),
 	                            CONSTRAINT topic_follow_user_user_fk FOREIGN KEY(username) REFERENCES Users(username) ON DELETE CASCADE,
@@ -324,7 +324,7 @@ if TABLE_TRIGGER_CREATION is "YES":
     try:
         mycursor.execute('''CREATE TABLE IF NOT EXISTS Post_has_topic
 	                        (
-	                            topic_name VARCHAR(35),
+	                            topic_name VARCHAR(50),
 	                            post_id VARCHAR(36),
 	                            CONSTRAINT post_has_topic_pk PRIMARY KEY(topic_name, post_id),
 	                            CONSTRAINT post_has_topic_post_fk FOREIGN KEY(post_id) REFERENCES Posts(post_id) ON DELETE CASCADE,

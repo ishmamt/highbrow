@@ -57,5 +57,17 @@ mycursor = db.cursor()
 #     print(x)
 
 
+# try:
+#     mycursor.execute('''SELECT img FROM Posts WHERE created_by='nafis' ''')
+# except mysql.connector.Error as err:
+#     print("Something went wrong: {}".format(err))
+
+# for x in mycursor:
+#     if x[0] is None:
+#         print("ok")
+#     else:
+#         print(x[0])
+
+
 mycursor.close()
 db.close()

@@ -39,7 +39,8 @@ def fetch_topic_posts(topic_name, current_user):
                 "tags": tags,
                 "user_profile_link": post[0],
                 "is_liked": if_is_liked(current_user, post[2]),
-                "creator_profile_pic": fetch_profile_picture(post[0])
+                "creator_profile_pic": fetch_profile_picture(post[0]),
+                "image": post[5]
             }
             posts.append(single_post)
         mycursor.close()
