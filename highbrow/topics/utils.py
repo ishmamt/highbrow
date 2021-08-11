@@ -1,15 +1,6 @@
 from highbrow import db
 import mysql.connector
-from highbrow.utils import if_is_liked, fetch_profile_picture
-
-
-def process_tag_links(topic_name):
-    topic_name = topic_name.split()
-    link = ""
-    for section in topic_name:
-        link = link + section
-
-    return link
+from highbrow.utils import if_is_liked, fetch_profile_picture, process_tag_links
 
 
 def fetch_topic_posts(topic_name, current_user):
@@ -19,6 +10,7 @@ def fetch_topic_posts(topic_name, current_user):
                                                 database='highbrow_db')
     mycursor = db.cursor(buffered=True)
     mycursor_topics = topics_connection.cursor(buffered=True)
+    topic_name = link_to_tag(topic_name)
     try:
         posts = list()
         mycursor.execute("""SELECT * FROM Posts WHERE post_id IN (
@@ -61,6 +53,7 @@ def fetch_topic_posts(topic_name, current_user):
 
 def follow_unfollow_topic(username, topic_name, is_following):
     mycursor = db.cursor(buffered=True)
+    topic_name = link_to_tag(topic_name)
     if is_following == "True":
         # unfollow
         try:
@@ -83,6 +76,7 @@ def follow_unfollow_topic(username, topic_name, is_following):
 
 def if_is_following_topic(follower, topic_name):
     mycursor = db.cursor(buffered=True)
+    topic_name = link_to_tag(topic_name)
     try:
         mycursor.execute('''SELECT * FROM User_follows_topic WHERE username = '%s' AND topic_name = '%s' ''' % (follower, topic_name))
         follows = mycursor.fetchone()
@@ -94,3 +88,11 @@ def if_is_following_topic(follower, topic_name):
     except mysql.connector.Error as err:
         print("Something went wrong {}".format(err))
         mycursor.close()
+
+
+def link_to_tag(link):
+    link = link.split("_")
+    tag = ""
+    for element in link:
+        tag = tag + " " + element
+    return tag[1:]

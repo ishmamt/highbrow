@@ -52,7 +52,7 @@ def fetch_followed_topics(username):
         for topic in mycursor:
             single_topic = {
                 "name": topic[0],
-                "link": topic[0]
+                "link": process_tag_links(topic[0])
             }
             interests.append(single_topic)
         mycursor.close()
@@ -126,3 +126,12 @@ def fetch_profile_picture(username):
         print("Something went wrong {}".format(err))
         pic_cursor.close()
         return "default.jpg"
+
+
+def process_tag_links(topic_name):
+    topic_name = topic_name.split()
+    link = ""
+    for section in topic_name:
+        link = link + "_" + section
+
+    return link[1:]

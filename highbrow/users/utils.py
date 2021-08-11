@@ -1,5 +1,5 @@
 from highbrow import db
-from highbrow.utils import generate_notif_msg, if_is_liked, if_is_saved, fetch_profile_picture
+from highbrow.utils import generate_notif_msg, if_is_liked, if_is_saved, fetch_profile_picture, process_tag_links
 import mysql.connector
 from datetime import datetime
 import os
@@ -26,15 +26,6 @@ def find_user(username):
     except mysql.connector.Error as err:
         print("Something went wrong {}".format(err))
         mycursor.close()
-
-
-def process_tag_links(topic_name):
-    topic_name = topic_name.split()
-    link = ""
-    for section in topic_name:
-        link = link + section
-
-    return link
 
 
 def fetch_own_posts(username, current_user):

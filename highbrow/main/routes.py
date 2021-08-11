@@ -27,7 +27,7 @@ def home():
     profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
     form = NewPostForm()
     if form.validate_on_submit() and request.method == "POST":
-        create_new_post(current_user.username, form.title.data, form.content.data, create_tags(form.topic.data.split(', ')))
+        create_new_post(current_user.username, form.title.data, form.content.data, create_tags(form.topic.data.split(',')))
         return redirect(url_for("users.user", username=current_user.username))
     return render_template("home.html", posts=posts, form=form, interests=interests, notifications=notifications,
                            current_user=current_user.username, profile_picture=profile_picture)
@@ -41,7 +41,7 @@ def edit_post(post_id):
     profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
     if form.validate_on_submit():
         # update
-        update_post(post["username"], form.title.data, form.content.data, create_tags(form.topic.data.split(', ')), post["link"])
+        update_post(post["username"], form.title.data, form.content.data, create_tags(form.topic.data.split(',')), post["link"])
         return redirect(url_for("posts.post", post_id=post_id))
     elif request.method == "GET":
         form.title.data = post["title"]

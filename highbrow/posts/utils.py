@@ -1,16 +1,7 @@
 import mysql.connector
 from highbrow import db
-from highbrow.utils import generate_notif_msg, fetch_profile_picture
+from highbrow.utils import generate_notif_msg, fetch_profile_picture, process_tag_links
 from datetime import datetime
-
-
-def process_tag_links(topic_name):
-    topic_name = topic_name.split()
-    link = ""
-    for section in topic_name:
-        link = link + section
-
-    return link
 
 
 def fetch_post(post_id):

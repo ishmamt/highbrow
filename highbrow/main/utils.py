@@ -1,6 +1,6 @@
 import mysql.connector
 from highbrow import db
-from highbrow.utils import if_is_liked, if_is_saved, fetch_profile_picture
+from highbrow.utils import if_is_liked, if_is_saved, fetch_profile_picture, process_tag_links
 from datetime import datetime
 import uuid
 
@@ -14,6 +14,13 @@ def create_new_post(created_by, title, content, tags):
 
         mycursor.execute('''DELETE FROM Post_has_topic WHERE post_id='%s' ''' % (post_id))
         for tag in tags:
+            tag = tag.strip()
+            if not check_if_tag_exists(tag):
+                try:
+                    mycursor.execute('''INSERT INTO Topics(topic_name) VALUES('%s')''' % (tag))
+                except mysql.connector.Error as err:
+                    print("Something went wrong: {}".format(err))
+
             mycursor.execute('''INSERT INTO Post_has_topic(topic_name, post_id) VALUES(%s, %s)''', (tag, post_id))
 
         db.commit()
@@ -21,15 +28,6 @@ def create_new_post(created_by, title, content, tags):
         print("Something went wrong: {}".format(err))
         db.rollback()
     mycursor.close()
-
-
-def process_tag_links(topic_name):
-    topic_name = topic_name.split()
-    link = ""
-    for section in topic_name:
-        link = link + section
-
-    return link
 
 
 def fetch_index_posts(current_user):
@@ -102,6 +100,13 @@ def update_post(created_by, title, content, tags, post_id):
 
         mycursor.execute('''DELETE FROM Post_has_topic WHERE post_id='%s' ''' % (post_id))
         for tag in tags:
+            tag = tag.strip()
+            if not check_if_tag_exists(tag):
+                try:
+                    mycursor.execute('''INSERT INTO Topics(topic_name) VALUES('%s')''' % (tag))
+                except mysql.connector.Error as err:
+                    print("Something went wrong: {}".format(err))
+
             mycursor.execute('''INSERT INTO Post_has_topic(topic_name, post_id) VALUES(%s, %s)''', (tag, post_id))
 
         db.commit()
@@ -121,3 +126,19 @@ def delete_post(post_id):
         print("Something went wrong: {}".format(err))
         db.rollback()
     mycursor.close()
+
+
+def check_if_tag_exists(topic):
+    tag_cursor = db.cursor(buffered=True)
+    try:
+        tag_cursor.execute('''SELECT * FROM Topics WHERE topic_name = '%s' ''' % (topic))
+        confirmation = tag_cursor.fetchone()
+        tag_cursor.close()
+        if confirmation:
+            return True
+        else:
+            return False
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        tag_cursor.close()
+        return False
