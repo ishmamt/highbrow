@@ -6138,3 +6138,6 @@ a:hover {
 .user-settings-done-button {
 	margin-left: 45%;
 }
+.no-posts-to-show {
+	color: #d7d7d7;
+}

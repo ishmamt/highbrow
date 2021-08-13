@@ -146,14 +146,16 @@
                 </div><!--single-post-sec end-->
                 <nav aria-label="Page navigation" class="full-pagi">
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link pvr" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                        <li class="page-item"><a class="page-link pvr" href="#">Next</a></li>
+                        {% if posts|length == 0 %}
+                            <li class="no-posts-to-show">No posts to show</li>
+                        {% else %}
+                            {% if current_topic_posts_page != 1 %}
+                                <li class="page-item"><a class="page-link pvr" href={{ url_for('topics.topic_previous', topic_name=topic_details) }}>Previous</a></li>
+                            {% endif %}
+                            {% if not (posts|length < number_of_posts_in_a_page) %}
+                                <li class="page-item"><a class="page-link pvr" href={{ url_for('topics.topic_next', topic_name=topic_details) }}>Next</a></li>
+                            {% endif %}
+                        {% endif %}
                     </ul>
                 </nav>
             </div>

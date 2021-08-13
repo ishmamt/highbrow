@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from highbrow.config import Config
 import mysql.connector
 from highbrow.current_user import User
+from highbrow.post_cache import Pagination
 
 
 """
@@ -18,6 +19,7 @@ bcrypt = Bcrypt()
 login_manager = LoginManager()
 login_manager.login_view = "users.signin"  # the name of the function to handle log in page.
 login_manager.login_message_category = "info"  # bootsrap class
+pagination = Pagination()
 
 
 @login_manager.user_loader

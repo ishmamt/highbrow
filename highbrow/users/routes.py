@@ -1,10 +1,11 @@
 from flask import render_template, url_for, redirect, request, Blueprint, flash
 from highbrow.users.forms import SigninForm, SignupForm, User_settings_short_bio_form, User_settings_experience_form, User_settings_contact_form, User_settings_profile_picture_form
 from flask_login import login_user, logout_user, current_user
-from highbrow import load_user, bcrypt
-from highbrow.users.utils import find_user, fetch_own_posts, create_new_user, if_is_following, follow_unfollow_user, fetch_saved_posts, add_bio, fetch_bio, check_if_experience_exists, add_experience, fetch_experience
+from highbrow import load_user, bcrypt, pagination
+from highbrow.users.utils import find_user, fetch_next_own_profile_posts, fetch_previous_own_profile_posts, create_new_user, if_is_following, follow_unfollow_user, fetch_next_saved_posts, fetch_previous_saved_posts, add_bio, fetch_bio, check_if_experience_exists, add_experience, fetch_experience
 from highbrow.users.utils import delete_experience, check_if_contact_exists, add_contact, delete_contact, fetch_contact, save_picture, update_profile_picture
 from highbrow.utils import fetch_notifications, fetch_followed_topics, add_remove_to_saved, fetch_profile_picture
+from datetime import datetime
 
 users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
 
@@ -13,7 +14,8 @@ users = Blueprint('users', __name__)  # similar to app = Flask(__name__)
 def user(username):
     user_details = find_user(username)
     notifications = fetch_notifications(current_user.username)
-    own_posts = fetch_own_posts(username, current_user.username)
+    own_posts, pagination.own_profile_first_post_time, pagination.own_profile_last_post_time = fetch_next_own_profile_posts(username, current_user.username, datetime.now(), pagination.number_of_posts_in_a_page)
+    pagination.current_own_profile_page = 1
     interests = fetch_followed_topics(username)
     is_following = if_is_following(current_user.username, username)
     jobs = fetch_experience(username)
@@ -22,7 +24,63 @@ def user(username):
     visiting_user_profile_picture = url_for('static', filename='profile_pictures/' + fetch_profile_picture(username))
     return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
                            jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following,
-                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture)
+                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture,
+                           current_own_profile_page=pagination.current_own_profile_page,
+                           number_of_posts_in_a_page=pagination.number_of_posts_in_a_page, saved_posts_page=0)
+
+
+@users.route("/user/next/<string:username>")
+def user_next(username):
+    user_details = find_user(username)
+
+    if pagination.own_profile_first_post_time is None or pagination.own_profile_last_post_time is None:
+        pagination.own_profile_first_post_time, pagination.own_profile_last_post_time = pagination.previous_own_profile_first_post_time, pagination.previous_own_profile_last_post_time
+
+    pagination.previous_own_profile_first_post_time, pagination.previous_own_profile_last_post_time = pagination.own_profile_first_post_time, pagination.own_profile_last_post_time
+
+    own_posts, pagination.own_profile_first_post_time, pagination.own_profile_last_post_time = fetch_next_own_profile_posts(username, current_user.username, pagination.own_profile_last_post_time, pagination.number_of_posts_in_a_page)
+
+    pagination.current_own_profile_page = pagination.current_own_profile_page + 1
+
+    notifications = fetch_notifications(current_user.username)
+    # own_posts = fetch_own_posts(username, current_user.username)
+    interests = fetch_followed_topics(username)
+    is_following = if_is_following(current_user.username, username)
+    jobs = fetch_experience(username)
+    contacts = fetch_contact(username)
+    profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
+    visiting_user_profile_picture = url_for('static', filename='profile_pictures/' + fetch_profile_picture(username))
+    return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
+                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following,
+                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture,
+                           current_own_profile_page=pagination.current_own_profile_page,
+                           number_of_posts_in_a_page=pagination.number_of_posts_in_a_page, saved_posts_page=0)
+
+
+@users.route("/user/previous/<string:username>")
+def user_previous(username):
+    user_details = find_user(username)
+
+    if pagination.own_profile_first_post_time is None or pagination.own_profile_last_post_time is None:
+        return redirect(url_for('users.user', username=username))
+
+    own_posts, pagination.own_profile_first_post_time, pagination.own_profile_last_post_time = fetch_previous_own_profile_posts(username, current_user.username, pagination.own_profile_first_post_time, pagination.number_of_posts_in_a_page)
+
+    pagination.current_own_profile_page = pagination.current_own_profile_page - 1
+
+    notifications = fetch_notifications(current_user.username)
+    # own_posts = fetch_own_posts(username, current_user.username)
+    interests = fetch_followed_topics(username)
+    is_following = if_is_following(current_user.username, username)
+    jobs = fetch_experience(username)
+    contacts = fetch_contact(username)
+    profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
+    visiting_user_profile_picture = url_for('static', filename='profile_pictures/' + fetch_profile_picture(username))
+    return render_template("user.html", user_details=user_details, posts=own_posts, interests=interests, contacts=contacts,
+                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following,
+                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture,
+                           current_own_profile_page=pagination.current_own_profile_page,
+                           number_of_posts_in_a_page=pagination.number_of_posts_in_a_page, saved_posts_page=0)
 
 
 @users.route("/user/<string:username>/saved_posts")
@@ -34,14 +92,72 @@ def saved_posts(username):
     profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
     visiting_user_profile_picture = profile_picture
     if username == current_user.username:
-        user_saved_posts = fetch_saved_posts(current_user.username)
+        # user_saved_posts = fetch_saved_posts(current_user.username)
+        user_saved_posts, pagination.saved_posts_first_post_time, pagination.saved_posts_last_post_time = fetch_next_saved_posts(current_user.username, datetime.now(), pagination.number_of_posts_in_a_page)
+        pagination.current_saved_posts_page = 1
     else:
         return redirect(url_for("users.user", username=current_user.username))
     interests = fetch_followed_topics(username)
     is_following = if_is_following(current_user.username, username)
     return render_template("user.html", user_details=user_details, posts=user_saved_posts, interests=interests, contacts=contacts,
                            jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following,
-                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture)
+                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture,
+                           current_own_profile_page=pagination.current_saved_posts_page,
+                           number_of_posts_in_a_page=pagination.number_of_posts_in_a_page, saved_posts_page=1)
+
+
+@users.route("/user/<string:username>/saved_posts/next")
+def saved_posts_next(username):
+    user_details = find_user(username)
+    notifications = fetch_notifications(current_user.username)
+    jobs = fetch_experience(username)
+    contacts = fetch_contact(username)
+    profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
+    visiting_user_profile_picture = profile_picture
+    if username == current_user.username:
+        # user_saved_posts = fetch_saved_posts(current_user.username)
+        if pagination.saved_posts_first_post_time is None or pagination.saved_posts_last_post_time is None:
+            pagination.saved_posts_first_post_time, pagination.saved_posts_last_post_time = pagination.previous_saved_posts_first_post_time, pagination.previous_saved_posts_last_post_time
+
+        pagination.previous_saved_posts_first_post_time, pagination.previous_saved_posts_last_post_time = pagination.saved_posts_first_post_time, pagination.saved_posts_last_post_time
+
+        user_saved_posts, pagination.saved_posts_first_post_time, pagination.saved_posts_last_post_time = fetch_next_saved_posts(current_user.username, pagination.saved_posts_last_post_time, pagination.number_of_posts_in_a_page)
+        pagination.current_saved_posts_page = pagination.current_saved_posts_page + 1
+    else:
+        return redirect(url_for("users.user", username=current_user.username))
+    interests = fetch_followed_topics(username)
+    is_following = if_is_following(current_user.username, username)
+    return render_template("user.html", user_details=user_details, posts=user_saved_posts, interests=interests, contacts=contacts,
+                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following,
+                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture,
+                           current_own_profile_page=pagination.current_saved_posts_page,
+                           number_of_posts_in_a_page=pagination.number_of_posts_in_a_page, saved_posts_page=1)
+
+
+@users.route("/user/<string:username>/saved_posts/previous")
+def saved_posts_previous(username):
+    user_details = find_user(username)
+    notifications = fetch_notifications(current_user.username)
+    jobs = fetch_experience(username)
+    contacts = fetch_contact(username)
+    profile_picture = url_for('static', filename='profile_pictures/' + current_user.profile_picture)
+    visiting_user_profile_picture = profile_picture
+    if username == current_user.username:
+        # user_saved_posts = fetch_saved_posts(current_user.username)
+        if pagination.saved_posts_first_post_time is None or pagination.saved_posts_last_post_time is None:
+            return redirect(url_for('users.saved_posts', username=current_user.username))
+
+        user_saved_posts, pagination.saved_posts_first_post_time, pagination.saved_posts_last_post_time = fetch_previous_saved_posts(current_user.username, pagination.saved_posts_first_post_time, pagination.number_of_posts_in_a_page)
+        pagination.current_saved_posts_page = pagination.current_saved_posts_page - 1
+    else:
+        return redirect(url_for("users.user", username=current_user.username))
+    interests = fetch_followed_topics(username)
+    is_following = if_is_following(current_user.username, username)
+    return render_template("user.html", user_details=user_details, posts=user_saved_posts, interests=interests, contacts=contacts,
+                           jobs=jobs, notifications=notifications, current_user=current_user.username, is_following=is_following,
+                           profile_picture=profile_picture, visiting_user_profile_picture=visiting_user_profile_picture,
+                           current_own_profile_page=pagination.current_saved_posts_page,
+                           number_of_posts_in_a_page=pagination.number_of_posts_in_a_page, saved_posts_page=1)
 
 
 @users.route("/post/save/<string:username>/<string:post_id>/<string:is_saved>")

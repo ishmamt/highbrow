@@ -28,7 +28,7 @@ def find_user(username):
         mycursor.close()
 
 
-def fetch_own_posts(username, current_user):
+def fetch_next_own_profile_posts(username, current_user, own_profile_last_post_time, number_of_posts_in_a_page):
     topics_connection = mysql.connector.connect(host="localhost",
                                                 user="root",
                                                 passwd="root",
@@ -37,7 +37,8 @@ def fetch_own_posts(username, current_user):
     mycursor_topics = topics_connection.cursor(buffered=True)
     try:
         posts = list()
-        mycursor.execute("SELECT * FROM Posts WHERE created_by = '%s' ORDER BY created_on DESC" % (username))
+        mycursor.execute("SELECT * FROM Posts WHERE created_by = '%s' AND created_on < '%s' ORDER BY created_on DESC LIMIT %s"
+                         % (username, own_profile_last_post_time, number_of_posts_in_a_page))
         for post in mycursor:
             tags = list()
             try:
@@ -69,7 +70,60 @@ def fetch_own_posts(username, current_user):
             posts.append(single_post)
         mycursor.close()
         topics_connection.close()
-        return posts
+        if len(posts) > 0:
+            return posts, posts[0]["time"], single_post["time"]
+        return posts, None, None
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        topics_connection.close()
+        mycursor.close()
+
+
+def fetch_previous_own_profile_posts(username, current_user, own_profile_first_post_time, number_of_posts_in_a_page):
+    topics_connection = mysql.connector.connect(host="localhost",
+                                                user="root",
+                                                passwd="root",
+                                                database='highbrow_db')
+    mycursor = db.cursor(buffered=True)
+    mycursor_topics = topics_connection.cursor(buffered=True)
+    try:
+        posts = list()
+        mycursor.execute("SELECT * FROM Posts WHERE created_by = '%s' AND created_on > '%s' ORDER BY created_on ASC LIMIT %s"
+                         % (username, own_profile_first_post_time, number_of_posts_in_a_page))
+        for post in mycursor:
+            tags = list()
+            try:
+                mycursor_topics.execute("SELECT topic_name FROM post_has_topic WHERE post_id = '%s'" % (post[2]))
+                for tag in mycursor_topics:
+                    single_tag = {
+                        "name": tag[0],
+                        "link": process_tag_links(tag[0])
+                    }
+                    tags.append(single_tag)
+            except mysql.connector.Error as err:
+                print("Something went wrong {}".format(err))
+
+            single_post = {
+                "username": post[0],
+                "time": post[1],
+                "link": post[2],
+                "title": post[3],
+                "content": post[4],
+                "likes": post[6],
+                "comments": post[7],
+                "tags": tags,
+                "user_profile_link": post[0],
+                "is_liked": if_is_liked(current_user, post[2]),
+                "is_saved": if_is_saved(current_user, post[2]),
+                "creator_profile_pic": fetch_profile_picture(post[0]),
+                "image": post[5]
+            }
+            posts.append(single_post)
+        mycursor.close()
+        topics_connection.close()
+        if len(posts) > 0:
+            return posts[::-1], posts[-1]["time"], posts[0]["time"]
+        return posts, None, None
     except mysql.connector.Error as err:
         print("Something went wrong {}".format(err))
         topics_connection.close()
@@ -160,7 +214,7 @@ def follow_unfollow_user(notifying_user, notified_user, is_following):
     mycursor.close()
 
 
-def fetch_saved_posts(current_user):
+def fetch_next_saved_posts(current_user, saved_posts_last_post_time, number_of_posts_in_a_page):
     topics_connection = mysql.connector.connect(host="localhost",
                                                 user="root",
                                                 passwd="root",
@@ -171,7 +225,8 @@ def fetch_saved_posts(current_user):
         posts = list()
         mycursor.execute("""SELECT * FROM Posts WHERE post_id IN (
                         SELECT post_id FROM User_saves_post WHERE username ='%s')
-                        ORDER BY created_on DESC""" % (current_user))
+                        AND created_on < '%s' ORDER BY created_on DESC LIMIT %s"""
+                         % (current_user, saved_posts_last_post_time, number_of_posts_in_a_page))
         for post in mycursor:
             tags = list()
             try:
@@ -203,7 +258,62 @@ def fetch_saved_posts(current_user):
             posts.append(single_post)
         mycursor.close()
         topics_connection.close()
-        return posts
+        if len(posts) > 0:
+            return posts, posts[0]["time"], single_post["time"]
+        return posts, None, None
+    except mysql.connector.Error as err:
+        print("Something went wrong {}".format(err))
+        topics_connection.close()
+        mycursor.close()
+
+
+def fetch_previous_saved_posts(current_user, saved_posts_first_post_time, number_of_posts_in_a_page):
+    topics_connection = mysql.connector.connect(host="localhost",
+                                                user="root",
+                                                passwd="root",
+                                                database='highbrow_db')
+    mycursor = db.cursor(buffered=True)
+    mycursor_topics = topics_connection.cursor(buffered=True)
+    try:
+        posts = list()
+        mycursor.execute("""SELECT * FROM Posts WHERE post_id IN (
+                        SELECT post_id FROM User_saves_post WHERE username ='%s')
+                        AND created_on > '%s' ORDER BY created_on ASC LIMIT %s"""
+                         % (current_user, saved_posts_first_post_time, number_of_posts_in_a_page))
+        for post in mycursor:
+            tags = list()
+            try:
+                mycursor_topics.execute("SELECT topic_name FROM post_has_topic WHERE post_id = '%s'" % (post[2]))
+                for tag in mycursor_topics:
+                    single_tag = {
+                        "name": tag[0],
+                        "link": process_tag_links(tag[0])
+                    }
+                    tags.append(single_tag)
+            except mysql.connector.Error as err:
+                print("Something went wrong {}".format(err))
+
+            single_post = {
+                "username": post[0],
+                "time": post[1],
+                "link": post[2],
+                "title": post[3],
+                "content": post[4],
+                "likes": post[6],
+                "comments": post[7],
+                "tags": tags,
+                "user_profile_link": post[0],
+                "is_liked": if_is_liked(current_user, post[2]),
+                "is_saved": if_is_saved(current_user, post[2]),
+                "creator_profile_pic": fetch_profile_picture(post[0]),
+                "image": post[5]
+            }
+            posts.append(single_post)
+        mycursor.close()
+        topics_connection.close()
+        if len(posts) > 0:
+            return posts[::-1], posts[-1]["time"], posts[0]["time"]
+        return posts, None, None
     except mysql.connector.Error as err:
         print("Something went wrong {}".format(err))
         topics_connection.close()
