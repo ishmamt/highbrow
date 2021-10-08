@@ -172,7 +172,13 @@
                                                 </div>
                                                 <div class="post-description">
                                                     <h3><a href={{ url_for('posts.post', post_id=post["link"]) }}>{{ post["title"] }}</a></h3>
-                                                    <p>{{ post["content"] }}
+                                                    <p>
+                                                        {% if post["content"]|length < 700 %}
+                                                            {{ post["content"] }}
+                                                        {% else %}
+                                                            {{ post["content"]|truncate(700) }}
+                                                        {% endif %}
+                                                        
                                                         {% if post["image"] %}
                                                             <a href={{ url_for('posts.post', post_id=post["link"]) }} title="">Post contains an image. View full post</a>
                                                         {% else %}
